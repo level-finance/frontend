@@ -143,40 +143,6 @@
           :missingPrices="missingPrices"
         />
       </div>
-      <!-- <div v-else class="order-1 lg:order-2 px-1 lg:px-0">
-        <BalCard
-          v-if="isCopperPool"
-          noPad
-          imgSrc="/images/partners/copper-launch.png"
-        >
-          <div class="p-4 mt-2">
-            <div class="mb-4 font-semibold">
-              {{ $t('copperLaunchPromo.title') }}
-            </div>
-            <div class="mb-4 text-sm">
-              {{ $t('copperLaunchPromo.description') }}
-            </div>
-            <div class="italic mb-4 text-sm">
-              {{ $t('copperLaunchPromo.poweredByBalancer') }}
-            </div>
-            <BalLink
-              :href="
-                EXTERNAL_LINKS.Copper.Auctions(
-                  pool.address,
-                  copperNetworkPrefix
-                )
-              "
-              external
-              class="block hover:no-underline"
-            >
-              <BalBtn color="blue" block
-                >{{ $t('copperLaunchPromo.buttonLabel') }}
-                <BalIcon name="arrow-up-right" size="sm" class="ml-1"
-              /></BalBtn>
-            </BalLink>
-          </div>
-        </BalCard>
-      </div> -->
     </div>
   </div>
 </template>
@@ -220,7 +186,7 @@ export default defineComponent({
     const { fNum2 } = useNumbers();
     const { isWalletReady } = useWeb3();
     const { prices } = useTokens();
-    const { blockNumber, isKovan, isMainnet, isPolygon } = useWeb3();
+    const { blockNumber } = useWeb3();
     const { addAlert, removeAlert } = useAlerts();
     const { balancerTokenListTokens } = useTokens();
 
@@ -346,42 +312,16 @@ export default defineComponent({
       return false;
     });
 
-    const isCopperNetworkSupported = computed(
-      () => isMainnet.value || isPolygon.value || isKovan.value
-    );
-
-    // Temporary solution to hide Copper card on Fei pool page.
-    // Longer terms solution is needed distinguish LBP platforms
-    // and display custom widgets linking to their pages.
-    const isCopperPool = computed((): boolean => {
-      const feiPoolId =
-        '0xede4efcc5492cf41ed3f0109d60bc0543cfad23a0002000000000000000000bb';
-      return (
-        !!pool.value &&
-        isLiquidityBootstrappingPool.value &&
-        pool.value.id !== feiPoolId &&
-        isCopperNetworkSupported.value
-      );
-    });
-
-    const copperNetworkPrefix = computed(() => {
-      if (isPolygon.value) {
-        return 'polygon.';
-      }
-      if (isKovan.value) {
-        return 'kovan.';
-      }
-      return '';
-    });
-
     const hasCustomToken = computed(() => {
-      const knownTokens = Object.keys(balancerTokenListTokens.value);
+      const knownTokens = Object.keys(
+        balancerTokenListTokens.value
+      ).map(token => token.toLowerCase());
       return (
         !!pool.value &&
         !isLiquidityBootstrappingPool.value &&
         !isStablePhantomPool.value &&
         pool.value.tokenAddresses.some(
-          address => !knownTokens.includes(address)
+          address => !knownTokens.includes(address.toLowerCase())
         )
       );
     });
@@ -437,9 +377,7 @@ export default defineComponent({
       swapFeeToolTip,
       isStableLikePool,
       isLiquidityBootstrappingPool,
-      isCopperPool,
       isStablePhantomPool,
-      copperNetworkPrefix,
       hasCustomToken,
       // methods
       fNum2,

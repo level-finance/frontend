@@ -1,6 +1,5 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import { networkId } from '@/composables/useNetwork';
-import { Network } from '@balancer-labs/sdk';
 import {
   GPv2Settlement,
   GPv2VaultRelayer
@@ -12,10 +11,8 @@ export const GP_SUPPORTED_NETWORKS = Object.keys(GPv2VaultRelayer).map(
   parseInt
 );
 
-export const GP_SETTLEMENT_CONTRACT_ADDRESS: string = (
-  GPv2Settlement[networkId.value] ?? GPv2Settlement[Network.MAINNET]
-).address;
+export const GP_SETTLEMENT_CONTRACT_ADDRESS: string =
+  GPv2Settlement[networkId.value]?.address;
 
-export const GP_RELAYER_CONTRACT_ADDRESS: string = (
-  GPv2VaultRelayer[networkId.value] ?? GPv2VaultRelayer[Network.MAINNET]
-).address;
+export const GP_RELAYER_CONTRACT_ADDRESS: string =
+  GPv2VaultRelayer[networkId.value]?.address;

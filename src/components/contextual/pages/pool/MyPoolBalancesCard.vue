@@ -106,7 +106,11 @@ function weightLabelFor(address: string): string {
 
 function fiatLabelFor(index: number, address: string): string {
   const fiatValue = toFiat(propTokenAmounts.value[index], address);
-  return fNum2(fiatValue, FNumFormats.fiat);
+  if (Number(fiatValue) === 0 && Number(propTokenAmounts.value[index]) > 0) {
+    return '-';
+  } else {
+    return fNum2(fiatValue, FNumFormats.fiat);
+  }
 }
 </script>
 

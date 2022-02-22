@@ -124,7 +124,7 @@ function navigateToPoolFee() {
 
 function getSwapFeeManager() {
   if (feeManagementType.value === 'governance') {
-    return t('balancerGovernance');
+    return t('levelGovernance');
   } else {
     if (feeController.value === 'self') {
       return `${t('myWallet')}: ${shortenLabel(account.value)}`;

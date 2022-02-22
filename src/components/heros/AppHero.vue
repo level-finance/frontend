@@ -26,24 +26,8 @@
           class="text-white text-center text-4xl md:text-5xl pb-2"
         />
         <div class="flex justify-center mt-4">
-          <BalBtn
-            :color="darkMode ? 'gray' : 'white'"
-            class="mr-3"
-            @click="onClickConnect"
-          >
+          <BalBtn :color="darkMode ? 'gray' : 'white'" @click="onClickConnect">
             {{ $t('connectWallet') }}
-          </BalBtn>
-          <BalBtn
-            tag="a"
-            :href="EXTERNAL_LINKS.Balancer.Home"
-            target="_blank"
-            rel="noreferrer"
-            color="white"
-            outline
-            @click="trackGoal(Goals.ClickHeroLearnMore)"
-          >
-            {{ $t('learnMore') }}
-            <BalIcon name="arrow-up-right" size="sm" class="ml-1" />
           </BalBtn>
         </div>
       </template>

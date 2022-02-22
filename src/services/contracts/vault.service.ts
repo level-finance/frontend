@@ -1,8 +1,8 @@
 import { ContractInterface } from '@ethersproject/contracts';
 import { MaxUint256 } from '@ethersproject/constants';
 import { TransactionResponse } from '@ethersproject/abstract-provider';
-import { Vault__factory } from '@balancer-labs/typechain';
-import { SwapV2 } from '@balancer-labs/sdk';
+import { Vault__factory } from '@level-finance/typechain';
+import { SwapV2 } from '@level-finance/sdk';
 import ConfigService, { configService } from '@/services/config/config.service';
 import {
   FundManagement,

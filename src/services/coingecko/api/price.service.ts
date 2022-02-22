@@ -70,11 +70,6 @@ export class PriceService {
       if (addresses.length / addressesPerRequest > 10)
         throw new Error('To many requests for rate limit.');
 
-      // TODO - remove once wsteth is supported
-      addresses = addresses.filter(
-        address => address !== this.appAddresses.wstETH
-      );
-
       addresses = addresses.map(address => this.addressMapIn(address));
       const pageCount = Math.ceil(addresses.length / addressesPerRequest);
       const pages = Array.from(Array(pageCount).keys());
@@ -85,7 +80,9 @@ export class PriceService {
           addressesPerRequest * page,
           addressesPerRequest * (page + 1)
         );
-        const endpoint = `/simple/token_price/${this.platformId}?contract_addresses=${addressString}&vs_currencies=${this.fiatParam}`;
+        const endpoint = `/simple/token_price/${this.platformIdMap()}?contract_addresses=${addressString}&vs_currencies=${
+          this.fiatParam
+        }`;
         const request = retryPromiseWithDelay(
           this.client.get<PriceResponse>(endpoint),
           3,
@@ -123,22 +120,31 @@ export class PriceService {
       aggregateBy === 'hour' ? now : now - (now % twentyFourHoursInSecs);
     const start = end - days * twentyFourHoursInSecs;
 
-    // TODO - remove once wsteth is supported
-    addresses = addresses.filter(
-      address => address !== this.appAddresses.wstETH
-    );
-
     addresses = addresses.map(address => this.addressMapIn(address));
     const requests: Promise<HistoricalPriceResponse>[] = [];
 
     addresses.forEach(address => {
-      const endpoint = `/coins/${
-        this.platformId
-      }/contract/${address.toLowerCase()}/market_chart/range?vs_currency=${
-        this.fiatParam
-      }&from=${start}&to=${end}`;
+      const getMarketHistorical = (): Promise<HistoricalPriceResponse> => {
+        return this.client
+          .get<HistoricalPriceResponse>(
+            `/coins/${this.platformIdMap()}/contract/${address.toLowerCase()}/market_chart/range?vs_currency=${
+              this.fiatParam
+            }&from=${start}&to=${end}`
+          )
+          .catch(error => {
+            if (error.response && error.response.status === 404) {
+              return {
+                market_caps: [],
+                prices: [],
+                total_volumes: []
+              };
+            }
+
+            throw error;
+          });
+      };
       const request = retryPromiseWithDelay(
-        this.client.get<HistoricalPriceResponse>(endpoint),
+        getMarketHistorical(),
         3, // retryCount
         2000 // delayTime
       );
@@ -184,23 +190,15 @@ export class PriceService {
             getUnixTime(startOfHour(fromUnixTime(r[0] / 1000)))
           );
           for (const key of Object.keys(pricesByHour)) {
-            const price = (last(pricesByHour[key]) || [])[1] || 0;
-            // TODO - remove this conditional once coingecko supports wstETH
             prices[Number(key) * 1000] =
-              address === this.appAddresses.stETH
-                ? price * TOKENS.Prices.ExchangeRates.wstETH.stETH
-                : price;
+              (last(pricesByHour[key]) || [])[1] || 0;
           }
         } else if (aggregateBy === 'day') {
           for (const key in result) {
             const value = result[key];
             const [timestamp, price] = value;
             if (timestamp > dayTimestamp * 1000) {
-              // TODO - remove this conditional once coingecko supports wstETH
-              prices[dayTimestamp * 1000] =
-                address === this.appAddresses.stETH
-                  ? price * TOKENS.Prices.ExchangeRates.wstETH.stETH
-                  : price;
+              prices[dayTimestamp * 1000] = price;
               dayTimestamp += twentyFourHoursInSecs;
             }
           }
@@ -220,6 +218,7 @@ export class PriceService {
         prices[timestamp].push(price);
       }
     }
+
     return prices;
   }
 
@@ -228,9 +227,9 @@ export class PriceService {
    */
   @returnChecksum()
   public addressMapIn(address: string): string {
-    const addressMap = TOKENS.Prices.ChainMap[this.appNetwork];
+    const addressMap = TOKENS.Prices.ChainMap[this.appNetwork].tokens;
     if (!addressMap) return address;
-    return addressMap[address.toLowerCase()] || address;
+    return addressMap[address && address.toLowerCase()] || address;
   }
 
   /**
@@ -238,8 +237,17 @@ export class PriceService {
    */
   @returnChecksum()
   public addressMapOut(address: string): string {
-    const addressMap = TOKENS.Prices.ChainMap[this.appNetwork];
+    const addressMap = TOKENS.Prices.ChainMap[this.appNetwork].tokens;
     if (!addressMap) return address;
-    return invert(addressMap)[address.toLowerCase()] || address;
+    return invert(addressMap)[address && address.toLowerCase()] || address;
+  }
+
+  /**
+   * Map testnet platform id to mainnet platform id
+   */
+  public platformIdMap(): string {
+    return (
+      TOKENS.Prices.ChainMap[this.appNetwork].platformId || this.platformId
+    );
   }
 }

@@ -9,4 +9,4 @@ import '@testing-library/jest-dom';
  */
 nock.disableNetConnect();
 // Enable for mocked websockets
-nock.enableNetConnect('balancer.fi');
+nock.enableNetConnect('lvl.finance');

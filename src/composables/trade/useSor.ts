@@ -5,7 +5,8 @@ import {
   computed,
   ComputedRef,
   reactive,
-  toRefs
+  toRefs,
+  watch
 } from 'vue';
 import { useStore } from 'vuex';
 import { useIntervalFn } from '@vueuse/core';
@@ -13,7 +14,7 @@ import { BigNumber, parseFixed, formatFixed } from '@ethersproject/bignumber';
 import { Zero, WeiPerEther as ONE } from '@ethersproject/constants';
 import { BigNumber as OldBigNumber } from 'bignumber.js';
 import { Pool } from '@balancer-labs/sor/dist/types';
-import { SubgraphPoolBase, SwapTypes } from '@balancer-labs/sdk';
+import { SubgraphPoolBase, SwapTypes } from '@level-finance/sdk';
 import { useI18n } from 'vue-i18n';
 
 import { scale, bnum } from '@/lib/utils';
@@ -147,6 +148,11 @@ export default function useSor({
   const { injectTokens, priceFor } = useTokens();
 
   const liquiditySelection = computed(() => store.state.app.tradeLiquidity);
+
+  watch(latestTxHash, () => {
+    // Refresh SOR pools
+    fetchPools();
+  });
 
   onMounted(async () => {
     const unknownAssets: string[] = [];
@@ -308,7 +314,11 @@ export default function useSor({
       );
       tokenOutAmountInput.value =
         tokenOutAmountNormalised.toNumber() > 0
-          ? tokenOutAmountNormalised.toFixed(6, OldBigNumber.ROUND_DOWN)
+          ? fNum2(tokenOutAmountNormalised.toString(), {
+              maximumSignificantDigits: 6,
+              useGrouping: false,
+              fixedFormat: true
+            })
           : '';
 
       if (!sorReturn.value.hasSwaps) {
@@ -362,7 +372,11 @@ export default function useSor({
       );
       tokenInAmountInput.value =
         tokenInAmountNormalised.toNumber() > 0
-          ? tokenInAmountNormalised.toFixed(6, OldBigNumber.ROUND_UP)
+          ? fNum2(tokenInAmountNormalised.toString(), {
+              maximumSignificantDigits: 6,
+              useGrouping: false,
+              fixedFormat: true
+            })
           : '';
 
       if (!sorReturn.value.hasSwaps) {
@@ -398,14 +412,14 @@ export default function useSor({
     confirming.value = false;
 
     let summary = '';
-    const tokenInAmountFormatted = fNum2(
-      tokenInAmountInput.value,
-      FNumFormats.token
-    );
-    const tokenOutAmountFormatted = fNum2(
-      tokenOutAmountInput.value,
-      FNumFormats.token
-    );
+    const tokenInAmountFormatted = fNum2(tokenInAmountInput.value, {
+      ...FNumFormats.token,
+      maximumSignificantDigits: 6
+    });
+    const tokenOutAmountFormatted = fNum2(tokenOutAmountInput.value, {
+      ...FNumFormats.token,
+      maximumSignificantDigits: 6
+    });
 
     const tokenInSymbol = tokenIn.value.symbol;
     const tokenOutSymbol = tokenOut.value.symbol;

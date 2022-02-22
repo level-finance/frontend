@@ -1,15 +1,15 @@
 <template>
   <div>
     <div class="subsection">
-      <h1>Balancer Labs OU Cookies&nbsp;Policy</h1>
+      <h1>Level Finance OU Cookies&nbsp;Policy</h1>
       <p><em>Last Updated: November 15, 2021</em></p>
     </div>
     <div class="subsection">
       <h2>Introduction and Scope of Policy</h2>
       <p>
-        This Balancer Labs OU Cookies Policy (“Policy”) applies to your
-        interaction with Balancer Labs OU or any of its subsidiaries or
-        affiliates (“Balancer Labs” or “we”).
+        This Level Finance OU Cookies Policy (“Policy”) applies to your
+        interaction with Level Finance OU or any of its subsidiaries or
+        affiliates (“Level Finance” or “we”).
       </p>
     </div>
 
@@ -24,8 +24,8 @@
 
       <p>
         We do not generally use cookies. We do not intentionally collect
-        information to customize your experience on the website or the Balancer
-        Labs user interface (UI) to the Balancer Protocol. (“Sites” or “Site”).
+        information to customize your experience on the website or the Level
+        Finance user interface (UI) to the Level Protocol. (“Sites” or “Site”).
       </p>
       <p>
         Industry standards are currently evolving, and we may not separately

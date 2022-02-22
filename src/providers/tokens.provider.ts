@@ -138,7 +138,10 @@ export default {
         networkConfig.addresses.wstETH,
         networkConfig.addresses.exchangeProxy
       ]),
-      injectedPrices: {}
+      injectedPrices: {
+        // fUSD
+        '0x249BE57637D8B013Ad64785404b24aeBaE9B098B': 1
+      }
     });
 
     /**

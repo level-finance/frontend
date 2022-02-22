@@ -9,7 +9,7 @@ import { web3Service } from './web3.service';
 import { rpcProviderService } from '../rpc-provider/rpc-provider.service';
 import { switchToAppNetwork } from './utils/helpers';
 import useNetwork from '@/composables/useNetwork';
-import { Network } from '@balancer-labs/sdk';
+import { Network } from '@level-finance/sdk';
 
 /** STATE */
 const blockNumber = ref(0);
@@ -52,15 +52,8 @@ export default function useWeb3() {
     }
   });
   const isWalletReady = computed(() => walletState.value === 'connected');
-  const isMainnet = computed(
-    () => appNetworkConfig.chainId === Network.MAINNET
-  );
-  const isKovan = computed(() => appNetworkConfig.chainId === Network.KOVAN);
-  const isPolygon = computed(
-    () => appNetworkConfig.chainId === Network.POLYGON
-  );
-  const isArbitrum = computed(
-    () => appNetworkConfig.chainId === Network.ARBITRUM
+  const isVelasMainnet = computed(
+    () => appNetworkConfig.chainId === Network.VELAS
   );
   const isEIP1559SupportedNetwork = computed(
     () => appNetworkConfig.supportsEIP1559
@@ -133,10 +126,7 @@ export default function useWeb3() {
     signer,
     blockNumber,
     isV1Supported,
-    isMainnet,
-    isKovan,
-    isPolygon,
-    isArbitrum,
+    isVelasMainnet,
     isEIP1559SupportedNetwork,
 
     // methods

@@ -46,21 +46,10 @@ export default defineComponent({
     const { upToSmallBreakpoint, upToLargeBreakpoint } = useBreakpoints();
     const { fNum } = useNumbers();
     const { trackGoal, Goals } = useFathom();
-    const {
-      connectWallet,
-      account,
-      toggleWalletSelectModal,
-      isMainnet,
-      isKovan,
-      isPolygon,
-      isArbitrum
-    } = useWeb3();
+    const { connectWallet, account, toggleWalletSelectModal } = useWeb3();
 
     // COMPUTED
-    const liquidityMiningSupported = computed(
-      () =>
-        isMainnet.value || isPolygon.value || isArbitrum.value || isKovan.value
-    );
+    const liquidityMiningSupported = computed(() => false);
 
     // METHODS
     function onClickConnect() {

@@ -92,7 +92,7 @@ export default class JoinParams {
   }
 
   private txData(amountsIn: BigNumberish[], minimumBPT: BigNumberish): string {
-    if (this.pool.value.onchain.totalSupply === '0') {
+    if (this.pool.value.onchain.totalSupply === '0.0') {
       return this.dataEncodeFn({ kind: 'Init', amountsIn });
     } else {
       // Managed Pools can only be joined proportionally if trading is halted

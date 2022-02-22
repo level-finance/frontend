@@ -31,7 +31,11 @@ const balanceLabel = computed(() => fNum2(props.balance, FNumFormats.token));
 
 const fiatLabel = computed(() => {
   const fiatValue = toFiat(props.balance, props.address);
-  return fNum2(fiatValue, FNumFormats.fiat);
+  if (Number(fiatValue) === 0 && Number(props.balance) > 0) {
+    return '-';
+  } else {
+    return fNum2(fiatValue, FNumFormats.fiat);
+  }
 });
 </script>
 

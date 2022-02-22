@@ -1,0 +1,63 @@
+{
+  "key": "106",
+  "chainId": 106,
+  "chainName": "Velas",
+  "name": "Velas Mainnet",
+  "shortName": "Mainnet",
+  "network": "velas",
+  "portisNetwork": "velas",
+  "unknown": false,
+  "rpc": "https://evmexplorer.velas.com/rpc",
+  "ws": "wss://evmexplorer.velas.com/websocket",
+  "loggingRpc": "https://evmexplorer.velas.com/rpc",
+  "explorer": "https://evmexplorer.velas.com",
+  "explorerName": "Velas Explorer",
+  "poolsUrlV1": "",
+  "poolsUrlV2": "",
+  "subgraph": "http://34.159.11.111/subgraphs/name/level-finance/level-protocol",
+  "subgraphs": {
+    "aave": ""
+  },
+  "supportsEIP1559": true,
+  "nativeAsset": {
+    "name": "VLX",
+    "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+    "symbol": "VLX",
+    "decimals": 18,
+    "deeplinkId": "vlx",
+    "logoURI": "https://cryptologos.cc/logos/velas-vlx-logo.svg?v=021",
+    "minTransactionBuffer": "0.05"
+  },
+  "addresses": {
+    "exchangeProxy": "",
+    "merkleRedeem": "",
+    "merkleOrchard": "",
+    "multicall": "0xb0Bf8981B8f814cFBA6507c84c8Daa7487aE3c9A",
+    "authorizer": "0xF201A60b682A596Ed611E87357AEFbCa8472C15E",
+    "vault": "0x590F2926bb51834946F0272cC059d6984f81e4E5",
+    "weightedPoolFactory": "0xEA6721381e75bB1c7B890EaCDAD8C14a9909C6f8",
+    "stablePoolFactory": "0x3609b8Cb9e8CcC8FEa2492daC82802337B6bc38f",
+    "weth": "0xc579D1f3CF86749E05CD06f7ADe17856c2CE3126",
+    "stETH": "",
+    "wstETH": "",
+    "lidoRelayer": "",
+    "balancerHelpers": "0x13A1d2A9F729cDc485050c53b79689eE9131D898",
+    "batchRelayer": "0x4333379A8c459A72E3Ee7DBC2178Ece5121EFD52"
+  },
+  "strategies": {
+    "0": {
+      "type": "0",
+      "name": "stablePool"
+    },
+    "1": {
+      "type": "1",
+      "name": "weightedPool"
+    },
+    "2": {
+      "type": "2",
+      "name": "weightedPool"
+    }
+  },
+  "keys": {},
+  "supportsElementPools": false
+}

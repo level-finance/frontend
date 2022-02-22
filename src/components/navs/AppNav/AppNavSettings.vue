@@ -191,7 +191,6 @@ import {
 import { TradeInterface } from '@/store/modules/app';
 import useEthereumTxType from '@/composables/useEthereumTxType';
 import { ENABLE_LEGACY_TRADE_INTERFACE } from '@/composables/trade/constants';
-import { Network } from '@balancer-labs/sdk';
 
 const locales = {
   'en-US': 'English',
@@ -242,25 +241,6 @@ export default defineComponent({
     // COMPUTED
     const networkColorClass = computed(() => {
       let color = 'green';
-
-      if (isUnsupportedNetwork.value) {
-        color = 'red';
-      } else {
-        switch (userNetworkConfig.value?.chainId) {
-          case Network.KOVAN:
-            color = 'purple';
-            break;
-          case Network.ROPSTEN:
-            color = 'pink';
-            break;
-          case Network.RINKEBY:
-            color = 'yellow';
-            break;
-          case Network.GÖRLI:
-            color = 'blue';
-            break;
-        }
-      }
 
       return `bg-${color}-500 dark:bg-${color}-400`;
     });

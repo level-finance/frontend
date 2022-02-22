@@ -233,6 +233,7 @@ const chartGrid = computed(() => {
       hFull
       growContent
       noPad
+      :cardContainerStyles="{ marginTop: 'auto', marginBottom: 'auto' }"
       :noBorder="upToLargeBreakpoint || isModal"
       v-else
     >

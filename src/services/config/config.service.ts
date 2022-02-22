@@ -2,7 +2,7 @@ import { Config } from '@/lib/config';
 import configs from '@/lib/config';
 import template from '@/lib/utils/template';
 import { networkId } from '@/composables/useNetwork';
-import { Network } from '@balancer-labs/sdk';
+import { Network } from '@level-finance/sdk';
 
 interface Env {
   APP_ENV: string;
@@ -10,8 +10,6 @@ interface Env {
   APP_DOMAIN: string;
   IPFS_NODE: string;
   BLOCKNATIVE_DAPP_ID: string;
-  ALCHEMY_KEY: string;
-  INFURA_PROJECT_ID: string;
   PORTIS_DAPP_ID: string;
   ENABLE_STABLE_POOLS: boolean;
 }
@@ -21,18 +19,10 @@ export default class ConfigService {
     return {
       APP_ENV: process.env.VUE_APP_ENV || 'development',
       NETWORK: networkId.value,
-      APP_DOMAIN: process.env.VUE_APP_DOMAIN || 'app.balancer.fi',
+      APP_DOMAIN: process.env.VUE_APP_DOMAIN || 'lvl.finance',
       IPFS_NODE: process.env.VUE_APP_IPFS_NODE || 'cloudflare-ipfs.com',
       BLOCKNATIVE_DAPP_ID:
         process.env.VUE_APP_BLOCKNATIVE_DAPP_ID || 'MISSING_KEY',
-      ALCHEMY_KEY:
-        process.env.VUE_APP_ALCHEMY_KEY ||
-        this.getNetworkConfig(networkId.value).keys.alchemy ||
-        'MISSING_KEY',
-      INFURA_PROJECT_ID:
-        process.env.VUE_APP_INFURA_PROJECT_ID ||
-        this.getNetworkConfig(networkId.value).keys.infura ||
-        'MISSING_KEY',
       ENABLE_STABLE_POOLS: process.env.VUE_APP_ENABLE_STABLE_POOLS === 'true',
       PORTIS_DAPP_ID: process.env.VUE_APP_PORTIS_DAPP_ID || 'MISSING_KEY'
     };
@@ -49,24 +39,15 @@ export default class ConfigService {
   }
 
   public get rpc(): string {
-    return template(this.network.rpc, {
-      INFURA_KEY: this.env.INFURA_PROJECT_ID,
-      ALCHEMY_KEY: this.env.ALCHEMY_KEY
-    });
+    return template(this.network.rpc, this.network.keys);
   }
 
   public get ws(): string {
-    return template(this.network.ws, {
-      INFURA_KEY: this.env.INFURA_PROJECT_ID,
-      ALCHEMY_KEY: this.env.ALCHEMY_KEY
-    });
+    return template(this.network.ws, this.network.keys);
   }
 
   public get loggingRpc(): string {
-    return template(this.network.loggingRpc, {
-      INFURA_KEY: this.env.INFURA_PROJECT_ID,
-      ALCHEMY_KEY: this.env.ALCHEMY_KEY
-    });
+    return template(this.network.loggingRpc, this.network.keys);
   }
 }
 

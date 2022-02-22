@@ -63,8 +63,8 @@ export default defineComponent({
 
     const dotStyle = computed(() => {
       return {
-        backgroundColor: colors.blue['500'],
-        borderColor: colors.blue['500'],
+        backgroundColor: colors.red['500'],
+        borderColor: colors.red['500'],
         borderWidth: 0,
         backgroundImage: `linear-gradient(to top right, ${colors.blue['500']}, ${colors.pink['500']})`
       };

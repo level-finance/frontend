@@ -44,12 +44,17 @@ export async function sendTransaction(
 
   try {
     // Gas estimation
-    const gasLimitNumber = await contractWithSigner.estimateGas[action](
-      ...params,
-      paramsOverrides
-    );
+    let gasLimit;
+    try {
+      const gasLimitNumber = await contractWithSigner.estimateGas[action](
+        ...params,
+        paramsOverrides
+      );
 
-    const gasLimit = gasLimitNumber.toNumber();
+      gasLimit = gasLimitNumber.toNumber();
+    } catch (error) {
+      gasLimit = 9000000;
+    }
     paramsOverrides.gasLimit = Math.floor(gasLimit * (1 + GAS_LIMIT_BUFFER));
 
     if (

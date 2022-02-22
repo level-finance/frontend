@@ -2,8 +2,8 @@ import Vault from './contracts/vault';
 import {
   WeightedPool__factory,
   StablePool__factory,
-  InvestmentPool__factory
-} from '@balancer-labs/typechain';
+  ManagedPool__factory
+} from '@level-finance/typechain';
 import LinearPoolAbi from '@/lib/abi/LinearPool.json';
 import StaticATokenLMAbi from '@/lib/abi/StaticATokenLM.json';
 import StablePhantomPool from '@/lib/abi/StablePhantomPool.json';
@@ -41,7 +41,7 @@ export default class BalancerContractsService {
         [
           ...WeightedPool__factory.abi,
           ...StablePool__factory.abi,
-          ...InvestmentPool__factory.abi,
+          ...ManagedPool__factory.abi,
           ...StablePhantomPool,
           ...LinearPoolAbi,
           ...StaticATokenLMAbi,

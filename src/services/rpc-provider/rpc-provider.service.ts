@@ -1,6 +1,6 @@
 import { WebSocketProvider, JsonRpcProvider } from '@ethersproject/providers';
 import ConfigService, { configService } from '@/services/config/config.service';
-import { Network } from '@balancer-labs/sdk';
+import { Network } from '@level-finance/sdk';
 import template from '@/lib/utils/template';
 
 type NewBlockHandler = (blockNumber: number) => any;
@@ -29,10 +29,10 @@ export default class RpcProviderService {
   }
 
   public getJsonProvider(networkKey: Network): JsonRpcProvider {
-    const rpcUrl = template(this.config.getNetworkConfig(networkKey).rpc, {
-      INFURA_KEY: this.config.env.INFURA_PROJECT_ID,
-      ALCHEMY_KEY: this.config.env.ALCHEMY_KEY
-    });
+    const rpcUrl = template(
+      this.config.getNetworkConfig(networkKey).rpc,
+      this.config.getNetworkConfig(networkKey).keys
+    );
     return new JsonRpcProvider(rpcUrl);
   }
 }

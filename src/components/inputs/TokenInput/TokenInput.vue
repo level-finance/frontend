@@ -139,8 +139,13 @@ const token = computed((): TokenInfo | undefined => {
   return getToken(_address.value);
 });
 
-const tokenValue = computed(() => {
-  return toFiat(_amount.value, _address.value);
+const fiatValue = computed(() => {
+  const fiatValue = toFiat(_amount.value, _address.value);
+  if (Number(fiatValue) === 0 && Number(_amount.value) > 0) {
+    return '-';
+  } else {
+    return fNum2(fiatValue, FNumFormats.fiat);
+  }
 });
 
 const inputRules = computed(() => {
@@ -277,7 +282,7 @@ watchEffect(() => {
           </div>
           <div>
             <template v-if="hasAmount && hasToken">
-              {{ fNum2(tokenValue, FNumFormats.fiat) }}
+              {{ fiatValue }}
               <span v-if="priceImpact" :class="priceImpactClass">
                 ({{
                   priceImpactSign + fNum2(priceImpact, FNumFormats.percent)

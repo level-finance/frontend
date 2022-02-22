@@ -350,7 +350,7 @@ function onAlertMountChange() {
                   :disabled="maxTokenAmountReached"
                   @click="addTokenToPool"
                   outline
-                  :color="maxTokenAmountReached ? 'gray' : 'blue'"
+                  :color="maxTokenAmountReached ? 'gray' : 'red'"
                   size="sm"
                   >{{ $t('addToken') }}
                 </BalBtn>

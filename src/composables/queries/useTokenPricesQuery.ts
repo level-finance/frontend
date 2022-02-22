@@ -5,9 +5,7 @@ import QUERY_KEYS from '@/constants/queryKeys';
 import { coingeckoService } from '@/services/coingecko/coingecko.service';
 import { TokenPrices } from '@/services/coingecko/api/price.service';
 import { sleep } from '@/lib/utils';
-import { configService } from '@/services/config/config.service';
 import useUserSettings from '@/composables/useUserSettings';
-import { TOKENS } from '@/constants/tokens';
 import useNetwork from '../useNetwork';
 
 /**
@@ -33,20 +31,6 @@ export default function useTokenPricesQuery(
     QUERY_KEYS.Tokens.Prices(networkId, addresses, pricesToInject)
   );
   const { currency } = useUserSettings();
-
-  // TODO: kill this with fire as soon as Coingecko supports wstETH
-  function injectWstEth(prices: TokenPrices): TokenPrices {
-    const stEthAddress = configService.network.addresses.stETH;
-    const wstEthAddress = configService.network.addresses.wstETH;
-    if (prices[stEthAddress]) {
-      const stETHPrice = prices[stEthAddress][currency.value] || 0;
-      prices[wstEthAddress] = {
-        [currency.value]: TOKENS.Prices.ExchangeRates.wstETH.stETH * stETHPrice
-      };
-    }
-
-    return prices;
-  }
 
   function injectCustomTokens(
     prices: TokenPrices,
@@ -79,7 +63,6 @@ export default function useTokenPricesQuery(
       };
     }
 
-    prices = injectWstEth(prices);
     console.log('Injecting price data', pricesToInject.value);
     prices = injectCustomTokens(prices, pricesToInject.value);
     return prices;

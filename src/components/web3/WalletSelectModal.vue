@@ -31,10 +31,10 @@
         dark:to-gray-850
       "
     >
-      <h6>{{ $t('newToEthereum') }}</h6>
+      <h6>{{ $t('newToVelas') }}</h6>
       <p class="text-sm">
-        {{ $t('setUpEthereumWallet') }}
-        <BalLink :href="EXTERNAL_LINKS.Ethereum.Wallets" external>
+        {{ $t('setUpVelasWallet') }}
+        <BalLink :href="EXTERNAL_LINKS.Velas.Wallets" external>
           {{ $t('learnMore') }}
           <span class="align-middle"
             ><BalIcon name="arrow-up-right" size="sm"

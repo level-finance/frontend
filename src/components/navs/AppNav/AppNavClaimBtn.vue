@@ -19,8 +19,6 @@ import { bnum } from '@/lib/utils';
 import { claimService } from '@/services/claim/claim.service';
 import useWeb3 from '@/services/web3/useWeb3';
 
-import BalLink from '@/components/_global/BalLink/BalLink.vue';
-
 import { TOKENS } from '@/constants/tokens';
 import useTranasactionErrors, {
   TransactionError
@@ -57,15 +55,7 @@ const claimError = ref<TransactionError | null>(null);
 const { upToLargeBreakpoint } = useBreakpoints();
 const userClaimsQuery = useUserClaimsQuery();
 const { fNum2 } = useNumbers();
-const {
-  account,
-  getProvider,
-  isArbitrum,
-  isMainnet,
-  isKovan,
-  isPolygon,
-  isMismatchedNetwork
-} = useWeb3();
+const { account, getProvider, isMismatchedNetwork } = useWeb3();
 const { txListener } = useEthers();
 const { addTransaction } = useTransactions();
 const {
@@ -85,27 +75,6 @@ const BALTokenPlaceholder = computed<ClaimableToken>(() => ({
   amount: '0',
   fiatValue: '0'
 }));
-
-// Polygon used to be an airdrop, now its claimable - leaving it here in case new networks will need to be airdropped first.
-const isAirdrop = false;
-
-const legacyClaimUI = computed(() => {
-  if (isMainnet.value || isKovan.value) {
-    return [
-      { token: '$BAL', subdomain: 'claim' },
-      { token: '$VITA', subdomain: 'claim-vita' },
-      { token: '$LDO', subdomain: 'claim-lido' }
-    ];
-  } else if (isArbitrum.value) {
-    return [
-      { token: '$BAL', subdomain: 'claim-arbitrum' },
-      { token: '$MCDEX', subdomain: 'claim-mcdex' },
-      { token: '$PICKLE', subdomain: 'claim-pickle' }
-    ];
-  }
-
-  return [];
-});
 
 const userClaims = computed(() =>
   userClaimsQuery.isSuccess.value ? userClaimsQuery.data?.value : null
@@ -277,10 +246,7 @@ async function claimAvailableRewards() {
       <h5 class="text-lg mb-3 px-3 pt-3">
         {{ $t('liquidityMiningPopover.title') }}
       </h5>
-      <div class="text-sm text-gray-600 mb-1 px-3" v-if="isAirdrop">
-        {{ $t('liquidityMiningPopover.airdropExplainer', ['Polygon']) }}
-      </div>
-      <div v-if="!isAirdrop" class="px-3">
+      <div class="px-3">
         <BalCard no-pad class="mb-4">
           <template v-slot:header>
             <div
@@ -346,7 +312,6 @@ async function claimAvailableRewards() {
           </template>
         </BalCard>
         <BalBtn
-          v-if="!isAirdrop"
           color="gradient"
           size="md"
           block
@@ -374,7 +339,7 @@ async function claimAvailableRewards() {
           @actionClick="claimError = null"
         />
       </div>
-      <div v-if="!isAirdrop" class="text-sm">
+      <div class="text-sm">
         <div
           v-if="!hasClaimableTokens && !hasCurrentEstimateClaimableTokens"
           class="mb-4 px-3"
@@ -384,59 +349,6 @@ async function claimAvailableRewards() {
           </div>
           <div>{{ $t('liquidityMiningPopover.noRewards.description') }}</div>
         </div>
-        <div class="mb-4 px-3">
-          <div class="font-semibold mb-2">
-            Looking for other claimable tokens?
-          </div>
-          <ul class="pl-8 list-disc">
-            <li class="mt-2" v-if="legacyClaimUI.length > 0">
-              Claim
-              <span class="inline-grid grid-flow-col gap-1">
-                <BalLink
-                  v-for="legacyClaim in legacyClaimUI"
-                  :key="`token-${legacyClaim.token}`"
-                  :href="
-                    `https://${legacyClaim.subdomain}.balancer.fi/#/${account}`
-                  "
-                  external
-                  >{{ legacyClaim.token }}</BalLink
-                >
-              </span>
-              from legacy liquidity mining contracts distributed before 20 Oct,
-              2021.
-            </li>
-            <li class="mt-2">
-              Claim BAL on other networks
-              <template v-if="isArbitrum">
-                <BalLink href="https://app.balancer.fi" external>
-                  Ethereum
-                </BalLink>
-                and
-                <BalLink href="https://polygon.balancer.fi" external
-                  >Polygon</BalLink
-                >.
-              </template>
-              <template v-else-if="isPolygon">
-                <BalLink href="https://app.balancer.fi" external>
-                  Ethereum
-                </BalLink>
-                and
-                <BalLink href="https://arbitrum.balancer.fi" external
-                  >Arbitrum</BalLink
-                >.
-              </template>
-              <template v-else-if="isMainnet || isKovan">
-                <BalLink href="https://polygon.balancer.fi" external>
-                  Polygon
-                </BalLink>
-                and
-                <BalLink href="https://arbitrum.balancer.fi" external
-                  >Arbitrum</BalLink
-                >.
-              </template>
-            </li>
-          </ul>
-        </div>
         <div class="pt-3 border-t p-3 border-gray-200 dark:border-gray-700">
           View this week's<router-link
             :to="{ name: 'liquidity-mining' }"
@@ -445,9 +357,6 @@ async function claimAvailableRewards() {
             liquidity mining incentives
           </router-link>
         </div>
-      </div>
-      <div v-else class="mt-4 text-sm px-3 pb-3">
-        <div>{{ $t('liquidityMiningPopover.airdropEligibility') }}</div>
       </div>
     </div>
   </BalPopover>
