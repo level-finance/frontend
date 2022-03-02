@@ -23,21 +23,21 @@ module.exports = {
   theme: {
     fontFamily: {
       body: [
-        'Inter-Variable',
-        '-apple-system',
-        'BlinkMacSystemFont',
-        '"Segoe UI"',
+        'courier-std',
         'Helvetica',
         'Arial',
         'sans-serif',
         '"Apple Color Emoji"',
         '"Segoe UI Emoji"'
       ],
-      display: [
-        '"Tiempos Headline Medium"',
-        'Times',
-        '"Times New Roman"',
-        'serif'
+      secondary: [
+        'Bord Demo',
+        'sans-serif',
+        'Helvetica',
+        'Arial',
+        'sans-serif',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"'
       ]
     },
     boxShadow: {
@@ -63,8 +63,9 @@ module.exports = {
       },
       colors: {
         gray: {
+          DEFAULT: '#323232',
           50: '#F8FAFC',
-          100: '#EAF0F6',
+          100: '#EFEFF1',
           200: '#E2E8F0',
           300: '#CBD5E1',
           400: '#94A3B8',
@@ -74,6 +75,9 @@ module.exports = {
           800: '#1E293B',
           850: '#162031',
           900: '#0F172A'
+        },
+        green: {
+          DEFAULT: '#60D09A'
         },
         primary: {
           50: '#53555e',

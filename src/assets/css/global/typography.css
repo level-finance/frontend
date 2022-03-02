@@ -1,6 +1,5 @@
 h1,
 h2 {
-  @apply font-display;
   font-weight: 600;
 }
 h1 {
@@ -95,7 +94,7 @@ th {
   background-size: 100%;
   -webkit-background-clip: text;
   -moz-background-clip: text;
-  -webkit-text-fill-color: transparent; 
+  -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
 }
 

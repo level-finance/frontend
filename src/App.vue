@@ -88,6 +88,6 @@ export default defineComponent({
 
 <style>
 .VueQueryDevtoolsPanel + button {
-  @apply text-black bg-gray-100 p-2 rounded text-sm;
+  @apply text-gray bg-gray-100 p-2 rounded text-sm;
 }
 </style>

@@ -1,34 +1,28 @@
 <template>
-  <div :class="`app-nav-toggle bg-gray-50 dark:bg-gray-${darkModeBg}`">
-    <router-link
-      :to="{ name: 'home' }"
-      :class="[
-        'toggle-link px-6 rounded-l-lg',
-        { [activeClasses]: page === 'home' }
-      ]"
-      @click="trackGoal(Goals.ClickNavInvest)"
-    >
-      {{ $t('invest') }}
-    </router-link>
-    <router-link
-      :to="{ name: 'trade' }"
-      :class="[
-        'toggle-link px-6 rounded-r-lg',
-        { [activeClasses]: page === 'trade' }
-      ]"
-      @click="trackGoal(Goals.ClickNavTrade)"
-    >
-      {{ $t('trade') }}
-    </router-link>
+  <div class="app-nav-toggle">
     <router-link
       :to="{ name: 'dashboard' }"
       :class="[
-        'toggle-link px-6 rounded-r-lg',
-        { [activeClasses]: page === 'dashboard' }
+        'toggle-link',
+        page === 'dashboard' ? activeClasses : 'text-white'
       ]"
       @click="trackGoal(Goals.ClickNavDashboard)"
     >
       {{ $t('dashboard') }}
+    </router-link>
+    <router-link
+      :to="{ name: 'home' }"
+      :class="['toggle-link', page === 'home' ? activeClasses : 'text-white']"
+      @click="trackGoal(Goals.ClickNavInvest)"
+    >
+      {{ $t('pools') }}
+    </router-link>
+    <router-link
+      :to="{ name: 'trade' }"
+      :class="['toggle-link', page === 'trade' ? activeClasses : 'text-white']"
+      @click="trackGoal(Goals.ClickNavTrade)"
+    >
+      {{ $t('swap') }}
     </router-link>
   </div>
 </template>
@@ -47,7 +41,7 @@ export default defineComponent({
 
   setup() {
     const route = useRoute();
-    const activeClasses = 'gradient-blue-l-to-r text-white rounded-lg';
+    const activeClasses = 'bg-gray-100 text-gray rounded-lg';
     const page = computed(() => route.name);
     const { trackGoal, Goals } = useFathom();
 
@@ -63,11 +57,11 @@ export default defineComponent({
 
 <style scoped>
 .app-nav-toggle {
-  @apply h-10 flex items-center rounded-lg shadow;
+  @apply h-10 flex items-center rounded-lg;
   font-variation-settings: 'wght' 600;
 }
 
 .toggle-link {
-  @apply h-full flex items-center;
+  @apply h-full flex items-center px-6 rounded-l-lg text-lg font-secondary;
 }
 </style>

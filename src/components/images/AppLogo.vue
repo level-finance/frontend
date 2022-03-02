@@ -1,21 +1,10 @@
 <template>
-  <div class="flex items-center">
-    <AppIcon />
-    <span class="mr-1 font-secondary text-xl font-semibold">
-      Level Finance
-    </span>
+  <div class="relative">
+    <img src="@/assets/images/logo-level.svg" alt="Logo" class="mx-auto" />
+    <img
+      src="@/assets/images/nav-line.svg"
+      alt="Nav Line"
+      class="absolute left-0 right-0 top-2"
+    />
   </div>
 </template>
-
-<script lang="ts">
-import { defineComponent } from 'vue';
-import AppIcon from './AppIcon.vue';
-
-export default defineComponent({
-  name: 'AppLogo',
-
-  components: {
-    AppIcon
-  }
-});
-</script>
