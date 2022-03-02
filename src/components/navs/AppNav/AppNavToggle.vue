@@ -4,7 +4,7 @@
       :to="{ name: 'home' }"
       :class="[
         'toggle-link px-6 rounded-l-lg',
-        { [activeClasses]: !isTradePage }
+        { [activeClasses]: page === 'home' }
       ]"
       @click="trackGoal(Goals.ClickNavInvest)"
     >
@@ -14,11 +14,21 @@
       :to="{ name: 'trade' }"
       :class="[
         'toggle-link px-6 rounded-r-lg',
-        { [activeClasses]: isTradePage }
+        { [activeClasses]: page === 'trade' }
       ]"
       @click="trackGoal(Goals.ClickNavTrade)"
     >
       {{ $t('trade') }}
+    </router-link>
+    <router-link
+      :to="{ name: 'dashboard' }"
+      :class="[
+        'toggle-link px-6 rounded-r-lg',
+        { [activeClasses]: page === 'dashboard' }
+      ]"
+      @click="trackGoal(Goals.ClickNavDashboard)"
+    >
+      {{ $t('dashboard') }}
     </router-link>
   </div>
 </template>
@@ -38,11 +48,11 @@ export default defineComponent({
   setup() {
     const route = useRoute();
     const activeClasses = 'gradient-blue-l-to-r text-white rounded-lg';
-    const isTradePage = computed(() => route.name === 'trade');
+    const page = computed(() => route.name);
     const { trackGoal, Goals } = useFathom();
 
     return {
-      isTradePage,
+      page,
       activeClasses,
       trackGoal,
       Goals

@@ -8,6 +8,7 @@ export class Goals {
   ClickNavConnectWallet = '';
   ClickNavTrade = '';
   ClickNavInvest = '';
+  ClickNavDashboard = '';
   ClickNavLogo = '';
   ClickInvestSettings = '';
   ClickTradeSettings = '';
