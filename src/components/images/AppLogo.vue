@@ -4,7 +4,7 @@
     <img
       src="@/assets/images/nav-line.svg"
       alt="Nav Line"
-      class="absolute left-0 right-0 top-2"
+      class="absolute left-1/2 top-2 transform -translate-x-1/2"
     />
   </div>
 </template>
