@@ -1,9 +1,9 @@
 <template>
   <AppNavAlert v-if="currentAlert" :alert="currentAlert" />
-  <nav id="app-nav" ref="appNav" class="h-28 pt-2 px-4 lg:px-6 sticky top-0">
-    <AppLogo class="mb-4" />
-    <div class="h-full flex items-center justify-between">
-      <div class="w-2/3 lg:w-1/3 flex items-center">
+  <nav id="app-nav" ref="appNav" class="pt-2 px-4 lg:px-6 sticky top-0">
+    <AppLogo class="mb-6" />
+    <div class="h-full flex items-start justify-between">
+      <div class="w-2/3 lg:w-1/3 flex items-start">
         <router-link
           :to="{ name: 'home' }"
           @click="trackGoal(Goals.ClickNavLogo)"
@@ -14,12 +14,12 @@
 
       <div
         v-if="!upToLargeBreakpoint"
-        class="flex-1 md:w-1/3 flex justify-center"
+        class="mt-auto flex-1 md:w-1/3 flex justify-center items-end"
       >
         <AppNavToggle />
       </div>
 
-      <div class="w-1/3 flex justify-end">
+      <div class="w-1/3 flex justify-end mt-2 mb-5">
         <AppNavActions />
       </div>
     </div>

@@ -41,7 +41,7 @@ export default defineComponent({
 
   setup() {
     const route = useRoute();
-    const activeClasses = 'bg-gray-100 text-gray rounded-lg';
+    const activeClasses = 'bg-gray-100 text-gray';
     const page = computed(() => route.name);
     const { trackGoal, Goals } = useFathom();
 
@@ -57,11 +57,11 @@ export default defineComponent({
 
 <style scoped>
 .app-nav-toggle {
-  @apply h-10 flex items-center rounded-lg;
+  @apply h-10 flex items-center;
   font-variation-settings: 'wght' 600;
 }
 
 .toggle-link {
-  @apply h-full flex items-center px-6 rounded-l-lg text-lg font-secondary;
+  @apply h-full flex items-center px-16 rounded-t-20px text-lg font-secondary;
 }
 </style>

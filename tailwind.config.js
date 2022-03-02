@@ -61,6 +61,9 @@ module.exports = {
       height: {
         '112': '28rem'
       },
+      borderRadius: {
+        '20px': '20px'
+      },
       colors: {
         gray: {
           DEFAULT: '#323232',
