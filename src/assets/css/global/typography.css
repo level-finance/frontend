@@ -74,7 +74,7 @@ th {
   font-variation-settings: 'wght' 600;
 }
 .font-bold {
-  font-variation-settings: 'wght' 700;
+  font-weight: 700;
 }
 .font-extrabold {
   font-variation-settings: 'wght' 800;

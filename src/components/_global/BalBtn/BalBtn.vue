@@ -45,7 +45,7 @@ export default defineComponent({
     },
     color: {
       type: String,
-      default: 'primary',
+      default: '',
       validator: (val: string): boolean =>
         [
           'primary',
@@ -55,7 +55,8 @@ export default defineComponent({
           'gray',
           'red',
           'white',
-          'red'
+          'red',
+          'green'
         ].includes(val)
     },
     label: { type: String, default: '' },
@@ -76,10 +77,12 @@ export default defineComponent({
           return 'px-2 h-6 text-xs';
         case 'sm':
           return 'px-3 h-9 text-base';
-        case 'lg':
-          return 'px-5 h-18 text-lg md:text-2xl';
+        case 'xl':
+          return 'px-6 h-12 text-base md:text-xl';
+        case '2xl':
+          return 'px-6 h-12 text-lg md:text-2xl';
         default:
-          return 'px-4 h-12 text-base';
+          return 'px-4 h-12 text-xl';
       }
     });
 
@@ -132,24 +135,26 @@ export default defineComponent({
     });
 
     const bgColorClasses = computed(() => {
-      if (props.color.includes('gradient')) return bgGradientClasses.value;
-      else if (props.outline) return 'bg-transparent';
-      else if (props.flat) return bgFlatClasses.value;
-      else if (props.color === 'white') {
-        return 'bg-gray-50 dark:bg-gray-800';
-      } else {
-        if (props.disabled) {
-          return `bg-gray-300 dark:bg-gray-700 text-white dark:text-gray-500`;
-        }
-        if (props.loading) {
-          return `bg-${props.color}-400 dark:bg-${props.color}-dark-400`;
-        }
+      if (props.color) {
+        if (props.color.includes('gradient')) return bgGradientClasses.value;
+        else if (props.outline) return 'bg-transparent';
+        else if (props.flat) return bgFlatClasses.value;
+        else if (props.color === 'white') {
+          return 'bg-gray-50 dark:bg-gray-800';
+        } else {
+          if (props.disabled) {
+            return `bg-gray-300 dark:bg-gray-700 text-white dark:text-gray-500`;
+          }
+          if (props.loading) {
+            return `bg-${props.color}-400 dark:bg-${props.color}-dark-400`;
+          }
 
-        return `
-          bg-${props.color}-500 hover:bg-${props.color}-600
-          dark:bg-${props.color}-dark-500 dark:hover:bg-${props.color}-dark-600
-        `;
-      }
+          return `
+            bg-${props.color}-400 hover:bg-${props.color}-500
+            dark:bg-${props.color}-dark-500 dark:hover:bg-${props.color}-dark-600
+          `;
+        }
+      } else return '';
     });
 
     const borderClasses = computed(() => {
@@ -176,7 +181,7 @@ export default defineComponent({
 
     const shapeClasses = computed(() => {
       if (props.circle || props.rounded) return 'rounded-full';
-      return 'rounded-lg';
+      return 'rounded-3xl';
     });
 
     const cursorClasses = computed(() => {
@@ -221,7 +226,6 @@ export default defineComponent({
 <style scoped>
 .bal-btn {
   @apply overflow-hidden tracking-tight;
-  font-variation-settings: 'wght' 500;
   transition: all 0.2s ease;
   text-decoration: none !important;
   line-height: 0;

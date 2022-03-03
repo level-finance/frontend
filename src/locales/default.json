@@ -151,7 +151,7 @@
         "setAnAddress": "Set an address to control fees",
         "setPoolFees": "Set pool fees",
         "swapFeeSuggestion": "0.30% is best for most weighted pools with established tokens. Go higher for more exotic pairs.",
-        "title": "Create a pool",
+        "title": "CreAte A pool",
         "tokensAndSeedLiquidity": "Tokens and initial seed liquidity",
         "totalWeightAlert": "The total weighting of all tokens must equal exactly 100% before you can proceed.",
         "totalWeightAlertTitle": "The total weight must be 100%",

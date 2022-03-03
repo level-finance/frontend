@@ -21,10 +21,22 @@
     </template>
 
     <div class="px-4 lg:px-0">
-      <h3 class="mb-3 lowercase">{{ $t('investmentPools') }}</h3>
       <div
-        class="flex flex-col md:flex-row w-full justify-between items-end lg:items-center"
+        class="flex flex-col md:flex-row items-center lg:items-start justify-between"
       >
+        <h3 class="mb-3 lowercase">{{ $t('investmentPools') }}</h3>
+        <BalBtn
+          @click="navigateToCreatePool"
+          color="green"
+          size="2xl"
+          class="font-secondary"
+          :class="{ 'mt-4': upToMediumBreakpoint }"
+          :block="upToMediumBreakpoint"
+        >
+          {{ $t('createAPool.title') }}
+        </BalBtn>
+      </div>
+      <div class="">
         <TokenSearchInput
           v-model="selectedTokens"
           :loading="isLoadingPools"
@@ -32,15 +44,6 @@
           @remove="removeSelectedToken"
           class="w-full md:w-2/3"
         />
-        <BalBtn
-          @click="navigateToCreatePool"
-          color="blue"
-          size="sm"
-          :class="{ 'mt-4': upToMediumBreakpoint }"
-          :block="upToMediumBreakpoint"
-        >
-          {{ $t('createAPool.title') }}
-        </BalBtn>
       </div>
     </div>
 
