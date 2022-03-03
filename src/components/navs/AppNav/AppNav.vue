@@ -79,7 +79,7 @@ export default defineComponent({
 <style scoped>
 #app-nav {
   @apply w-full z-20;
-  @apply bg-gray;
+  @apply bg-gray-dark;
   transition: all 0.2s ease-in-out;
 }
 </style>

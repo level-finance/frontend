@@ -30,11 +30,11 @@ const visibleSteps = computed(() => {
 const stepTextClasses = computed(() => {
   return visibleSteps.value.map(step => {
     return getActiveClassName(step.state, [
-      [StepState.Active, 'text-blue-400 font-semibold hover:text-blue-800'],
-      [StepState.Todo, 'text-gray-400 font-normal'],
-      [StepState.Success, 'text-green-500 font-semibold'],
-      [StepState.Warning, 'text-red-500 font-semibold'],
-      [StepState.Completed, 'text-gray-700 font-medium']
+      [StepState.Active, 'text-green font-bold'],
+      [StepState.Todo, 'text-gray font-bold'],
+      [StepState.Success, 'text-gray font-bold'],
+      [StepState.Warning, 'text-gray font-bold'],
+      [StepState.Completed, 'text-gray font-bold']
     ]);
   });
 });
@@ -44,18 +44,18 @@ const stepCircleClasses = computed(() => {
     return getActiveClassName(step.state, [
       [
         StepState.Active,
-        'border-2 border-none bg-gradient-from-l bg-gradient-to-r from-blue-600 to-blue-50 text-white active'
+        'border-2 border-none bg-green text-white active font-bold'
       ],
       [
         StepState.Todo,
-        'border-2 border-gray-300 dark:border-gray-600 text-gray-500'
+        'border-2 border-gray dark:border-gray text-gray font-bold'
       ],
       [
         StepState.Success,
-        'border-2 border-none bg-gradient-to-tr from-green-500 to-green-200 text-white'
+        'border-2 border-green text-green font-bold'
       ],
-      [StepState.Warning, 'border-2 border-none bg-red-500 text-white active'],
-      [StepState.Completed, 'border-2 border-gray-600 font-medium']
+      [StepState.Warning, 'border-2 border-none bg-red-500 text-white active font-bold'],
+      [StepState.Completed, 'border-2 border-green font-bold']
     ]);
   });
 });
@@ -71,8 +71,8 @@ function handleNavigate(state: StepState, stepIndex: number) {
 
 <template>
   <BalCard noPad shadow="none">
-    <div class="p-4 border-b dark:border-gray-600">
-      <h6 class="dark:text-gray-300">{{ title }}</h6>
+    <div class="p-4 border-b-3 border-green">
+      <h6 class="font-body font-bold dark:text-gray-300">{{ title }}</h6>
     </div>
     <BalStack vertical spacing="base" class="p-4" justify="center">
       <div

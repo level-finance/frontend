@@ -14,6 +14,8 @@ h4,
 h5,
 h6 {
   @apply font-body;
+  @apply font-bold;
+  @apply text-xl;
 }
 h3 {
   @apply text-2xl tracking-tight;
