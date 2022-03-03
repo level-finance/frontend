@@ -17,7 +17,7 @@ h6 {
 }
 h3 {
   @apply text-2xl tracking-tight;
-  font-variation-settings: 'wght' 600;
+  @apply font-secondary;
 }
 h4 {
   @apply text-xl tracking-tight;
