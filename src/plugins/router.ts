@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import HomePage from '@/pages/index.vue';
+import DashboardPage from '@/pages/dashboard.vue';
 import PoolPage from '@/pages/pool/_id.vue';
 import PoolInvestPage from '@/pages/pool/invest.vue';
 import PoolWithdrawPage from '@/pages/pool/withdraw.vue';
@@ -15,6 +16,11 @@ const routes: RouteRecordRaw[] = [
     path: '/',
     name: 'home',
     component: HomePage
+  },
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+    component: DashboardPage
   },
   {
     path: '/trade/:assetIn?/:assetOut?',

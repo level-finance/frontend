@@ -21,7 +21,7 @@
     </template>
 
     <div class="px-4 lg:px-0">
-      <h3 class="mb-3">{{ $t('investmentPools') }}</h3>
+      <h3 class="mb-3 lowercase">{{ $t('investmentPools') }}</h3>
       <div
         class="flex flex-col md:flex-row w-full justify-between items-end lg:items-center"
       >

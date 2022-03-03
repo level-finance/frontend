@@ -1,6 +1,6 @@
 <template>
-  <div :class="['app-hero', classes]">
-    <div class="w-full max-w-2xl mx-auto">
+  <div :class="['app-hero']">
+    <div class="w-full">
       <template v-if="isWalletReady">
         <h1
           v-text="$t('myInvestments')"
@@ -21,14 +21,27 @@
         </span>
       </template>
       <template v-else>
-        <h1
-          v-text="$t('ammPlatform')"
-          class="text-white text-center text-4xl md:text-5xl pb-2"
-        />
-        <div class="flex justify-center mt-4">
-          <BalBtn :color="darkMode ? 'gray' : 'white'" @click="onClickConnect">
-            {{ $t('connectWallet') }}
-          </BalBtn>
+        <div class="relative flex items-start justify-start">
+          <div class="ml-16 mt-28 relative" style="max-width: 940px">
+            <img
+              src="@/assets/images/bg/hero-lines.svg"
+              alt="Hero Lines"
+              class="absolute -left-16 -top-16"
+            />
+            <div class="flex items-center">
+              <img src="@/assets/images/logo-level-dark.svg" alt="Logo Dark" />
+              <h1 class="text-green text-5xl font-bold whitespace-pre-line">
+                <span class="text-gray"> — </span>
+                <span>{{ $t('ammHeader') }}</span>
+                <span class="text-gray">.</span>
+              </h1>
+            </div>
+            <h2
+              v-text="$t('ammPlatform')"
+              class="mt-6 ml-16 w-11/12 text-left text-lg font-bold md:text-xl pb-2"
+            />
+          </div>
+          <img src="@/assets/images/hero-curve.svg" alt="Curve" />
         </div>
       </template>
     </div>
@@ -92,8 +105,8 @@ export default defineComponent({
 
 <style>
 .app-hero {
-  @apply bg-cover bg-center flex items-center justify-center text-center px-4;
+  @apply container mx-auto;
+  @apply bg-cover bg-center flex items-center justify-start text-center px-4;
   transition: all 0.3s ease-in-out;
-  background-image: url('/images/backgrounds/bg-header.svg');
 }
 </style>

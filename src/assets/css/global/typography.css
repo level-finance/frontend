@@ -1,6 +1,5 @@
 h1,
 h2 {
-  @apply font-display;
   font-weight: 600;
 }
 h1 {
@@ -18,7 +17,7 @@ h6 {
 }
 h3 {
   @apply text-2xl tracking-tight;
-  font-variation-settings: 'wght' 600;
+  @apply font-secondary;
 }
 h4 {
   @apply text-xl tracking-tight;
@@ -95,7 +94,7 @@ th {
   background-size: 100%;
   -webkit-background-clip: text;
   -moz-background-clip: text;
-  -webkit-text-fill-color: transparent; 
+  -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
 }
 

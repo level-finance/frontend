@@ -1,11 +1,5 @@
 <template>
-  <img
-    v-if="darkMode"
-    src="~@/assets/images/logo-dark.svg"
-    width="30"
-    class="mr-2"
-  />
-  <img v-else src="~@/assets/images/logo-light.svg" width="30" class="mr-2" />
+  <img src="~@/assets/images/logo-new.svg" width="30" class="mr-2" alt="logo" />
 </template>
 
 <script lang="ts">

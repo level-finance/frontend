@@ -1,27 +1,25 @@
 <template>
   <AppNavAlert v-if="currentAlert" :alert="currentAlert" />
-  <nav id="app-nav" ref="appNav" class="h-20 px-4 lg:px-6 sticky top-0">
-    <div class="h-full flex items-center justify-between">
-      <div class="w-2/3 lg:w-1/3 flex items-center">
+  <nav id="app-nav" ref="appNav" class="pt-2 px-4 lg:px-6 sticky top-0">
+    <AppLogo class="mb-6" />
+    <div class="h-full flex items-start justify-between">
+      <div class="w-2/3 lg:w-1/3 flex items-start">
         <router-link
           :to="{ name: 'home' }"
           @click="trackGoal(Goals.ClickNavLogo)"
         >
-          <AppIcon v-if="['xs', 'sm', 'md'].includes(bp)" />
-          <AppLogo v-else />
+          <AppIcon />
         </router-link>
-        <AppNavNetworkSelect v-if="!hideNetworkSelect" />
-        <DarkModeToggle class="ml-2" />
       </div>
 
       <div
         v-if="!upToLargeBreakpoint"
-        class="flex-1 md:w-1/3 flex justify-center"
+        class="mt-auto flex-1 md:w-1/3 flex justify-center items-end"
       >
         <AppNavToggle />
       </div>
 
-      <div class="w-1/3 flex justify-end">
+      <div class="w-1/3 flex justify-end mt-2 mb-5">
         <AppNavActions />
       </div>
     </div>
@@ -29,17 +27,15 @@
 </template>
 
 <script>
-import { computed, defineComponent, onMounted, onUnmounted, ref } from 'vue';
+import { computed, defineComponent, ref } from 'vue';
 import useBreakpoints from '@/composables/useBreakpoints';
 import AppLogo from '@/components/images/AppLogo.vue';
 import AppIcon from '@/components/images/AppIcon.vue';
 import AppNavAlert from './AppNavAlert.vue';
 import AppNavToggle from './AppNavToggle.vue';
 import AppNavActions from './AppNavActions.vue';
-import AppNavNetworkSelect from './AppNavNetworkSelect.vue';
 import useFathom from '@/composables/useFathom';
 import useWeb3 from '@/services/web3/useWeb3';
-import DarkModeToggle from '@/components/btns/DarkModeToggle.vue';
 import useAlerts from '@/composables/useAlerts';
 
 export default defineComponent({
@@ -48,9 +44,7 @@ export default defineComponent({
     AppIcon,
     AppNavAlert,
     AppNavToggle,
-    AppNavActions,
-    AppNavNetworkSelect,
-    DarkModeToggle
+    AppNavActions
   },
 
   setup() {
@@ -65,24 +59,6 @@ export default defineComponent({
 
     // COMPUTED
     const hideNetworkSelect = computed(() => connector.value?.id === 'gnosis');
-
-    // METHODS
-    function handleScroll() {
-      if (window.scrollY === 0) {
-        appNav.value.classList.remove('shadow-lg');
-      } else {
-        appNav.value.classList.add('shadow-lg');
-      }
-    }
-
-    // CALLBACKS
-    onMounted(() => {
-      window.addEventListener('scroll', handleScroll);
-    });
-
-    onUnmounted(() => {
-      window.removeEventListener('scroll', handleScroll);
-    });
 
     return {
       // data
@@ -103,8 +79,7 @@ export default defineComponent({
 <style scoped>
 #app-nav {
   @apply w-full z-20;
-  @apply bg-white dark:bg-gray-900;
-  @apply border-b border-transparent;
+  @apply bg-gray;
   transition: all 0.2s ease-in-out;
 }
 </style>

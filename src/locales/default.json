@@ -17,10 +17,11 @@
     },
     "allow": "Allow",
     "allowing": "Allowing...",
-    "allPools": "All pools",    
+    "allPools": "All pools",
     "allTokens": "All tokens",
     "and": "and",
-    "ammPlatform": "Unlock the power of Velas with Level Finance",
+    "ammHeader": "the future is here",
+    "ammPlatform": "Level is your personal wallet where you can store your currencies. \nThe main advantages of Level: quick transfers, complete anonymity and a special data protection system. ",
     "amount": "Amount",
     "amountBeforeFees": "Amount before fees",
     "amountToInvest": "Amount to invest",
@@ -148,7 +149,7 @@
         "recoveredStateInfo": "You last left off before finishing creating this pool. We've restored all your choices from before. Want to start over?",
         "similarPoolsExist": "Similar pools exist",
         "setAnAddress": "Set an address to control fees",
-        "setPoolFees": "Set pool fees",    
+        "setPoolFees": "Set pool fees",
         "swapFeeSuggestion": "0.30% is best for most weighted pools with established tokens. Go higher for more exotic pairs.",
         "title": "Create a pool",
         "tokensAndSeedLiquidity": "Tokens and initial seed liquidity",
@@ -479,7 +480,7 @@
     "switchNetwork": "Switch Network",
     "symbol": "Symbol",
     "tableShowsLevelPools": "This table shows only Level pools.",
-    
+
     "theme": "Theme",
     "thirdPartyRewards": {
         "apr": {

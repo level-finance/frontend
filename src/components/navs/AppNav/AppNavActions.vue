@@ -5,7 +5,7 @@
       <AppNavClaimBtn v-if="liquidityMiningSupported" />
       <AppNavAccountBtn />
     </div>
-    <BalBtn
+    <!-- <BalBtn
       v-else
       color="white"
       :size="upToLargeBreakpoint ? 'md' : 'sm'"
@@ -14,7 +14,12 @@
       <WalletIcon class="mr-2" />
       <span class="hidden lg:inline-block" v-text="$t('connectWallet')" />
       <span class="lg:hidden" v-text="$t('connect')" />
-    </BalBtn>
+    </BalBtn> -->
+    <button
+      class="py-2 px-8 text-2xl text-green border-green font-secondary rounded-3xl border-2"
+    >
+      Connect a wallet
+    </button>
   </div>
 </template>
 
