@@ -22,7 +22,7 @@
       </template>
       <template v-else>
         <div class="relative flex items-start justify-start">
-          <div class="ml-16 mt-28 relative" style="max-width: 920px">
+          <div class="ml-16 mt-28 relative" style="max-width: 940px">
             <img
               src="@/assets/images/bg/hero-lines.svg"
               alt="Hero Lines"
@@ -30,15 +30,15 @@
             />
             <div class="flex items-center">
               <img src="@/assets/images/logo-level-dark.svg" alt="Logo Dark" />
-              <div class="flex items-center text-3xl">
-                <p class="text-3xl">—</p>
-                <h1 v-text="$t('ammHeader')" class="text-green" />
-                <p>.</p>
-              </div>
+              <h1 class="text-green text-5xl font-bold whitespace-pre-line">
+                <span class="text-gray"> — </span>
+                <span>{{ $t('ammHeader') }}</span>
+                <span class="text-gray">.</span>
+              </h1>
             </div>
             <h2
               v-text="$t('ammPlatform')"
-              class="mt-6 ml-16 text-left text-lg md:text-xl pb-2"
+              class="mt-6 ml-16 w-11/12 text-left text-lg font-bold md:text-xl pb-2"
             />
           </div>
           <img src="@/assets/images/hero-curve.svg" alt="Curve" />
@@ -105,6 +105,7 @@ export default defineComponent({
 
 <style>
 .app-hero {
+  @apply container mx-auto;
   @apply bg-cover bg-center flex items-center justify-start text-center px-4;
   transition: all 0.3s ease-in-out;
 }
