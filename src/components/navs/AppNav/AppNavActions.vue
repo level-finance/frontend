@@ -17,6 +17,7 @@
     </BalBtn> -->
     <button
       class="py-2 px-8 text-2xl text-green border-green font-secondary rounded-3xl border-2"
+      @click="toggleWalletSelectModal"
     >
       Connect a wallet
     </button>
