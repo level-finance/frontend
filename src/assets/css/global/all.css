@@ -29,11 +29,13 @@ input {
   @apply text-gray-900 dark:text-gray-50;
   min-height: calc(100vh + 1px);
   position: relative;
+  z-index: 1;
 }
 
 #app::before {
   content: '';
   position: absolute;
+  z-index: -1;
   left: 0;
   top: 0;
   width: 100%;
