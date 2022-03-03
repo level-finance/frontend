@@ -303,13 +303,11 @@ function onAlertMountChange() {
 
 <template>
   <div ref="cardWrapper" class="mb-16">
-    <BalCard shadow="xl" noBorder>
+    <BalCard shadow="xl">
       <BalStack vertical spacing="sm">
         <BalStack vertical spacing="xs">
-          <span class="text-xs text-gray-700 dark:text-gray-500">{{
-            networkName
-          }}</span>
-          <h5 class="font-bold dark:text-gray-300">
+          <span class="text-base text-black">{{ networkName }}</span>
+          <h5 class="font-secondary font-normal">
             {{ $t('createAPool.chooseTokenWeights') }}
           </h5>
         </BalStack>
@@ -317,7 +315,7 @@ function onAlertMountChange() {
           <div ref="tokenWeightListWrapper">
             <div class="flex flex-col">
               <div
-                class="bg-gray-50 dark:bg-gray-850 w-full flex justify-between p-2 px-4"
+                class="border-b-3 border-green w-full flex justify-between p-2 px-4"
               >
                 <h6>{{ $t('token') }}</h6>
                 <h6>{{ $t('weight') }}</h6>
@@ -355,10 +353,7 @@ function onAlertMountChange() {
                   >{{ $t('addToken') }}
                 </BalBtn>
               </div>
-              <div
-                ref="totalsRowElement"
-                class="bg-gray-50 dark:bg-gray-850 w-full p-2 px-4"
-              >
+              <div ref="totalsRowElement" class="w-full p-2 px-4">
                 <div class="w-full flex justify-between">
                   <h6>{{ $t('totalAllocated') }}</h6>
                   <BalStack horizontal spacing="xs" align="center">

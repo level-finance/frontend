@@ -50,11 +50,11 @@ const stepCircleClasses = computed(() => {
         StepState.Todo,
         'border-2 border-gray dark:border-gray text-gray font-bold'
       ],
+      [StepState.Success, 'border-2 border-green text-green font-bold'],
       [
-        StepState.Success,
-        'border-2 border-green text-green font-bold'
+        StepState.Warning,
+        'border-2 border-none bg-red-500 text-white active font-bold'
       ],
-      [StepState.Warning, 'border-2 border-none bg-red-500 text-white active font-bold'],
       [StepState.Completed, 'border-2 border-green font-bold']
     ]);
   });

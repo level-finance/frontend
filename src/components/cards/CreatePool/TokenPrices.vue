@@ -41,7 +41,7 @@ const hasUnknownPrice = computed(() =>
 
 <template>
   <BalCard noPad shadow="none" :noBorder="upToLargeBreakpoint">
-    <div class="p-4 dark:border-gray-600 border-b" v-if="!upToLargeBreakpoint">
+    <div class="p-4 border-b-3 border-green" v-if="!upToLargeBreakpoint">
       <BalStack horizontal spacing="sm" align="center">
         <h6 class="dark:text-gray-300">
           {{ $t('tokenPrices') }}
