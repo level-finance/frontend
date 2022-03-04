@@ -121,13 +121,12 @@ import useValidation, {
 import useTrading from '@/composables/trade/useTrading';
 import { ENABLE_LEGACY_TRADE_INTERFACE } from '@/composables/trade/constants';
 import useTokens from '@/composables/useTokens';
-import useBreakpoints from '@/composables/useBreakpoints';
+// import useBreakpoints from '@/composables/useBreakpoints';
 import useNumbers, { FNumFormats } from '@/composables/useNumbers';
 
 import { TOKENS } from '@/constants/tokens';
 
 import { isRequired } from '@/lib/utils/validations';
-import { WrapType } from '@/lib/utils/balancer/wrapper';
 
 import TradePreviewModalGP from '@/components/modals/TradePreviewModalGP.vue';
 import TradeSettingsPopover, {
@@ -152,7 +151,7 @@ export default defineComponent({
     const store = useStore();
     const router = useRouter();
     const { t } = useI18n();
-    const { bp } = useBreakpoints();
+    // const { bp } = useBreakpoints();
     const { fNum2 } = useNumbers();
     const { appNetworkConfig } = useWeb3();
     const { nativeAsset } = useTokens();
