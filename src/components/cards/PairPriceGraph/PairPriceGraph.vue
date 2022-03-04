@@ -81,19 +81,19 @@ async function getPairPriceData(
 
 const chartTimespans = [
   {
-    option: '1d',
+    option: '1D',
     value: 1
   },
   {
-    option: '1w',
+    option: '1W',
     value: 7
   },
   {
-    option: '1m',
+    option: '1M',
     value: 30
   },
   {
-    option: '1y',
+    option: '1Y',
     value: 365
   },
   {
@@ -237,21 +237,22 @@ const chartGrid = computed(() => {
       :noBorder="upToLargeBreakpoint || isModal"
       v-else
     >
-      <div class="relative h-full bg-transparent p-4">
-        <button
-          v-if="!failedToLoadPriceData && !(isLoadingPriceData || appLoading)"
-          @click="toggle"
-          class="maximise m-4 p-2 flex justify-center items-center shadow-lg rounded-full"
-        >
-          <BalIcon v-if="!isModal" name="maximize-2" class="text-gray-500" />
-          <BalIcon v-if="isModal" name="x" class="text-gray-500" />
-        </button>
-        <div
-          v-if="!failedToLoadPriceData && !(isLoadingPriceData || appLoading)"
-          class="flex"
-        >
-          <h6 class="font-medium">{{ outputSym }}/{{ inputSym }}</h6>
-          <BalTooltip
+      <div class="relative h-full bg-transparent">
+        <div class="px-4">
+          <button
+            v-if="!failedToLoadPriceData && !(isLoadingPriceData || appLoading)"
+            @click="toggle"
+            class="maximise m-4 mt-0 mr-0 p-2 flex justify-center items-center shadow-lg rounded-full"
+          >
+            <BalIcon v-if="!isModal" name="maximize-2" class="text-green" />
+            <BalIcon v-if="isModal" name="x" class="text-green" />
+          </button>
+          <div
+            v-if="!failedToLoadPriceData && !(isLoadingPriceData || appLoading)"
+            class="flex"
+          >
+            <h6 class="font-bold">{{ outputSym }}/{{ inputSym }}</h6>
+            <!-- <BalTooltip
             width="64"
             class="ml-2"
             :text="$t('coingeckoPricingTooltip')"
@@ -259,23 +260,24 @@ const chartGrid = computed(() => {
             <template v-slot:activator>
               <img class="h-5" src="@/assets/images/icons/coingecko.svg" />
             </template>
-          </BalTooltip>
-        </div>
-        <div
-          v-if="failedToLoadPriceData && tokenOutAddress"
-          class="h-full w-full flex justify-center items-center"
-        >
-          <span class="text-sm text-gray-400">{{
-            $t('insufficientData')
-          }}</span>
-        </div>
-        <div
-          v-if="failedToLoadPriceData && !tokenOutAddress"
-          class="h-full w-full flex justify-center items-center"
-        >
-          <span class="text-sm text-gray-400 text-center">{{
-            $t('chooseAPair')
-          }}</span>
+          </BalTooltip> -->
+          </div>
+          <div
+            v-if="failedToLoadPriceData && tokenOutAddress"
+            class="h-full w-full flex justify-center items-center"
+          >
+            <span class="text-sm text-gray-400">{{
+              $t('insufficientData')
+            }}</span>
+          </div>
+          <div
+            v-if="failedToLoadPriceData && !tokenOutAddress"
+            class="h-full w-full flex justify-center items-center"
+          >
+            <span class="text-sm text-gray-400 text-center">{{
+              $t('chooseAPair')
+            }}</span>
+          </div>
         </div>
         <div
           v-if="!failedToLoadPriceData && !isLoadingPriceData"
@@ -305,7 +307,7 @@ const chartGrid = computed(() => {
             :class="[
               'w-full flex justify-between mt-6',
               {
-                'flex-col': isModal
+                'flex-col px-4': isModal
               }
             ]"
             v-if="isModal"
@@ -316,10 +318,10 @@ const chartGrid = computed(() => {
                 @click="activeTimespan = timespan"
                 :key="timespan.value"
                 :class="[
-                  'py-1 px-2 text-sm rounded-lg mr-2',
+                  'py-1 px-2 text-sm mr-2 font-bold',
                   {
                     'text-white': activeTimespan.value === timespan.value,
-                    'text-gray-500': activeTimespan.value !== timespan.value,
+                    'text-green': activeTimespan.value !== timespan.value,
                     'bg-green-400':
                       !isNegativeTrend &&
                       activeTimespan.value === timespan.value,
@@ -335,7 +337,7 @@ const chartGrid = computed(() => {
               </button>
             </div>
             <div :class="{ 'mt-4': isModal }">
-              <span class="text-sm text-gray-500 mr-4"
+              <span class="text-sm text-gray-900 font-bold mr-4"
                 >Low: {{ dataMin.toPrecision(6) }}</span
               >
               <span class="text-sm text-gray-500"
@@ -343,10 +345,11 @@ const chartGrid = computed(() => {
               >
             </div>
           </div>
-          <div class="-mt-2 lg:mt-2" v-else>
-            <span class="text-sm text-gray-500 w-full flex justify-end">{{
-              activeTimespan.option
-            }}</span>
+          <div class="-mt-2 mr-3 lg:mt-2" v-else>
+            <span
+              class="text-sm text-green font-bold w-full flex justify-end"
+              >{{ activeTimespan.option }}</span
+            >
           </div>
         </div>
       </div>
