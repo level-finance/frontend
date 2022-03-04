@@ -255,11 +255,12 @@ function saveAndProceed() {
               @update:amount="handleAmountChange(address)"
               @update:address="handleAddressChange($event)"
               :rules="[isGreaterThan(0)]"
+              :noBorder="true"
             />
           </BalStack>
           <BalStack horizontal spacing="sm" align="center">
             <div>
-              <span class="text-sm pl-2">{{
+              <span class="pl-2 text-xl font-bold">{{
                 t('autoOptimiseLiquidityToggle.label')
               }}</span>
               <BalTooltip width="64">
@@ -276,6 +277,7 @@ function saveAndProceed() {
             <div>
               <BalToggle
                 name="autoOptimise"
+                class="text-gray"
                 :checked="autoOptimiseBalances"
                 @toggle="toggleAutoOptimise"
               />
@@ -284,23 +286,23 @@ function saveAndProceed() {
         </BalStack>
       </template>
       <template #footer>
-        <BalStack vertical class="mt-3">
-          <div class="p-3 border rounded-lg">
+        <BalStack vertical class="mt-3 w-full">
+          <div class="p-3">
             <BalStack horizontal justify="between">
               <BalStack vertical spacing="none">
                 <h6>{{ t('total') }}</h6>
                 <BalStack horizontal spacing="xs" class="font-medium">
-                  <span class="text-sm">
+                  <span class="font-bold text-xl text-gray">
                     {{ t('available') }}:
                     {{ fNum2(totalLiquidity.toString(), FNumFormats.fiat) }}
                   </span>
                   <button
                     :disabled="areAmountsMaxed"
                     :class="[
-                      'text-sm font-semibold3',
+                      'text-xl font-bold',
                       {
                         'text-gray-400 dark:text-gray-600': areAmountsMaxed,
-                        'text-blue-500 hover:text-blue-50': !areAmountsMaxed
+                        'text-green hover:text-green-600': !areAmountsMaxed
                       }
                     ]"
                     @click="handleMax"
@@ -310,7 +312,7 @@ function saveAndProceed() {
                 </BalStack>
               </BalStack>
               <BalStack vertical spacing="none">
-                <h6>
+                <h6 class="text-green">
                   {{ fNum2(currentLiquidity.toString(), FNumFormats.fiat) }}
                 </h6>
                 <AnimatePresence

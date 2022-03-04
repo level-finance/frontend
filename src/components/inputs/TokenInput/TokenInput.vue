@@ -11,7 +11,7 @@ import { isPositive, isLessThanOrEqualTo } from '@/lib/utils/validations';
 
 import useWeb3 from '@/services/web3/useWeb3';
 
-import { Rules } from '@/components/_global/BalTextInput/BalTextInput.vue';
+import Rules from '@/components/_global/BalTextInput/BalTextInput.vue';
 import TokenSelectInput from '@/components/inputs/TokenSelectInput/TokenSelectInput.vue';
 
 import { TokenInfo } from '@/types/TokenList';
@@ -43,6 +43,7 @@ type Props = {
   hideFooter?: boolean;
   ignoreWalletBalance?: boolean;
   outlined?: boolean;
+  noBorder?: boolean;
 };
 
 /**
@@ -62,6 +63,7 @@ const props = withDefaults(defineProps<Props>(), {
   hideFooter: false,
   ignoreWalletBalance: false,
   outlined: false,
+  noBorder: false,
   options: () => [],
   rules: () => []
 });
@@ -242,6 +244,7 @@ watchEffect(() => {
     @update:modelValue="emit('update:amount', $event)"
     @update:isValid="emit('update:isValid', $event)"
     @keydown="emit('keydown', $event)"
+    :noBorder="props.noBorder"
   >
     <template #prepend>
       <slot name="tokenSelect">
@@ -266,7 +269,11 @@ watchEffect(() => {
           class="flex items-center justify-between text-sm text-gray-500 leading-none"
         >
           <div v-if="!isWalletReady" />
-          <div v-else class="cursor-pointer flex items-center" @click="setMax">
+          <div
+            v-else
+            class="cursor-pointer flex items-center font-bold text-xl text-gray"
+            @click="setMax"
+          >
             {{ balanceLabel ? balanceLabel : $t('balance') }}:
 
             <BalLoadingBlock v-if="balanceLoading" class="w-12 h-4 mx-2" />
@@ -275,10 +282,10 @@ watchEffect(() => {
             </span>
 
             <template v-if="hasBalance && !noMax && !disableMax">
-              <span v-if="!isMaxed" class="text-blue-500">
+              <span v-if="!isMaxed" class="text-green">
                 {{ $t('max') }}
               </span>
-              <span v-else class="text-gray-400 dark:text-gray-600 lowercase">
+              <span v-else class="text-gray lowercase">
                 {{ $t('maxed') }}
               </span>
             </template>
