@@ -76,7 +76,6 @@ const fiatTotal = computed(() => {
     <BalBtn
       v-if="!isWalletReady"
       :label="$t('connectWallet')"
-      color="gradient"
       block
       @click="toggleWalletSelectModal"
     />
@@ -85,7 +84,6 @@ const fiatTotal = computed(() => {
         tag="router-link"
         :to="{ name: 'invest' }"
         :label="$t('invest')"
-        color="gradient"
         block
       />
       <BalBtn

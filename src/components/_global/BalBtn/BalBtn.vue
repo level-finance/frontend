@@ -102,32 +102,6 @@ export default defineComponent({
       }
     });
 
-    const bgGradientClasses = computed(() => {
-      if (props.outline) return 'bg-transparent';
-
-      let fromColor = 'blue';
-      let toColor = 'pink';
-
-      if (props.color === 'gradient-reverse') {
-        fromColor = 'pink';
-        toColor = 'blue';
-      } else if (props.color === 'gradient-pink-yellow') {
-        fromColor = 'pink';
-        toColor = 'yellow';
-      }
-
-      if (props.disabled) {
-        return `bg-gray-300 dark:bg-gray-700 text-white dark:text-gray-500`;
-      }
-      if (props.loading) {
-        return `bg-gradient-to-tr from-${fromColor}-50 to-${toColor}-50`;
-      }
-      return `
-        bg-gradient-to-tr from-${fromColor}-500 to-${toColor}-500
-        hover:from-${fromColor}-600 hover:to-${toColor}-600
-      `;
-    });
-
     const bgFlatClasses = computed(() => {
       return `
         bg-${props.color}-50 hover:bg-${props.color}-100
@@ -137,8 +111,7 @@ export default defineComponent({
 
     const bgColorClasses = computed(() => {
       if (props.color) {
-        if (props.color.includes('gradient')) return bgGradientClasses.value;
-        else if (props.outline) return 'bg-transparent';
+        if (props.outline) return 'bg-transparent';
         else if (props.flat) return bgFlatClasses.value;
         else if (props.color === 'white') {
           return 'bg-gray-50 dark:bg-gray-800';
