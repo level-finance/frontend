@@ -1,7 +1,7 @@
 <template>
   <BalModal show @close="onClose" :title="labels.modalTitle">
     <div>
-      <BalCard noPad class="relative mb-6 overflow-auto border-4 border-green">
+      <BalCard noPad shadow="none" class="relative mb-3 overflow-auto border-4 border-green">
         <div>
           <div class="px-6 py-2.5 pl-8 relative">
             <div class="flex items-center justify-between">
@@ -30,7 +30,7 @@
           </div>
         </div>
       </BalCard>
-      <BalCard noPad class="relative mb-6 overflow-auto border-4 border-green">
+      <BalCard noPad shadow="none" class="relative mb-3 overflow-auto border-4 border-green">
         <div>
           <div class="px-6 py-2.5 pl-8 relative">
             <div class="flex items-center justify-between">
@@ -73,37 +73,35 @@
           </div>
         </div>
       </BalCard>
-      <BalCard noPad shadow="none" class="mb-3">
-        <template v-slot:header>
+      <div class="flex justify-between items-center mb-3">
+        <div class="text-xl font-bold">
+          {{ labels.tradeSummary.title }}
+        </div>
+        <div class="flex dark:divide-gray-500 text-lg uppercase">
           <div
-            class="p-3 flex w-full items-center justify-between border-b dark:border-gray-900"
+            :class="[
+              'pr-2 cursor-pointer font-medium',
+              { 'text-green': !showSummaryInFiat }
+            ]"
+            @click="showSummaryInFiat = false"
           >
-            <div class="font-semibold">
-              {{ labels.tradeSummary.title }}
-            </div>
-            <div class="flex divide-x dark:divide-gray-500 text-xs uppercase">
-              <div
-                :class="[
-                  'pr-2 cursor-pointer font-medium',
-                  { 'text-blue-600': !showSummaryInFiat }
-                ]"
-                @click="showSummaryInFiat = false"
-              >
-                {{ $t('tokens') }}
-              </div>
-              <div
-                :class="[
-                  'pl-2 cursor-pointer font-medium uppercase',
-                  { 'text-blue-600': showSummaryInFiat }
-                ]"
-                @click="showSummaryInFiat = true"
-              >
-                {{ FiatCurrency.usd }}
-              </div>
-            </div>
+            {{ $t('tokens') }}
           </div>
-        </template>
-        <div class="p-3 text-sm">
+          &#8725;
+          <div
+            :class="[
+              'pl-2 cursor-pointer text-black font-medium uppercase',
+              { 'text-green': showSummaryInFiat }
+            ]"
+            @click="showSummaryInFiat = true"
+          >
+            {{ FiatCurrency.usd }}
+          </div>
+        </div>
+      </div>
+      <div class="divider border-green border-t-3"></div>
+      <BalCard noPad noBorder shadow="none" class="mt-3">
+        <div class="p-3 text-sm font-bold">
           <div class="summary-item-row">
             <div>
               {{ labels.tradeSummary.totalBeforeFees }}
@@ -131,7 +129,7 @@
         </div>
         <template v-slot:footer>
           <div
-            class="w-full p-3 rounded-b-lg bg-white text-sm dark:bg-gray-800"
+            class="w-full p-3 rounded-b-lg bg-white text-sm font-bold dark:bg-gray-800"
           >
             <div class="summary-item-row font-medium">
               <div class="w-64">
@@ -582,7 +580,7 @@ export default defineComponent({
           modalTitle: 'PREVIEW TRADE', //t('previewWrap', [props.trading.tokenIn.value.symbol]),
           confirmTrade: t('confirmWrap', [props.trading.tokenIn.value.symbol]),
           tradeSummary: {
-            title: t('tradeSummary.wrap.title'),
+            title: `Trade from ${props.trading.tokenIn.value.symbol} details`,
             tradeFees: t('tradeSummary.wrap.tradeFees'),
             totalBeforeFees: t('tradeSummary.wrap.totalBeforeFees'),
             totalAfterFees: t('tradeSummary.wrap.totalAfterFees'),
@@ -908,5 +906,10 @@ export default defineComponent({
 }
 .step-approved {
   @apply border-green-500 dark:border-green-500;
+}
+
+.divider {
+  margin-left: -16px;
+  width: calc(100% + 32px);
 }
 </style>
