@@ -3,12 +3,11 @@
     <template v-slot:activator>
       <BalBtn
         circle
-        color="white"
-        size="sm"
-        class="mb-2 text-gray-500 icon-spin-anim"
+        size="md"
+        class="mb-2 text-gray-500 bg-transparent shadow-none icon-spin-anim"
         @click="onActivatorClick"
       >
-        <BalIcon name="settings" size="sm" />
+        <img :src="require('@/assets/images/icons/settings.svg')" alt="" />
       </BalBtn>
     </template>
 
