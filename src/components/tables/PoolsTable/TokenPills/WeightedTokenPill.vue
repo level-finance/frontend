@@ -35,10 +35,13 @@ withDefaults(defineProps<Props>(), {
 
 <style scoped>
 .pill {
-  @apply flex items-center px-2 mr-2 my-1 py-1 rounded-lg bg-gray-100 dark:bg-gray-700 relative;
+  @apply flex items-center h-10 mr-2 my-1 rounded-20px relative justify-center;
+  min-width: 100px;
+  @apply border-2 border-orange;
 }
 .pill:last-child {
   @apply mr-0;
+  @apply border-green;
 }
 
 .pill-selected {
