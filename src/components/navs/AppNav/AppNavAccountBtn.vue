@@ -2,13 +2,11 @@
   <BalPopover no-pad>
     <template v-slot:activator>
       <BalBtn
-        class="text-base"
+        class="p-2 text-xl"
+        resetStyles
         :class="{ btn: upToLargeBreakpoint }"
         :loading="isLoadingProfile"
         :loading-label="upToLargeBreakpoint ? '' : $t('connecting')"
-        color="white"
-        :size="upToLargeBreakpoint ? 'md' : 'sm'"
-        :circle="upToLargeBreakpoint"
       >
         <Avatar
           :iconURI="profile?.avatar"
