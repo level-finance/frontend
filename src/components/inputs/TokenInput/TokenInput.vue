@@ -301,7 +301,7 @@ watchEffect(() => {
             </template>
             <template v-else-if="hint">
               <span
-                class="text-blue-500 lowercase cursor-pointer"
+                class="text-gray lowercase cursor-pointer"
                 @click="emit('update:amount', hintAmount)"
               >
                 {{ hint }}
