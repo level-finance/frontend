@@ -350,6 +350,7 @@ function onAlertMountChange() {
                   outline
                   :color="maxTokenAmountReached ? 'gray' : 'red'"
                   size="sm"
+                  class="level-btn level-btn_filled"
                   >{{ $t('addToken') }}
                 </BalBtn>
               </div>
@@ -439,6 +440,7 @@ function onAlertMountChange() {
           color="gradient"
           :disabled="isProceedDisabled"
           @click="handleProceed"
+          class="level-btn level-btn_filled"
           >{{ walletLabel }}</BalBtn
         >
       </BalStack>
