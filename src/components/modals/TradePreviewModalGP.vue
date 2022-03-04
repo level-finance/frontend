@@ -1,63 +1,56 @@
 <template>
   <BalModal show @close="onClose" :title="labels.modalTitle">
     <div>
-      <BalCard noPad class="relative mb-6 overflow-auto">
-        <template v-slot:header>
-          <div
-            class="w-full p-3 border-b bg-gray-50 rounded-t-lg text-sm dark:border-gray-800 dark:bg-gray-800"
-          >
-            <span>
-              {{ $t('effectivePrice') }}
-              {{
-                trading.exactIn.value
-                  ? trading.effectivePriceMessage.value.tokenIn
-                  : trading.effectivePriceMessage.value.tokenOut
-              }}
-            </span>
-          </div>
-        </template>
+      <BalCard noPad class="relative mb-6 overflow-auto border-4 border-green">
         <div>
-          <div
-            class="p-3 border-gray-100 border-b relative dark:border-gray-900"
-          >
-            <div class="flex items-center">
-              <div class="mr-3">
-                <BalAsset :address="trading.tokenIn.value.address" :size="36" />
+          <div class="px-6 py-2.5 pl-8 relative">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center py-2 px-4 rounded-full border-2 border-zimablue">
+                <div class="mr-3">
+                  <BalAsset
+                    :address="trading.tokenIn.value.address"
+                    :size="23"
+                  />
+                </div>
+                <div>
+                  <div class="text-xl font-bold">
+                    {{
+                      fNum2(trading.tokenInAmountInput.value, FNumFormats.token)
+                    }}
+                    {{ trading.tokenIn.value.symbol }}
+                  </div>
+                </div>
               </div>
-              <div>
-                <div class="font-medium">
-                  {{
-                    fNum2(trading.tokenInAmountInput.value, FNumFormats.token)
-                  }}
-                  {{ trading.tokenIn.value.symbol }}
-                </div>
-                <div class="text-gray-500 dark:text-gray-400 text-sm">
-                  {{ tokenInFiatValue }}
-                </div>
+              <div class="text-gray-900 dark:text-gray-400 text-xl font-bold">
+                {{ tokenInFiatValue }}
               </div>
             </div>
           </div>
-          <div class="arrow-down">
-            <ArrowDownIcon />
-          </div>
-          <div class="p-3">
-            <div class="flex items-center">
+        </div>
+      </BalCard>
+      <BalCard noPad class="relative mb-6 overflow-auto border-4 border-green">
+        <div>
+          <div class="px-6 py-2.5 pl-8 relative">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center py-2 px-4 rounded-full border-2 border-zimablue">
               <div class="mr-3">
                 <BalAsset
                   :address="trading.tokenOut.value.address"
-                  :size="36"
+                  :size="23"
                 />
               </div>
               <div>
-                <div class="font-medium">
+                <div class="text-xl font-bold">
                   {{
                     fNum2(trading.tokenOutAmountInput.value, FNumFormats.token)
                   }}
                   {{ trading.tokenOut.value.symbol }}
                 </div>
-                <div class="text-gray-500 dark:text-gray-400 text-sm">
+                </div>
+              </div>
+              <div class="text-gray-900 dark:text-gray-400 text-xl font-bold">
                   {{ tokenOutFiatValue }}
-                  <span
+                  <!-- <span
                     v-if="
                       trading.isBalancerTrade.value ||
                         trading.isWrapUnwrapTrade.value
@@ -67,9 +60,8 @@
                     {{
                       fNum2(trading.sor.priceImpact.value, FNumFormats.percent)
                     }}
-                  </span>
+                  </span> -->
                 </div>
-              </div>
             </div>
           </div>
         </div>
@@ -580,7 +572,7 @@ export default defineComponent({
     const labels = computed(() => {
       if (props.trading.isWrap.value) {
         return {
-          modalTitle: t('previewWrap', [props.trading.tokenIn.value.symbol]),
+          modalTitle: 'PREVIEW TRADE', //t('previewWrap', [props.trading.tokenIn.value.symbol]),
           confirmTrade: t('confirmWrap', [props.trading.tokenIn.value.symbol]),
           tradeSummary: {
             title: t('tradeSummary.wrap.title'),

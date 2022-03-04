@@ -217,13 +217,14 @@ export default defineComponent({
     });
 
     const title = computed(() => {
-      if (trading.wrapType.value === WrapType.Wrap) {
-        return `${t('wrap')} ${trading.tokenIn.value.symbol}`;
-      }
-      if (trading.wrapType.value === WrapType.Unwrap) {
-        return `${t('unwrap')} ${trading.tokenOut.value.symbol}`;
-      }
-      return t('trade');
+      return 'Trade'
+      // if (trading.wrapType.value === WrapType.Wrap) {
+      //   return `${t('wrap')} ${trading.tokenIn.value.symbol}`;
+      // }
+      // if (trading.wrapType.value === WrapType.Unwrap) {
+      //   return `${t('unwrap')} ${trading.tokenOut.value.symbol}`;
+      // }
+      // return t('trade');
     });
 
     const error = computed(() => {
