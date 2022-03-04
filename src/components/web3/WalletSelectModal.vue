@@ -3,9 +3,8 @@
     :show="isVisible"
     @close="$emit('close')"
     title="Connect to A wallet"
-    class=""
   >
-    <p class="pb-3 text-sm">
+    <p class="pb-3 text-sm font-bold">
       {{ $t('byConnectingWallet') }}
       <router-link :to="{ name: 'terms-of-use' }" target="_blank">
         <span className="link">{{ $t('policies.termsOfUse') }}</span
@@ -23,13 +22,11 @@
     <WalletButton v-for="wallet in wallets" :wallet="wallet" :key="wallet" />
     <div
       class="
-        p-4
-        rounded-lg
-        bg-gradient-to-b
-        from-gray-50
-        dark:from-gray-900
-        to-gray-100
-        dark:to-gray-850
+        px-7 py-5
+        bg-green-200
+        border-green-dark
+        border-3
+        rounded-20px
       "
     >
       <h6>{{ $t('newToVelas') }}</h6>
