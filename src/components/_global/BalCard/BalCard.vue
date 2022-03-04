@@ -72,7 +72,6 @@ export default defineComponent({
         'rounded-20px': !props.square,
         'overflow-hidden': !props.exposeOverflow,
         [`bg-white dark:bg-gray-${props.darkBgColor}`]: true,
-        [`shadow${props.shadow ? '-' : ''}${props.shadow}`]: true,
         [borderClasses.value]: !props.noBorder,
         'h-full': props.hFull
       };
