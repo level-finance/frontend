@@ -344,7 +344,7 @@
       </div>
       <BalBtn
         v-if="requiresGnosisRelayerApproval"
-        color="gradient"
+        color="green"
         block
         @click.prevent="gnosisRelayerApproval.approve"
         :loading="
@@ -357,7 +357,7 @@
       </BalBtn>
       <BalBtn
         v-else-if="requiresLidoRelayerApproval"
-        color="gradient"
+        color="green"
         block
         @click.prevent="lidoRelayerApproval.approve"
         :loading="
@@ -371,7 +371,7 @@
         v-else-if="requiresTokenApproval"
         :loading="tokenApproval.approving.value"
         :loading-label="`${$t('approving')} ${trading.tokenIn.value.symbol}...`"
-        color="gradient"
+        color="green"
         block
         @click.prevent="approveToken"
       >
@@ -379,7 +379,7 @@
       </BalBtn>
       <BalBtn
         v-else
-        color="gradient"
+        color="green"
         block
         @click.prevent="trade"
         :loading="trading.isConfirming.value"
@@ -586,7 +586,7 @@ export default defineComponent({
       if (props.trading.isWrap.value) {
         return {
           modalTitle: 'PREVIEW TRADE', //t('previewWrap', [props.trading.tokenIn.value.symbol]),
-          confirmTrade: t('confirmWrap', [props.trading.tokenIn.value.symbol]),
+          confirmTrade: 'Confirm trade', //t('confirmWrap', [props.trading.tokenIn.value.symbol]),
           tradeSummary: {
             title: `Trade from ${props.trading.tokenIn.value.symbol} details`,
             tradeFees: t('tradeSummary.wrap.tradeFees'),
@@ -599,12 +599,10 @@ export default defineComponent({
         };
       } else if (props.trading.isUnwrap.value) {
         return {
-          modalTitle: t('previewUnwrap', [props.trading.tokenOut.value.symbol]),
-          confirmTrade: t('confirmUnwrap', [
-            props.trading.tokenOut.value.symbol
-          ]),
+          modalTitle: 'PREVIEW TRADE',
+          confirmTrade: 'Confirm trade',
           tradeSummary: {
-            title: t('tradeSummary.unwrap.title'),
+            title: `Trade from ${props.trading.tokenIn.value.symbol} details`,
             tradeFees: t('tradeSummary.unwrap.tradeFees'),
             totalBeforeFees: t('tradeSummary.unwrap.totalBeforeFees'),
             totalAfterFees: t('tradeSummary.unwrap.totalAfterFees'),
@@ -616,7 +614,7 @@ export default defineComponent({
       } else if (props.trading.exactIn.value) {
         return {
           modalTitle: t('previewTrade'),
-          confirmTrade: t('confirmTrade'),
+          confirmTrade: 'Confirm trade',
           tradeSummary: {
             title: t('tradeSummary.exactIn.title', [
               props.trading.tokenIn.value.symbol

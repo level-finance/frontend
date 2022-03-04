@@ -83,7 +83,7 @@ function tokenFor(option: string): TokenInfo {
       @click="toggleModal"
     >
       <div class="w-6 leading-none mr-3">
-        <BalAsset :address="token?.address" class="shadow" />
+        <BalAsset :address="token?.address" />
       </div>
       <span class="text-base font-medium">
         {{ token?.symbol }}
