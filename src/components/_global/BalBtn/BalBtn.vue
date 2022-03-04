@@ -1,7 +1,7 @@
 <template>
   <component
     :is="tag"
-    :class="['bal-btn', btnClasses]"
+    :class="['bal-btn level-btn', btnClasses]"
     :disabled="disabled || loading"
   >
     <div v-if="loading" class="flex items-center justify-center">
@@ -67,7 +67,8 @@ export default defineComponent({
     rounded: { type: Boolean, default: false },
     loading: { type: Boolean, default: false },
     loadingLabel: { type: String, default: 'loading...' },
-    disabled: { type: Boolean, default: false }
+    disabled: { type: Boolean, default: false },
+    resetStyles: { type: Boolean, default: false }
   },
 
   setup(props) {
@@ -196,6 +197,7 @@ export default defineComponent({
     });
 
     const btnClasses = computed(() => {
+      if (props.resetStyles) return {};
       return {
         [sizeClasses.value]: !props.circle,
         [circleSizeClasses.value]: props.circle,
@@ -210,6 +212,7 @@ export default defineComponent({
     });
 
     const iconColor = computed(() => {
+      if (props.resetStyles) return {};
       if (props.outline) return props.color;
       if (props.color === 'white') return 'gray';
       return 'white';
@@ -228,7 +231,6 @@ export default defineComponent({
   @apply overflow-hidden tracking-tight;
   transition: all 0.2s ease;
   text-decoration: none !important;
-  line-height: 0;
 }
 
 .bal-btn:focus,

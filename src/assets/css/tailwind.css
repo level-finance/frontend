@@ -4,16 +4,16 @@
 
 @layer components {
     .level-btn {
-        @apply cursor-pointer rounded-20px text-2xl text-green font-bold border-2 border-green py-1.5 px-7;
+        @apply flex justify-center items-center cursor-pointer rounded-20px text-xl text-green font-bold border-2 border-green py-1.5 px-7;
     }
     .level-btn:hover {
-        @apply bg-green shadow;
+        @apply bg-green text-white shadow;
     }
     .level-btn:active {
-        @apply bg-green-600 border-green-600;
+        @apply bg-green-600 text-white border-green-600;
     }
     .level-btn:disabled {
-        @apply bg-gray border-gray text-gray;
+        @apply bg-gray border-gray text-white;
     }
 
 
@@ -21,10 +21,10 @@
         @apply bg-green bg-opacity-25 text-green;
     }
     .level-btn_half-filled:hover {
-        @apply bg-green bg-opacity-25;
+        @apply bg-green bg-opacity-25 text-green;
     }
     .level-btn_half-filled:active {
-        @apply bg-green-600 bg-opacity-25;
+        @apply bg-green-600 bg-opacity-25 text-green-600;
     }
     .level-btn_half-filled:disabled {
         @apply bg-gray bg-opacity-25 text-gray;
