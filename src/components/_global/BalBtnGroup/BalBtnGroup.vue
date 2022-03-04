@@ -6,9 +6,12 @@
       @click="onSelect(option)"
       outline
       size="sm"
-      class="capitalize mr-2 w-18"
+      class="capitalize mr-2 w-18 border-orange px-3 py-1.75 text-black"
+      :class="{
+        'level-btn_filled': modelValue === option.value
+      }"
+      :reset-styles="true"
       v-bind="attrs_"
-      :color="modelValue === option.value ? 'red' : 'gray'"
     >
       {{ 'best' === option.label ? $t(option.label) : option.label }}
     </BalBtn>

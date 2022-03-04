@@ -49,8 +49,8 @@ const { userNetworkConfig } = useWeb3();
  * COMPUTED
  */
 const customInputClasses = computed(() => ({
-  'border border-blue-500 text-blue-500': isCustomFee.value,
-  'border dark:border-gray-900': !isCustomFee.value
+  'bg-green text-white': isCustomFee.value,
+  'bg-white text-gray': !isCustomFee.value
 }));
 
 const isProceedDisabled = computed(() => {
@@ -139,10 +139,10 @@ async function onChangeFeeController(val: string) {
 
 <template>
   <div ref="cardWrapper">
-    <BalCard shadow="xl" noBorder>
+    <BalCard>
       <BalStack vertical>
         <BalStack vertical spacing="xs">
-          <span class="text-xs text-gray-700 dark:text-gray-500">{{
+          <span class="text-base text-black">{{
             userNetworkConfig?.name
           }}</span>
           <BalStack horizontal align="center" spacing="xs">
@@ -150,7 +150,7 @@ async function onChangeFeeController(val: string) {
               @click="goBack"
               class="text-blue-500 hover:text-blue-700 flex"
             >
-              <BalIcon class="flex" name="chevron-left" />
+              <BalIcon class="flex text-green" name="chevron-left" />
             </button>
             <h5 class="font-bold dark:text-gray-300">
               {{ $t('createAPool.setPoolFees') }}
@@ -160,7 +160,7 @@ async function onChangeFeeController(val: string) {
         <BalStack vertical spacing="sm">
           <div>
             <h6 class="mb-1">Initial swap fee</h6>
-            <p class="text-gray-600">{{ $t('createAPool.bestFeeOption') }}</p>
+            <h6 class="text-gray">{{ $t('createAPool.bestFeeOption') }}</h6>
           </div>
           <BalStack spacing="xs" horizontal>
             <BalBtnGroup
@@ -169,13 +169,14 @@ async function onChangeFeeController(val: string) {
               @update:modelValue="onFixedInput"
             />
             <div>
-              <div :class="['custom-input', customInputClasses]">
+              <div :class="['level-btn custom-input', customInputClasses]">
                 <input
-                  class="w-12 text-right bg-transparent h-full"
+                  class="w-12 text-right bg-transparent h-full font-bold"
                   v-model="fee"
                   placeholder="0.1"
                   type="number"
                   step="any"
+                  @click="onCustomInput(fee)"
                   @update:modelValue="onCustomInput"
                 />
                 <!-- <BalTextInput
@@ -299,10 +300,11 @@ async function onChangeFeeController(val: string) {
           </BalStack>
         </BalStack>
         <BalBtn
+          class="level-btn_filled"
           :disabled="isProceedDisabled || isLoadingSimilarPools"
           type="submit"
           block
-          color="gradient"
+          :reset-styles="true"
           @click="proceed"
           >{{ $t('next') }}</BalBtn
         >
@@ -313,6 +315,6 @@ async function onChangeFeeController(val: string) {
 
 <style scoped>
 .custom-input {
-  @apply flex items-center px-1 rounded-lg shadow-inner h-full;
+  @apply flex border-2 items-center px-1 rounded-20px shadow-inner h-full;
 }
 </style>

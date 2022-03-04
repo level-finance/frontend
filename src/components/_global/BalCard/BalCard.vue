@@ -59,6 +59,14 @@ export default defineComponent({
     cardContainerStyles: {
       type: Object,
       default: undefined
+    },
+    headerBorder: {
+      type: Boolean,
+      default: false
+    },
+    footerBorder: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -79,7 +87,8 @@ export default defineComponent({
 
     const headerClasses = computed(() => {
       return {
-        'p-4 pb-0': !props.noPad
+        'p-4 pb-0': !props.noPad,
+        'border-b-3 border-green': props.headerBorder
       };
     });
 
@@ -99,7 +108,8 @@ export default defineComponent({
     const footerClasses = computed(() => {
       return {
         'rounded-b-lg': !props.square,
-        'p-4 pt-0': !props.noPad
+        'p-4 pt-0': !props.noPad,
+        'border-t-3 border-green': props.footerBorder
       };
     });
 
