@@ -7,7 +7,7 @@
         class="mb-2 text-gray-500 bg-transparent shadow-none icon-spin-anim"
         @click="onActivatorClick"
       >
-        <img :src="require('@/assets/images/icons/settings.svg')" alt="">
+        <img :src="require('@/assets/images/icons/settings.svg')" alt="" />
       </BalBtn>
     </template>
 

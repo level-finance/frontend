@@ -152,7 +152,7 @@ export default defineComponent({
     const liquiditySelection = computed(() => store.state.app.tradeLiquidity);
 
     const tradeCardShadow = computed(() => {
-      return 'none'
+      return 'none';
       // switch (bp.value) {
       //   case 'xs':
       //     return 'none';
