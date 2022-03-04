@@ -51,12 +51,12 @@ const { classes: iconClasses, iconSize } = useCloseIconClasses(props);
 
 <style scoped>
 .bal-chip {
-  @apply inline-block whitespace-nowrap;
+  @apply inline-block whitespace-nowrap font-bold;
 }
 .content-container {
   @apply flex items-center leading-none h-full;
 }
 .close {
-  @apply cursor-pointer ml-1 -mb-px text-gray-400;
+  @apply cursor-pointer ml-1 -mb-px text-green-400;
 }
 </style>

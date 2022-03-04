@@ -7,6 +7,8 @@ export function useChipClasses(props) {
         return 'p-1 text-xs';
       case 'lg':
         return 'p-2 text-base';
+      case '2xl':
+        return 'px-4 h-10 text-2xl';
       default:
         return 'p-1 text-sm';
     }
@@ -23,14 +25,14 @@ export function useChipClasses(props) {
 
   const outlineClasses = (): string => {
     if (props.outline) {
-      return `border-gray-100 dark:border-gray-900 border shadow-lg`;
+      return ` border-2 border-orange shadow-lg`;
     }
     return 'shadow-lg';
   };
 
   const shapeClasses = () => {
     if (props.rounded) return 'rounded-full';
-    return 'rounded-lg';
+    return 'rounded-20px';
   };
 
   return computed(() => {
@@ -58,6 +60,8 @@ export function useCloseIconClasses(props) {
       case 'sm':
         return 'xxs';
       case 'lg':
+        return 'sm';
+      case '2xl':
         return 'sm';
       default:
         return 'xs';
