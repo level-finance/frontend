@@ -6,7 +6,9 @@
     ]"
   >
     <div class="overflow-hidden" ref="headerRef">
-      <table class="w-full table-fixed whitespace-normal text-gray font-bold">
+      <table
+        class="w-full table-fixed whitespace-normal text-gray-dark font-bold"
+      >
         <!-- header width handled by colgroup  -->
         <colgroup>
           <col

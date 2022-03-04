@@ -32,9 +32,9 @@
             <div class="flex items-center">
               <img src="@/assets/images/logo-level-dark.svg" alt="Logo Dark" />
               <h1 class="text-green text-5xl font-bold whitespace-pre-line">
-                <span class="text-gray"> — </span>
+                <span class="text-gray-dark"> — </span>
                 <span>{{ $t('ammHeader') }}</span>
-                <span class="text-gray">.</span>
+                <span class="text-gray-dark">.</span>
               </h1>
             </div>
             <h2

@@ -1,7 +1,9 @@
 <template>
   <AppNavAlert v-if="currentAlert" :alert="currentAlert" />
   <nav id="app-nav" ref="appNav" class="pt-2 px-4 lg:px-6 sticky top-0">
-    <AppLogo class="mb-6" />
+    <router-link :to="{ name: 'home' }">
+      <AppLogo class="mb-6" />
+    </router-link>
     <div class="h-full flex items-start justify-between">
       <div class="w-2/3 lg:w-1/3 flex items-start">
         <router-link

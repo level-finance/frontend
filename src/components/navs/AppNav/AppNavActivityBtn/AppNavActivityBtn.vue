@@ -1,7 +1,7 @@
 <template>
   <BalPopover no-pad>
     <template v-slot:activator>
-      <BalBtn color="white" class="mr-2 p-2 relative" resetStyles>
+      <BalBtn class="group mr-2 p-2 relative" resetStyles>
         <ActivityIcon v-if="pendingTransactions.length === 0" />
         <!-- TODO -->
         <ActivityCounter v-else :count="pendingTransactions.length" />
