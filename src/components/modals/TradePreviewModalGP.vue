@@ -586,7 +586,7 @@ export default defineComponent({
       if (props.trading.isWrap.value) {
         return {
           modalTitle: 'PREVIEW TRADE', //t('previewWrap', [props.trading.tokenIn.value.symbol]),
-          confirmTrade: t('confirmWrap', [props.trading.tokenIn.value.symbol]),
+          confirmTrade: 'Confirm trade', //t('confirmWrap', [props.trading.tokenIn.value.symbol]),
           tradeSummary: {
             title: `Trade from ${props.trading.tokenIn.value.symbol} details`,
             tradeFees: t('tradeSummary.wrap.tradeFees'),
@@ -600,9 +600,7 @@ export default defineComponent({
       } else if (props.trading.isUnwrap.value) {
         return {
           modalTitle: 'PREVIEW TRADE',
-          confirmTrade: t('confirmUnwrap', [
-            props.trading.tokenOut.value.symbol
-          ]),
+          confirmTrade: 'Confirm trade',
           tradeSummary: {
             title: `Trade from ${props.trading.tokenIn.value.symbol} details`,
             tradeFees: t('tradeSummary.unwrap.tradeFees'),
@@ -616,7 +614,7 @@ export default defineComponent({
       } else if (props.trading.exactIn.value) {
         return {
           modalTitle: t('previewTrade'),
-          confirmTrade: t('confirmTrade'),
+          confirmTrade: 'Confirm trade',
           tradeSummary: {
             title: t('tradeSummary.exactIn.title', [
               props.trading.tokenIn.value.symbol
