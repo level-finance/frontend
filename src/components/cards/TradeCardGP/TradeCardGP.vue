@@ -1,8 +1,8 @@
 <template>
-  <BalCard class="relative card-container" :shadow="tradeCardShadow" no-border>
+  <BalCard class="relative card-container" :shadow="tradeCardShadow">
     <template v-slot:header>
       <div class="w-full flex items-center justify-between">
-        <h4 class="font-bold">{{ title }}</h4>
+        <h4 class="font-bold"> {{ title }}</h4>
         <TradeSettingsPopover
           :context="TradeSettingsContext.trade"
           :isGasless="trading.tradeGasless.value"
@@ -173,14 +173,15 @@ export default defineComponent({
     });
 
     const tradeCardShadow = computed(() => {
-      switch (bp.value) {
-        case 'xs':
-          return 'none';
-        case 'sm':
-          return 'lg';
-        default:
-          return 'xl';
-      }
+      return 'none'
+      // switch (bp.value) {
+      //   case 'xs':
+      //     return 'none';
+      //   case 'sm':
+      //     return 'lg';
+      //   default:
+      //     return 'xl';
+      // }
     });
 
     const trading = useTrading(

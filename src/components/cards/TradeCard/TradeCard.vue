@@ -152,14 +152,15 @@ export default defineComponent({
     const liquiditySelection = computed(() => store.state.app.tradeLiquidity);
 
     const tradeCardShadow = computed(() => {
-      switch (bp.value) {
-        case 'xs':
-          return 'none';
-        case 'sm':
-          return 'lg';
-        default:
-          return 'xl';
-      }
+      return 'none'
+      // switch (bp.value) {
+      //   case 'xs':
+      //     return 'none';
+      //   case 'sm':
+      //     return 'lg';
+      //   default:
+      //     return 'xl';
+      // }
     });
 
     const wrapType = computed(() =>

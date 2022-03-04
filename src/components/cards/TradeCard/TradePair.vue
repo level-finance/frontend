@@ -154,9 +154,9 @@ watchEffect(() => {
       :disabled="tradeLoading"
     />
 
-    <div class="flex items-center my-2">
+    <div class="flex items-center justify-center my-2">
       <TradePairToggle @toggle="handleTokenSwitch" />
-      <div class="h-px mx-2 bg-gray-100 dark:bg-gray-700 flex-grow" />
+      <!-- <div class="h-px mx-2 bg-gray-100 dark:bg-gray-700 flex-grow" /> -->
       <div
         v-if="rateLabel"
         class="flex items-center text-xs text-gray-500 cursor-pointer"
