@@ -1,25 +1,26 @@
 <template>
   <BalPopover no-pad>
     <template v-slot:activator>
-      <BalBtn
-        color="white"
-        :size="upToLargeBreakpoint ? 'md' : 'sm'"
-        class="mr-2 p-1 relative"
-        :circle="upToLargeBreakpoint"
-      >
+      <BalBtn color="white" class="mr-2 p-2 relative" resetStyles>
         <ActivityIcon v-if="pendingTransactions.length === 0" />
+        <!-- TODO -->
         <ActivityCounter v-else :count="pendingTransactions.length" />
       </BalBtn>
     </template>
-    <BalCard class="w-72" noPad noBorder>
+    <BalCard class="w-72 bg-green-200" noPad noBorder>
       <template v-slot:header>
-        <div
-          class="p-3 w-full flex items-center justify-between border-b dark:border-gray-900"
-        >
-          <h5>{{ $t('recentActivityTitle') }}</h5>
+        <div class="pt-5 px-6 w-full flex items-center justify-between">
+          <h5 class="text-lg text-green-dark font-bold">
+            {{ $t('recentActivityTitle') }}
+          </h5>
         </div>
       </template>
-      <div :class="['p-3', { 'h-72 overflow-auto': transactions.length > 5 }]">
+      <div
+        :class="[
+          'mt-2 px-6 pb-5 text-gray-dark text-sm font-bold',
+          { 'h-72 overflow-auto': transactions.length > 5 }
+        ]"
+      >
         <template v-if="transactions.length > 0">
           <ActivityRows
             :transactions="pendingTransactions"
@@ -45,8 +46,10 @@
         <template v-else>{{ $t('noRecentActivity') }}</template>
       </div>
       <template v-if="transactions.length > 0" v-slot:footer>
-        <div class="w-full p-3 rounded-b-lg bg-white dark:bg-gray-800 text-sm">
-          <a @click="clearAllTransactions()" class="text-blue-500">
+        <div
+          class="w-full px-6 pb-5 rounded-b-lg bg-white dark:bg-gray-800 text-lg"
+        >
+          <a @click="clearAllTransactions()" class="text-green-dark">
             {{ $t('clearTransactions') }}
           </a>
         </div>

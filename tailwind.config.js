@@ -85,7 +85,8 @@ module.exports = {
         green: {
           DEFAULT: '#60D09A',
           500: '#60D09A',
-          600: '#00BF63'
+          600: '#00BF63',
+          dark: '#2EB67D'
         },
         zimablue: {
           DEFAULT: '#00FFFF'
