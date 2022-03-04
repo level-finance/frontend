@@ -176,7 +176,6 @@ export default defineComponent({
       {
         name: t('poolValue'),
         accessor: pool => fNum2(pool.totalLiquidity, FNumFormats.fiat),
-        align: 'right',
         id: 'poolValue',
         sortKey: pool => {
           const apr = Number(pool.totalLiquidity);
@@ -184,7 +183,8 @@ export default defineComponent({
           return apr;
         },
         width: 250,
-        cellClassName: 'font-numeric'
+        cellClassName: 'font-numeric',
+        align: 'center'
       },
       {
         name: t('volume24h', [t('hourAbbrev')]),
