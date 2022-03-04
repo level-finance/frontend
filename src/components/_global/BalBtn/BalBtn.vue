@@ -191,9 +191,7 @@ export default defineComponent({
     });
 
     const shadowClasses = computed(() => {
-      if (props.flat || props.disabled || props.loading) return '';
-      if (props.size === 'sm') return 'shadow hover:shadow-none';
-      return 'shadow hover:shadow-none';
+      return '';
     });
 
     const btnClasses = computed(() => {
