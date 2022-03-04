@@ -437,7 +437,7 @@ function onAlertMountChange() {
           :disabled="isProceedDisabled"
           @click="handleProceed"
           :reset-styles="true"
-          class="level-btn level-btn_half-filled"
+          class="level-btn level-btn_filled"
           >{{ walletLabel }}</BalBtn
         >
       </BalStack>
