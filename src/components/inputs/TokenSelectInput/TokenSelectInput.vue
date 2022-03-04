@@ -15,6 +15,7 @@ type Props = {
   excludedTokens?: string[];
   options?: string[];
   disableInjection?: boolean;
+  outlined?: boolean;
 };
 
 /**
@@ -26,7 +27,8 @@ const props = withDefaults(defineProps<Props>(), {
   weight: 0,
   excludedTokens: () => [],
   options: () => [],
-  disableInjection: false
+  disableInjection: false,
+  outlined: false
 });
 
 const emit = defineEmits<{
@@ -71,8 +73,12 @@ function tokenFor(option: string): TokenInfo {
     <div
       v-if="hasToken && options.length === 0"
       :class="[
-        'token-select-input level-btn level-btn_filled group',
-        { selectable: !fixed }
+        'token-select-input level-btn group',
+        {
+          selectable: !fixed,
+          'level-btn_filled': !outlined,
+          'level-btn_outlined border-zimablue hover:bg-zimablue px-3 text-black': outlined
+        }
       ]"
       @click="toggleModal"
     >
@@ -91,6 +97,12 @@ function tokenFor(option: string): TokenInfo {
           })
         }}
       </span>
+      <BalIcon
+        v-if="outlined"
+        name="chevron-down"
+        size="lg"
+        class="text-green group-hover:white ml-2"
+      />
     </div>
     <BalDropdown
       v-else-if="hasToken && fixed && options.length > 0"

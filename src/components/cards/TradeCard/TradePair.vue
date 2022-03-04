@@ -152,6 +152,7 @@ watchEffect(() => {
       @update:amount="handleInAmountChange"
       @update:address="handleInputTokenChange"
       :disabled="tradeLoading"
+      :outlined="true"
     />
 
     <div class="flex items-center justify-center my-2">
@@ -175,6 +176,7 @@ watchEffect(() => {
       noRules
       noMax
       :disabled="tradeLoading"
+      :outlined="true"
     />
   </div>
 </template>

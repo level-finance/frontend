@@ -1,11 +1,16 @@
 <template>
   <BalLoadingBlock v-if="isLoading" class="h-96 mt-16" />
   <div :class="[wrapperClass]" v-else @mouseleave="handleMouseLeave">
-    <div id="lineChartHeader" class="mb-4" v-if="showHeader">
-      <h3 class="text-gray-800 dark:text-gray-400 text-xl tracking-wider">
+    <div
+      id="lineChartHeader"
+      class="mb-4 border-b-3 border-green px-4"
+      v-if="showHeader"
+    >
+      <h3 class="text-gray-800 dark:text-gray-400 text-lg tracking-wider">
         {{ currentValue }}
       </h3>
       <span
+        class="text-lg font-bold"
         :class="{
           'text-green-400': change >= 0,
           'text-red-400': change < 0,

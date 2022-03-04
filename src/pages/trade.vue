@@ -100,7 +100,7 @@ onMounted(() => {
   </Col3Layout>
 
   <teleport to="#modal">
-    <BalModal :show="showPriceGraphModal" @close="onPriceGraphModalClose">
+    <BalModal noPad :show="showPriceGraphModal" @close="onPriceGraphModalClose">
       <div class="graph-modal">
         <PairPriceGraph
           :toggleModal="togglePairPriceGraphModal"
