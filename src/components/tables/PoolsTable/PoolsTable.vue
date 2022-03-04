@@ -189,7 +189,7 @@ export default defineComponent({
       {
         name: t('volume24h', [t('hourAbbrev')]),
         accessor: pool => fNum2(pool.dynamic.volume, FNumFormats.fiat),
-        align: 'right',
+        align: 'center',
         id: 'poolVolume',
         sortKey: pool => {
           const apr = Number(pool.dynamic.volume);

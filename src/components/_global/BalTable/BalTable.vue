@@ -23,7 +23,7 @@
             v-for="(column, columnIndex) in filteredColumns"
             :key="`header-${column.id}`"
             :class="[
-              'p-6 bg-white dark:bg-gray-850 headingShadow border-b-4 border-green dark:border-gray-900',
+              'p-5 bg-white dark:bg-gray-850 headingShadow border-b-4 border-green dark:border-gray-900',
               column.className,
               getHorizontalStickyClass(columnIndex),
               isColumnStuck ? 'isSticky' : '',
@@ -100,7 +100,10 @@
           ></td>
         </tr>
         <!-- end measurement row -->
-        <tbody v-if="!isLoading && tableData.length" class="text-xl">
+        <tbody
+          v-if="!isLoading && tableData.length"
+          class="text-2xl text-gray-dark font-bold"
+        >
           <tr
             v-for="(dataItem, index) in tableData"
             :key="`tableRow-${index}`"

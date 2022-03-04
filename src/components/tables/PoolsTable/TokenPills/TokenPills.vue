@@ -58,7 +58,7 @@ const MAX_PILLS = 11;
 </script>
 
 <template>
-  <div class="-mt-1 flex flex-wrap">
+  <div class="-mt-1 flex flex-wrap -space-x-4 text-xl">
     <template v-if="isStablePool">
       <StableTokenPill
         v-for="token in visibleTokens"
