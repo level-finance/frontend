@@ -28,7 +28,6 @@
             :no-pad="noPad"
             :no-content-pad="noContentPad"
             class="modal-card"
-            noBorder
             overflowYScroll
           >
             <template v-if="$slots.header" v-slot:header>

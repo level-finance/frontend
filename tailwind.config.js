@@ -87,6 +87,9 @@ module.exports = {
           500: '#60D09A',
           600: '#00BF63'
         },
+        zimablue: {
+          DEFAULT: '#00FFFF'
+        },
         orange: {
           DEFAULT: '#FE9900'
         },
