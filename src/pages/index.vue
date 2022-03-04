@@ -3,10 +3,17 @@
     <template v-if="isWalletReady">
       <div class="px-4 lg:px-0">
         <BalStack horizontal justify="between" align="center">
-          <h3>{{ $t('myInvestments') }}</h3>
-          <BalBtn @click="navigateToCreatePool" color="blue" size="sm">{{
-            $t('createAPool.title')
-          }}</BalBtn>
+          <h3 class="lowercase">{{ $t('myInvestments') }}</h3>
+          <BalBtn
+            @click="navigateToCreatePool"
+            color="green"
+            size="2xl"
+            class="font-secondary"
+            :class="{ 'mt-4': upToMediumBreakpoint }"
+            :block="upToMediumBreakpoint"
+          >
+            {{ $t('createAPool.title') }}
+          </BalBtn>
         </BalStack>
       </div>
       <PoolsTable

@@ -41,12 +41,11 @@ module.exports = {
       ]
     },
     boxShadow: {
-      sm: '0 2px 4px 0 rgba(0,0,0,0.05)',
-      DEFAULT:
-        '0px 4px 6px -1px rgba(0, 0, 0, 0.05), 0px 2px 4px -1px rgba(0, 0, 0, 0.05)',
-      lg: '0 2px 4px 0 rgba(0,0,0,0.03), 0 10px 40px 0 rgba(0,0,0,0.05)',
-      xl: '0 2px 4px 0 rgba(0,0,0,0.05), 0 0px 40px 0 rgba(0,0,0,0.1)',
-      inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.05)',
+      sm: 'none',
+      DEFAULT: '0px 4px 10px rgba(254, 153, 0, 0.4)',
+      lg: 'none',
+      xl: 'none',
+      inner: 'none',
       none: 'none'
     },
     borderColor: theme => ({

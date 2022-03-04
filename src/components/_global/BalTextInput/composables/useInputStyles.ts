@@ -42,6 +42,8 @@ export default function useInputStyles(props, isInvalid: Ref<boolean>, attrs) {
 
   const inputHeightClass = (): string => {
     switch (props.size) {
+      case 'auto':
+        return 'h-auto';
       case 'xs':
         return 'h-6';
       case 'sm':

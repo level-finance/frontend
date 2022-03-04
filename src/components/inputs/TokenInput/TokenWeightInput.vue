@@ -142,6 +142,7 @@ watchEffect(() => {
     @update:modelValue="emit('update:weight', $event)"
     @update:isValid="emit('update:isValid', $event)"
     @keydown="emit('keydown', $event)"
+    size="auto"
   >
     <template v-slot:prepend>
       <TokenSelectInput
@@ -153,12 +154,12 @@ watchEffect(() => {
       />
     </template>
     <template v-slot:append>
-      <BalStack align="center" horizontal spacing="none">
-        <BalIcon name="percent" size="sm" class="mt-3 text-gray-600" />
+      <BalStack class="h-full" align="center" horizontal spacing="none">
+        <BalIcon name="percent" size="sm" class="text-gray-600" />
         <button
           @click="lockWeight(false)"
           :class="[
-            'ml-2 ease-color mt-1 text-gray-500 dark:text-gray-300 hover:text-blue-800 dark:hover:text-blue-800 flex items-center shadow-sm border dark:border-0 bg-gray-50 dark:bg-gray-850 rounded-full p-1 justify-center',
+            'ml-2 ease-color text-gray-500 dark:text-gray-300 hover:text-blue-800 dark:hover:text-blue-800 flex items-center shadow-sm border dark:border-0 bg-gray-50 dark:bg-gray-850 rounded-full p-1 justify-center',
             {
               'text-blue-500 dark:text-blue-500': isLocked,
               'border-transparent': !isLocked
@@ -185,7 +186,7 @@ watchEffect(() => {
         <button
           @click="emit('delete')"
           :class="[
-            'ml-2 ease-color mt-1 text-gray-500 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-500 flex items-center shadow-sm border dark:border-0 bg-gray-50 dark:bg-gray-850 rounded-full p-1 justify-center'
+            'ml-2 ease-color text-gray-500 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-500 flex items-center shadow-sm border dark:border-0 bg-gray-50 dark:bg-gray-850 rounded-full p-1 justify-center'
           ]"
         >
           <BalIcon name="trash-2" size="sm" />

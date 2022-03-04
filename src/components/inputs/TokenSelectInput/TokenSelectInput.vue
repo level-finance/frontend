@@ -70,7 +70,10 @@ function tokenFor(option: string): TokenInfo {
   <div>
     <div
       v-if="hasToken && options.length === 0"
-      :class="['token-select-input selected group', { selectable: !fixed }]"
+      :class="[
+        'token-select-input level-btn level-btn_filled group',
+        { selectable: !fixed }
+      ]"
       @click="toggleModal"
     >
       <div class="w-8">
@@ -96,7 +99,9 @@ function tokenFor(option: string): TokenInfo {
       @selected="emit('update:modelValue', $event)"
     >
       <template #activator>
-        <div class="token-select-input selected group selectable">
+        <div
+          class="token-select-input level-btn level-btn_filled group selectable"
+        >
           <div class="w-8">
             <BalAsset :address="token?.address" class="shadow" />
           </div>
@@ -131,7 +136,7 @@ function tokenFor(option: string): TokenInfo {
 
     <div
       v-else
-      class="token-select-input unselected selectable"
+      class="token-select-input level-btn level-btn_filled selectable"
       @click="toggleModal"
     >
       {{ $t('selectToken') }}
@@ -152,20 +157,11 @@ function tokenFor(option: string): TokenInfo {
 
 <style scoped>
 .token-select-input {
-  @apply shadow rounded-lg flex items-center h-10 px-2 whitespace-nowrap;
-  @apply text-sm;
+  @apply flex items-center whitespace-nowrap max-h-10;
   font-variation-settings: 'wght' 700;
 }
 
 .selectable {
-  @apply cursor-pointer hover:shadow-none transition-shadow;
-}
-
-.unselected {
-  @apply bg-blue-500 text-white;
-}
-
-.selected {
-  @apply bg-gray-50 dark:bg-gray-700 text-black dark:text-white;
+  @apply cursor-pointer;
 }
 </style>
