@@ -1,3 +1,47 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .level-btn {
+        @apply cursor-pointer rounded-20px text-2xl text-green font-bold border-2 border-green py-1.5 px-7;
+    }
+    .level-btn:hover {
+        @apply bg-green shadow;
+    }
+    .level-btn:active {
+        @apply bg-green-600 border-green-600;
+    }
+    .level-btn:disabled {
+        @apply bg-gray border-gray text-gray;
+    }
+
+
+    .level-btn_half-filled {
+        @apply bg-green bg-opacity-25 text-green;
+    }
+    .level-btn_half-filled:hover {
+        @apply bg-green bg-opacity-25;
+    }
+    .level-btn_half-filled:active {
+        @apply bg-green-600 bg-opacity-25;
+    }
+    .level-btn_half-filled:disabled {
+        @apply bg-gray bg-opacity-25 text-gray;
+    }
+
+
+    .level-btn_filled {
+        @apply bg-green text-white;
+    }
+    .level-btn_filled:hover {
+        @apply bg-green;
+    }
+    .level-btn_filled:active {
+        @apply bg-green-600;
+    }
+    .level-btn_filled:disabled {
+        @apply bg-gray;
+    }
+
+}
