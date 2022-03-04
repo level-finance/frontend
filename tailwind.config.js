@@ -64,9 +64,12 @@ module.exports = {
       borderRadius: {
         '20px': '20px'
       },
+      borderWidth: {
+        '3': '3px'
+      },
       colors: {
         gray: {
-          DEFAULT: '#323232',
+          DEFAULT: '#868686',
           50: '#F8FAFC',
           100: '#EFEFF1',
           200: '#E2E8F0',
@@ -77,10 +80,13 @@ module.exports = {
           700: '#334155',
           800: '#1E293B',
           850: '#162031',
-          900: '#0F172A'
+          900: '#323232',
+          dark: '#323232'
         },
         green: {
-          DEFAULT: '#60D09A'
+          DEFAULT: '#60D09A',
+          500: '#60D09A',
+          600: '#00BF63'
         },
         orange: {
           DEFAULT: '#FE9900'

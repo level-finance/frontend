@@ -50,17 +50,21 @@ export default defineComponent({
       validator: (val: string): boolean => {
         return ['', 'none', 'sm', 'md', 'lg', 'xl'].includes(val);
       }
+    },
+    cardContainerStyles: {
+      type: Object,
+      default: undefined
     }
   },
 
   setup(props) {
     const borderClasses = computed(() => {
-      return 'border dark:border-gray-900';
+      return 'border-3 border-green dark:border-gray-900';
     });
 
     const cardClasses = computed(() => {
       return {
-        'rounded-lg': !props.square,
+        'rounded-20px': !props.square,
         'overflow-hidden': !props.exposeOverflow,
         [`bg-white dark:bg-gray-${props.darkBgColor}`]: true,
         [`shadow${props.shadow ? '-' : ''}${props.shadow}`]: true,

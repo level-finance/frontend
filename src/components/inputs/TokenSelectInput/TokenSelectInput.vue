@@ -88,12 +88,6 @@ function tokenFor(option: string): TokenInfo {
           })
         }}
       </span>
-      <BalIcon
-        v-if="!fixed"
-        name="chevron-down"
-        size="sm"
-        class="text-blue-500 group-hover:text-pink-500 ml-2"
-      />
     </div>
     <BalDropdown
       v-else-if="hasToken && fixed && options.length > 0"
@@ -118,11 +112,6 @@ function tokenFor(option: string): TokenInfo {
               })
             }}
           </span>
-          <BalIcon
-            name="chevron-down"
-            size="sm"
-            class="text-blue-500 group-hover:text-pink-500 ml-2"
-          />
         </div>
       </template>
       <template #option="{ option: address }">
@@ -136,11 +125,6 @@ function tokenFor(option: string): TokenInfo {
               {{ optionToken?.symbol }}
             </span>
           </div>
-          <BalIcon
-            v-if="optionToken.address === modelValue"
-            name="check"
-            class="text-blue-500 ml-4"
-          />
         </div>
       </template>
     </BalDropdown>
@@ -151,7 +135,6 @@ function tokenFor(option: string): TokenInfo {
       @click="toggleModal"
     >
       {{ $t('selectToken') }}
-      <BalIcon name="chevron-down" size="sm" class="ml-2" />
     </div>
 
     <teleport to="#modal">
