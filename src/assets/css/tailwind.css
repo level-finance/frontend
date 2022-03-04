@@ -13,7 +13,10 @@
         @apply bg-green-600 text-white border-green-600;
     }
     .level-btn:disabled {
-        @apply bg-gray border-gray text-white;
+        @apply bg-gray border-gray text-white cursor-not-allowed;
+    }
+    .level-btn:disabled:hover {
+        @apply bg-gray shadow-none;
     }
 
 
@@ -27,6 +30,9 @@
         @apply bg-green-600 bg-opacity-25 text-green-600;
     }
     .level-btn_half-filled:disabled {
+        @apply bg-gray bg-opacity-25 text-gray cursor-not-allowed;
+    }
+    .level-btn_half-filled:disabled:hover {
         @apply bg-gray bg-opacity-25 text-gray;
     }
 
@@ -41,7 +47,9 @@
         @apply bg-green-600;
     }
     .level-btn_filled:disabled {
+        @apply bg-gray cursor-not-allowed;
+    }
+    .level-btn_filled:disabled:hover {
         @apply bg-gray;
     }
-
 }
