@@ -1,7 +1,11 @@
 <template>
   <BalModal show @close="onClose" :title="labels.modalTitle">
     <div>
-      <BalCard noPad shadow="none" class="relative mb-3 overflow-auto border-4 border-green">
+      <BalCard
+        noPad
+        shadow="none"
+        class="relative mb-3 overflow-auto border-4 border-green"
+      >
         <div>
           <div class="px-6 py-2.5 pl-8 relative">
             <div class="flex items-center justify-between">
@@ -30,7 +34,11 @@
           </div>
         </div>
       </BalCard>
-      <BalCard noPad shadow="none" class="relative mb-3 overflow-auto border-4 border-green">
+      <BalCard
+        noPad
+        shadow="none"
+        class="relative mb-3 overflow-auto border-4 border-green"
+      >
         <div>
           <div class="px-6 py-2.5 pl-8 relative">
             <div class="flex items-center justify-between">
