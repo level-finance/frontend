@@ -2,7 +2,8 @@
   <BalModal
     :show="isVisible"
     @close="$emit('close')"
-    title="Connect to a wallet"
+    title="Connect to A wallet"
+    class=""
   >
     <p class="pb-3 text-sm">
       {{ $t('byConnectingWallet') }}

@@ -6,7 +6,12 @@
     >
       <div v-if="imgSrc" class="feature" :style="featureStyles" />
       <div v-if="!!title || $slots.header" :class="['header', headerClasses]">
-        <component :is="titleTag" v-if="!!title" v-text="title" />
+        <component
+          :is="titleTag"
+          v-if="!!title"
+          v-text="title"
+          class="font-secondary"
+        />
         <div
           v-if="$slots.header"
           :class="['header-content', headerContentClasses]"
