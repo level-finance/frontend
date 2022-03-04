@@ -41,7 +41,7 @@ export default defineComponent({
 
   setup() {
     const route = useRoute();
-    const activeClasses = 'bg-gray-100 text-gray';
+    const activeClasses = 'bg-gray-100 text-gray-dark';
     const page = computed(() => route.name);
     const { trackGoal, Goals } = useFathom();
 
