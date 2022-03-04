@@ -21,7 +21,7 @@
             v-for="(column, columnIndex) in filteredColumns"
             :key="`header-${column.id}`"
             :class="[
-              'p-6 bg-white dark:bg-gray-850 headingShadow border-b dark:border-gray-900',
+              'p-6 bg-white dark:bg-gray-850 headingShadow border-b-4 border-green dark:border-gray-900',
               column.className,
               getHorizontalStickyClass(columnIndex),
               isColumnStuck ? 'isSticky' : '',
@@ -33,16 +33,7 @@
             :ref="setHeaderRef(columnIndex)"
             @click="handleSort(column.id)"
           >
-            <div
-              :class="[
-                'flex space-x-4',
-                column.align === 'right'
-                  ? 'justify-end'
-                  : column.align === 'left'
-                  ? 'justify-start'
-                  : 'justify-center'
-              ]"
-            >
+            <div :class="['flex space-x-4', getColumnAlignment(column)]">
               <slot
                 v-if="column.Header"
                 v-bind="column"
@@ -81,7 +72,7 @@
       />
       <div
         v-if="!isLoading && !tableData.length"
-        class="max-w-full bg-white dark:bg-gray-850 row-bg h-40 flex items-center justify-center text-gray-500"
+        class="max-w-full bg-white dark:bg-gray-850 row-bg h-40 flex items-center justify-center text-2xl"
       >
         {{ noResultsLabel || $t('noResults') }}
       </div>
@@ -99,7 +90,7 @@
             v-for="(column, columnIndex) in filteredColumns"
             :key="column.id"
             :class="[
-              column.align === 'right' ? 'text-left' : 'text-right',
+              getColumnAlignment(column),
               getHorizontalStickyClass(columnIndex),
               isColumnStuck ? 'isSticky' : '',
               'bg-white dark:bg-gray-850 p-0 m-0 h-0'
@@ -107,7 +98,7 @@
           ></td>
         </tr>
         <!-- end measurement row -->
-        <tbody v-if="!isLoading && tableData.length">
+        <tbody v-if="!isLoading && tableData.length" class="text-xl">
           <tr
             v-for="(dataItem, index) in tableData"
             :key="`tableRow-${index}`"
@@ -121,7 +112,7 @@
               v-for="(column, columnIndex) in filteredColumns"
               :key="column.id"
               :class="[
-                column.align === 'right' ? 'text-left' : 'text-right',
+                getColumnAlignment(column),
                 getHorizontalStickyClass(columnIndex),
                 isColumnStuck ? 'isSticky' : ''
               ]"
@@ -143,7 +134,7 @@
                   :class="
                     compact([
                       'px-6 py-4',
-                      column.align === 'right' ? 'text-right' : 'text-left',
+                      getColumnAlignment(column),
                       column.cellClassName
                     ])
                   "
@@ -166,7 +157,7 @@
                   :class="
                     compact([
                       'px-6 py-4',
-                      column.align === 'right' ? 'text-right' : 'text-left',
+                      getColumnAlignment(column),
                       column.cellClassName
                     ])
                   "
@@ -191,7 +182,7 @@
               :class="[
                 getHorizontalStickyClass(0),
                 isColumnStuck ? 'isSticky' : '',
-                'text-left p-6 bg-white dark:bg-gray-850 border-t dark:border-gray-900 align-top'
+                'text-left p-6 bg-white dark:bg-gray-850 border dark:border-gray-900 align-top'
               ]"
             >
               <span class="font-semibold text-left">
@@ -202,10 +193,10 @@
               v-for="(column, columnIndex) in tail(filteredColumns)"
               :key="column.id"
               :class="[
-                column.align === 'right' ? 'text-left' : 'text-right',
+                getColumnAlignment(column),
                 getHorizontalStickyClass(columnIndex + 1),
                 isColumnStuck ? 'isSticky' : '',
-                'p-6 bg-white dark:bg-gray-850 border-t dark:border-gray-900'
+                'p-6 bg-white dark:bg-gray-850 border dark:border-gray-900'
               ]"
             >
               <slot v-if="column.totalsCell" :name="column.totalsCell"> </slot>
@@ -353,6 +344,14 @@ export default defineComponent({
       }
     };
 
+    const getColumnAlignment = (column: ColumnDefinition) => {
+      return column.align === 'right'
+        ? 'justify-end text-right'
+        : column.align === 'left'
+        ? 'justify-start text-left'
+        : 'justify-center text-center';
+    };
+
     // Need a method for horizontal stickiness as we need to
     // check whether the table item belongs in the first column
     const getHorizontalStickyClass = (index: number) => {
@@ -449,6 +448,7 @@ export default defineComponent({
 
       // methods
       setHeaderRef,
+      getColumnAlignment,
       getHorizontalStickyClass,
       handleSort,
       handleRowClick,
@@ -473,6 +473,7 @@ export default defineComponent({
 <style>
 .horizontalSticky {
   @apply z-10 bg-white dark:bg-gray-850 group-hover:bg-gray-50 dark:group-hover:bg-gray-800;
+  background-clip: padding-box;
   position: sticky;
   left: 0;
   width: 100%;
@@ -501,7 +502,7 @@ export default defineComponent({
 .bal-table-pagination-btn {
   @apply flex items-center justify-center h-16 transition-all;
   @apply text-gray-500 font-medium hover:text-gray-800 dark:hover:text-gray-400;
-  @apply border-t dark:border-gray-900 rounded-b-lg;
+  @apply border-t-4 border-green dark:border-gray-900 rounded-b-lg;
   @apply hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer;
 }
 </style>
