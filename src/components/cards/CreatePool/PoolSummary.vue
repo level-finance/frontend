@@ -87,7 +87,8 @@ const chartConfig = computed(() => {
             : '#fff',
           borderWidth: 5,
           borderCap: 'butt',
-          borderJoin: 'round'
+          borderJoin: 'round',
+          borderRadius: 20
         },
         label: {
           show: false,
