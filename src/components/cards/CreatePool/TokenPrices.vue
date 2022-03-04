@@ -41,7 +41,7 @@ const hasUnknownPrice = computed(() =>
 
 <template>
   <BalCard noPad shadow="none" :noBorder="upToLargeBreakpoint">
-    <div class="p-4 border-b-3 border-green" v-if="!upToLargeBreakpoint">
+    <div class="p-4" v-if="!upToLargeBreakpoint">
       <BalStack horizontal spacing="sm" align="center">
         <h6 class="dark:text-gray-300">
           {{ $t('tokenPrices') }}
@@ -49,7 +49,7 @@ const hasUnknownPrice = computed(() =>
         <BalTooltip class="mt-1" :text="$t('correctTokenPricing')" />
       </BalStack>
     </div>
-    <div class="p-2 px-4">
+    <div v-if="knownTokens.length" class="p-2 px-4">
       <BalStack vertical isDynamic spacing="sm">
         <BalStack
           v-for="token in knownTokens"
@@ -57,11 +57,13 @@ const hasUnknownPrice = computed(() =>
           justify="between"
           align="center"
         >
-          <span>{{ tokens[token]?.symbol }}</span>
-          <BalStack horizontal justify="center">
+          <h6>{{ tokens[token]?.symbol }}</h6>
+          <BalStack horizontal justify="center" align="center">
             <div>
               <div class="-mr-1">
-                <span>{{ fNum2(priceFor(token), FNumFormats.fiat) }}</span>
+                <h6 class="text-green">
+                  {{ fNum2(priceFor(token), FNumFormats.fiat) }}
+                </h6>
               </div>
             </div>
             <img
