@@ -74,7 +74,7 @@ const activeTab = ref(tabs.value[0].value);
   <div
     class="px-4 sm:px-0 flex justify-between items-end border-b dark:border-gray-900 mb-6"
   >
-    <BalTabs v-model="activeTab" :tabs="tabs" no-pad class="-mb-px" />
+    <BalTabs v-model="activeTab" :tabs="tabs" no-pad />
   </div>
   <template v-if="isStablePhantomPool">
     <BoostedActivities

@@ -80,7 +80,8 @@ module.exports = {
           800: '#1E293B',
           850: '#162031',
           900: '#323232',
-          dark: '#323232'
+          dark: '#323232',
+          light: '#D8D8D8'
         },
         green: {
           DEFAULT: '#60D09A',

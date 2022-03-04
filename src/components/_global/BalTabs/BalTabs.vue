@@ -7,7 +7,7 @@
         :class="['bal-tab', stateClasses(tab)]"
         @click="onClick(tab)"
       >
-        {{ tab.label }}
+        <h6>{{ tab.label }}</h6>
       </div>
     </div>
   </div>
@@ -53,10 +53,8 @@ export default defineComponent({
 
     function stateClasses(tab: Tab): Record<string, boolean> {
       return {
-        'border-blue-500 text-blue-500 hover:text-blue-500': isActiveTab(tab),
-        'hover:text-black dark:hover:text-white dark:border-gray-900 transition-colors': !isActiveTab(
-          tab
-        )
+        'border-b-4 border-green text-green': isActiveTab(tab),
+        'border-b-3 border-gray-light hover:text-green': !isActiveTab(tab)
       };
     }
 
@@ -72,10 +70,10 @@ export default defineComponent({
 
 <style>
 .bal-tab {
-  @apply border-b -mb-px mr-6 py-3 cursor-pointer;
+  @apply pr-6 py-3 cursor-pointer;
 }
 
 .bal-tab-container {
-  @apply flex border-b font-medium text-gray-500 dark:border-gray-900;
+  @apply flex font-bold text-black;
 }
 </style>
