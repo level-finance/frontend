@@ -11,16 +11,13 @@
             <div
               v-for="([address, tokenMeta], i) in titleTokens"
               :key="i"
-              class="mt-2 mr-2 flex items-center px-2 h-10 bg-gray-50 dark:bg-gray-850 rounded-lg"
+              class="mt-2 mr-6 flex items-center py-2 pr-7 pl-5 h-10 bg-gray-50 border-3 border-orange dark:bg-gray-850 rounded-full text-xl font-bold"
             >
               <BalAsset :address="address" />
-              <span class="ml-2">
+              <span class="ml-3.5 mr-1.5">
                 {{ tokenMeta.symbol }}
               </span>
-              <span
-                v-if="!isStableLikePool"
-                class="font-medium text-gray-400 text-xs mt-px ml-1"
-              >
+              <span v-if="!isStableLikePool">
                 {{
                   fNum2(tokenMeta.weight, {
                     style: 'unit',
@@ -41,8 +38,8 @@
             </BalChip>
             <LiquidityAPRTooltip :pool="pool" class="-ml-1 mt-1" />
           </div>
-          <div class="flex items-center mt-2">
-            <div v-html="poolFeeLabel" class="text-sm text-gray-600" />
+          <div class="flex items-center mt-7">
+            <div v-html="poolFeeLabel" class="text-lg font-normal text-black" />
             <BalTooltip>
               <template v-slot:activator>
                 <BalLink
@@ -90,7 +87,30 @@
         />
       </div>
 
-      <div class="hidden lg:block" />
+      <div
+        v-if="!isLiquidityBootstrappingPool"
+        class="order-1 lg:order-1 px-1 lg:px-0"
+      >
+        <BalLoadingBlock
+          v-if="loadingPool"
+          class="pool-actions-card h-60 mb-4"
+        />
+        <MyPoolBalancesCard
+          v-else-if="!noInitLiquidity"
+          :pool="pool"
+          :missingPrices="missingPrices"
+          class="mb-4"
+        />
+
+        <BalLoadingBlock v-if="loadingPool" class="pool-actions-card h-40" />
+        <PoolActionsCard
+          v-else-if="!noInitLiquidity"
+          :pool="pool"
+          :missingPrices="missingPrices"
+        />
+      </div>
+
+      <!-- <div class="hidden lg:block" /> -->
 
       <div class="col-span-2 order-2 lg:order-1">
         <div class="grid grid-cols-1 gap-y-8">
@@ -119,29 +139,6 @@
             <PoolTransactionsCard :pool="pool" :loading="loadingPool" />
           </div>
         </div>
-      </div>
-
-      <div
-        v-if="!isLiquidityBootstrappingPool"
-        class="order-1 lg:order-2 px-1 lg:px-0"
-      >
-        <BalLoadingBlock
-          v-if="loadingPool"
-          class="pool-actions-card h-60 mb-4"
-        />
-        <MyPoolBalancesCard
-          v-else-if="!noInitLiquidity"
-          :pool="pool"
-          :missingPrices="missingPrices"
-          class="mb-4"
-        />
-
-        <BalLoadingBlock v-if="loadingPool" class="pool-actions-card h-40" />
-        <PoolActionsCard
-          v-else-if="!noInitLiquidity"
-          :pool="pool"
-          :missingPrices="missingPrices"
-        />
       </div>
     </div>
   </div>
@@ -389,7 +386,7 @@ export default defineComponent({
 
 <style scoped>
 .pool-title {
-  @apply mr-4 capitalize mt-2;
+  @apply mr-11 capitalize mt-2;
   font-variation-settings: 'wght' 700;
 }
 

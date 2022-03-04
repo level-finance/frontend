@@ -118,7 +118,7 @@ function fiatLabelFor(index: number, address: string): string {
   <BalCard noPad>
     <template #header>
       <div class="card-header">
-        <h5>
+        <h5 class="text-xl font-bold">
           {{ $t('poolTransfer.myPoolBalancesCard.title') }}
         </h5>
         <h5>
