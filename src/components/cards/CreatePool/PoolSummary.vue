@@ -67,9 +67,11 @@ const chartConfig = computed(() => {
       selectedMode: false,
       top: 'bottom',
       textStyle: {
-        color: darkMode.value
-          ? tailwind.theme.colors.gray['300']
-          : tailwind.theme.colors.gray['850']
+        color: tailwind.theme.colors.black,
+        fontFamily: 'courier-std',
+        fontStyle: 'bold',
+        fontSize: 20,
+        lineHeight: 22
       }
     },
     series: [
@@ -203,7 +205,9 @@ async function calculateColors() {
           {{ $t('createAPool.maxLiquidityTooltip') }}
         </BalTooltip>
       </BalStack>
-      <span>{{ fNum2(totalLiquidity.toString(), FNumFormats.fiat) }}</span>
+      <h6 class="text-green">
+        {{ fNum2(totalLiquidity.toString(), FNumFormats.fiat) }}
+      </h6>
     </BalStack>
   </BalCard>
 </template>
