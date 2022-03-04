@@ -28,14 +28,11 @@
     >
       <template v-slot:iconColumnHeader>
         <div class="flex items-center">
-          <img
+          <!-- <img
             v-if="darkMode"
             :src="require('@/assets/images/icons/tokens_white.svg')"
-          />
-          <img
-            v-else
-            :src="require('@/assets/images/icons/tokens_black.svg')"
-          />
+          /> -->
+          <img :src="require('@/assets/images/icons/tokens.svg')" />
         </div>
       </template>
       <template v-slot:iconColumnCell="pool">
@@ -154,15 +151,16 @@ export default defineComponent({
         accessor: 'uri',
         Header: 'iconColumnHeader',
         Cell: 'iconColumnCell',
-        width: 125,
-        noGrow: true
+        width: 175,
+        noGrow: true,
+        align: 'center'
       },
       {
         name: t('composition'),
         id: 'poolName',
         accessor: 'id',
         Cell: 'poolNameCell',
-        width: 350
+        width: 250
       },
       {
         name: t('myBalance'),
@@ -185,7 +183,7 @@ export default defineComponent({
           if (apr === Infinity || isNaN(apr)) return 0;
           return apr;
         },
-        width: 150,
+        width: 250,
         cellClassName: 'font-numeric'
       },
       {
@@ -198,21 +196,21 @@ export default defineComponent({
           if (apr === Infinity || isNaN(apr)) return 0;
           return apr;
         },
-        width: 175,
+        width: 200,
         cellClassName: 'font-numeric'
       },
       {
         name: t('apr'),
         Cell: 'aprCell',
         accessor: pool => pool.dynamic.apr.total,
-        align: 'right',
+        align: 'center',
         id: 'poolApr',
         sortKey: pool => {
           const apr = Number(pool.dynamic.apr.total);
           if (apr === Infinity || isNaN(apr)) return 0;
           return apr;
         },
-        width: 150
+        width: 125
       }
     ]);
 

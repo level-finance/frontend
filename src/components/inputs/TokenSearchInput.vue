@@ -4,22 +4,30 @@
       <div class="flex items-center flex-wrap">
         <BalBtn
           @click="onClick"
-          class="mr-4 mb-2 bg-orange font-bold flex items-center"
+          class="mr-5 b-2 bg-orange font-bold flex items-center"
         >
           <BalIcon name="search" size="sm" class="mr-2" />
           {{ $t('filterByToken') }}
         </BalBtn>
+        <BalIcon
+          v-if="modelValue?.length > 0"
+          name="x"
+          size="sm"
+          color="green"
+          class="mr-5 text-green"
+        />
         <BalChip
           v-for="token in modelValue"
           class="mr-2"
-          :key="token"
           color="white"
-          iconSize="sm"
+          :key="token"
+          size="2xl"
+          outline
           :closeable="true"
           @closed="$emit('remove', token)"
         >
-          <BalAsset :address="token" :size="20" class="flex-auto" />
-          <span class="ml-2">{{ tokens[token]?.symbol }}</span>
+          <BalAsset :address="token" :size="24" class="flex-auto" />
+          <span class="mx-2">{{ tokens[token]?.symbol }}</span>
         </BalChip>
       </div>
       <div

@@ -6,7 +6,7 @@
     ]"
   >
     <div class="overflow-hidden" ref="headerRef">
-      <table class="w-full table-fixed whitespace-normal">
+      <table class="w-full table-fixed whitespace-normal text-gray font-bold">
         <!-- header width handled by colgroup  -->
         <colgroup>
           <col
@@ -27,16 +27,20 @@
               isColumnStuck ? 'isSticky' : '',
               column.sortKey ? 'cursor-pointer' : '',
               currentSortColumn === column.id && currentSortDirection
-                ? 'text-blue-400'
-                : 'text-gray-800 dark:text-gray-100'
+                ? 'text-orange'
+                : ''
             ]"
             :ref="setHeaderRef(columnIndex)"
             @click="handleSort(column.id)"
           >
             <div
               :class="[
-                'flex',
-                column.align === 'right' ? 'justify-end' : 'justify-start'
+                'flex space-x-4',
+                column.align === 'right'
+                  ? 'justify-end'
+                  : column.align === 'left'
+                  ? 'justify-start'
+                  : 'justify-center'
               ]"
             >
               <slot
@@ -45,27 +49,23 @@
                 :name="column.Header"
               ></slot>
               <div v-else>
-                <h5 class="text-base">
+                <h5 class="text-2xl">
                   {{ column.name }}
                 </h5>
               </div>
-              <BalIcon
-                name="arrow-up"
-                size="sm"
+
+              <img
                 v-if="
                   currentSortColumn === column.id &&
-                    currentSortDirection === 'asc'
+                    (currentSortDirection === 'asc' ||
+                      currentSortDirection === 'desc')
                 "
-                class="ml-1 flex items-center"
-              />
-              <BalIcon
-                name="arrow-down"
-                size="sm"
-                v-if="
-                  currentSortColumn === column.id &&
-                    currentSortDirection === 'desc'
+                src="@/assets/images/icons/chevron-up.svg"
+                alt="chevron"
+                class="transition duration-300"
+                :class="
+                  currentSortDirection === 'asc' ? '' : 'transform rotate-180'
                 "
-                class="ml-1 flex items-center"
               />
             </div>
           </th>
@@ -262,7 +262,7 @@ export type ColumnDefinition<T = Data> = {
   // Extra classes to supply to the column. E.g. min width
   className?: string;
   // Left or right aligned content. E.g. Numbers should be right aligned
-  align?: 'left' | 'right';
+  align?: 'left' | 'right' | 'center';
   // Should the column width grow to fit available space?
   noGrow?: boolean;
   // Set to true to hide the column
@@ -472,7 +472,7 @@ export default defineComponent({
 
 <style>
 .horizontalSticky {
-  @apply z-10 bg-white dark:bg-gray-850 group-hover:bg-gray-50 dark:group-hover:bg-gray-800 opacity-95 xs:opacity-90;
+  @apply z-10 bg-white dark:bg-gray-850 group-hover:bg-gray-50 dark:group-hover:bg-gray-800;
   position: sticky;
   left: 0;
   width: 100%;
