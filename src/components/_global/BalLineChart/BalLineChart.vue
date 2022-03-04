@@ -1,7 +1,11 @@
 <template>
   <BalLoadingBlock v-if="isLoading" class="h-96 mt-16" />
   <div :class="[wrapperClass]" v-else @mouseleave="handleMouseLeave">
-    <div id="lineChartHeader" class="mb-4 border-b-3 border-green px-4" v-if="showHeader">
+    <div
+      id="lineChartHeader"
+      class="mb-4 border-b-3 border-green px-4"
+      v-if="showHeader"
+    >
       <h3 class="text-gray-800 dark:text-gray-400 text-lg tracking-wider">
         {{ currentValue }}
       </h3>
