@@ -5,7 +5,9 @@
         <div>
           <div class="px-6 py-2.5 pl-8 relative">
             <div class="flex items-center justify-between">
-              <div class="flex items-center py-2 px-4 rounded-full border-2 border-zimablue">
+              <div
+                class="flex items-center py-2 px-4 rounded-full border-2 border-zimablue"
+              >
                 <div class="mr-3">
                   <BalAsset
                     :address="trading.tokenIn.value.address"
@@ -32,25 +34,30 @@
         <div>
           <div class="px-6 py-2.5 pl-8 relative">
             <div class="flex items-center justify-between">
-              <div class="flex items-center py-2 px-4 rounded-full border-2 border-zimablue">
-              <div class="mr-3">
-                <BalAsset
-                  :address="trading.tokenOut.value.address"
-                  :size="23"
-                />
-              </div>
-              <div>
-                <div class="text-xl font-bold">
-                  {{
-                    fNum2(trading.tokenOutAmountInput.value, FNumFormats.token)
-                  }}
-                  {{ trading.tokenOut.value.symbol }}
+              <div
+                class="flex items-center py-2 px-4 rounded-full border-2 border-zimablue"
+              >
+                <div class="mr-3">
+                  <BalAsset
+                    :address="trading.tokenOut.value.address"
+                    :size="23"
+                  />
                 </div>
+                <div>
+                  <div class="text-xl font-bold">
+                    {{
+                      fNum2(
+                        trading.tokenOutAmountInput.value,
+                        FNumFormats.token
+                      )
+                    }}
+                    {{ trading.tokenOut.value.symbol }}
+                  </div>
                 </div>
               </div>
               <div class="text-gray-900 dark:text-gray-400 text-xl font-bold">
-                  {{ tokenOutFiatValue }}
-                  <!-- <span
+                {{ tokenOutFiatValue }}
+                <!-- <span
                     v-if="
                       trading.isBalancerTrade.value ||
                         trading.isWrapUnwrapTrade.value
@@ -61,7 +68,7 @@
                       fNum2(trading.sor.priceImpact.value, FNumFormats.percent)
                     }}
                   </span> -->
-                </div>
+              </div>
             </div>
           </div>
         </div>

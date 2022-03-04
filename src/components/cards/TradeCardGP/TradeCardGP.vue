@@ -217,7 +217,7 @@ export default defineComponent({
     });
 
     const title = computed(() => {
-      return 'Trade'
+      return 'Trade';
       // if (trading.wrapType.value === WrapType.Wrap) {
       //   return `${t('wrap')} ${trading.tokenIn.value.symbol}`;
       // }
