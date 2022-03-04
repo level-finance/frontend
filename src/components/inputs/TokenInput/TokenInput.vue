@@ -42,6 +42,7 @@ type Props = {
   disableNativeAssetBuffer?: boolean;
   hideFooter?: boolean;
   ignoreWalletBalance?: boolean;
+  outlined?: boolean;
 };
 
 /**
@@ -60,6 +61,7 @@ const props = withDefaults(defineProps<Props>(), {
   disableNativeAssetBuffer: false,
   hideFooter: false,
   ignoreWalletBalance: false,
+  outlined: false,
   options: () => [],
   rules: () => []
 });
@@ -248,6 +250,7 @@ watchEffect(() => {
           :weight="weight"
           :fixed="fixedToken"
           :options="options"
+          :outlined="outlined"
           class="mr-2"
           @update:modelValue="emit('update:address', $event)"
           :excludedTokens="excludedTokens"
