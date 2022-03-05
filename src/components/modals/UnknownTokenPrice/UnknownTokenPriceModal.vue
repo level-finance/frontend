@@ -116,9 +116,13 @@ function injectUnknownPrices() {
           ignoreWalletBalance
         />
       </BalStack>
-      <BalBtn @click="injectUnknownPrices" :disabled="isSubmitDisabled">{{
-        $t('submit')
-      }}</BalBtn>
+      <BalBtn
+        class="level-btn_filled"
+        :reset-styles="true"
+        @click="injectUnknownPrices"
+        :disabled="isSubmitDisabled"
+        >{{ $t('submit') }}</BalBtn
+      >
     </BalStack>
   </BalModal>
 </template>

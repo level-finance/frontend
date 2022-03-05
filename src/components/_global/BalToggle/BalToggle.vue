@@ -55,10 +55,10 @@ export default defineComponent({
   @apply relative inline-block w-10 align-middle select-none transition duration-200 ease-in;
 }
 .bal-toggle-checkbox {
-  @apply absolute block w-6 h-6 rounded-full bg-white border-4 border-gray-200 dark:border-gray-900 appearance-none cursor-pointer;
+  @apply absolute block w-6 h-6 rounded-full bg-white border-4 border-gray appearance-none cursor-pointer;
 }
 .bal-toggle-track {
-  @apply block overflow-hidden h-6 rounded-full bg-gray-200 dark:bg-gray-900 bg-none cursor-pointer;
+  @apply block overflow-hidden h-6 rounded-full bg-gray bg-none cursor-pointer;
 }
 .bal-toggle-checkbox:checked {
   @apply right-0 border-green-400;

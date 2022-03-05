@@ -88,7 +88,7 @@ function tokenFor(option: string): TokenInfo {
       <span class="text-base font-medium">
         {{ token?.symbol }}
       </span>
-      <span v-if="Number(weight) > 0" class="text-gray-500 ml-2">
+      <span v-if="Number(weight) > 0" class="text-black ml-2">
         {{
           fNum2(weight, {
             style: 'unit',
@@ -114,13 +114,13 @@ function tokenFor(option: string): TokenInfo {
         <div
           class="token-select-input level-btn level-btn_filled group selectable"
         >
-          <div class="w-8">
-            <BalAsset :address="token?.address" class="shadow" />
+          <div class="w-6 leading-none mr-3">
+            <BalAsset :address="token?.address" />
           </div>
           <span class="text-base font-medium">
             {{ token?.symbol }}
           </span>
-          <span v-if="Number(weight) > 0" class="text-gray-500 ml-2">
+          <span v-if="Number(weight) > 0" class="text-black ml-2">
             {{
               fNum2(weight, {
                 style: 'unit',
