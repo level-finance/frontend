@@ -1,16 +1,16 @@
 <template>
-  <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-12">
     <template v-if="loading">
       <BalLoadingBlock v-for="n in 4" :key="n" class="h-24" />
     </template>
     <template v-else>
-      <BalCard v-for="(stat, i) in stats" :key="i">
-        <div class="text-sm text-gray-500 font-medium mb-2">
+      <BalCard v-for="(stat, i) in stats" :key="i" noPad class="py-2 px-4">
+        <div class="text-lg text-black font-bold mb-2 text-center">
           {{ stat.label }}
         </div>
-        <div class="text-xl font-medium truncate flex items-center">
+        <div class="text-lg font-normal text-black truncate text-center">
           {{ stat.value }}
-          <LiquidityAPRTooltip :pool="pool" v-if="stat.id === 'apr'" />
+          <!-- <LiquidityAPRTooltip :pool="pool" v-if="stat.id === 'apr'" /> -->
         </div>
       </BalCard>
     </template>
@@ -25,12 +25,12 @@ import useNumbers, { FNumFormats } from '@/composables/useNumbers';
 
 import { DecoratedPool } from '@/services/balancer/subgraph/types';
 
-import LiquidityAPRTooltip from '@/components/tooltips/LiquidityAPRTooltip.vue';
+// import LiquidityAPRTooltip from '@/components/tooltips/LiquidityAPRTooltip.vue';
 import { APR_THRESHOLD } from '@/constants/poolAPR';
 
 export default defineComponent({
   components: {
-    LiquidityAPRTooltip
+    // LiquidityAPRTooltip
   },
 
   props: {

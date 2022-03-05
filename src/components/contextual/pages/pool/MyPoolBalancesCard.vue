@@ -121,9 +121,9 @@ function fiatLabelFor(index: number, address: string): string {
         <h5 class="text-xl font-bold">
           {{ $t('poolTransfer.myPoolBalancesCard.title') }}
         </h5>
-        <h5>
+        <!-- <h5>
           {{ isWalletReady ? fiatTotal : '-' }}
-        </h5>
+        </h5> -->
       </div>
     </template>
     <div class="px-4 py-2">
@@ -132,11 +132,13 @@ function fiatLabelFor(index: number, address: string): string {
         :key="address"
         class="asset-row"
       >
-        <div class="flex items-center">
+        <div
+          class="flex items-center py-2 pr-7 pl-5 h-10 bg-white border-2 border-orange dark:bg-gray-850 rounded-full text-xl font-bold"
+        >
           <BalAsset
             :address="poolTokens[index].address"
-            :size="36"
-            class="mr-4"
+            :size="24"
+            class="mr-2"
           />
           <div class="flex flex-col">
             <span>
@@ -145,9 +147,9 @@ function fiatLabelFor(index: number, address: string): string {
               </span>
               {{ poolTokens[index].symbol }}
             </span>
-            <span class="text-gray-500 text-sm">
+            <!-- <span class="text-gray-500 text-sm">
               {{ poolTokens[index].name }}
-            </span>
+            </span> -->
           </div>
         </div>
 
@@ -157,9 +159,9 @@ function fiatLabelFor(index: number, address: string): string {
               ? fNum2(propTokenAmounts[index], FNumFormats.token)
               : '-'
           }}
-          <span class="text-gray-500 text-sm">
+          <!-- <span class="text-gray-500 text-sm">
             {{ isWalletReady ? fiatLabelFor(index, address) : '-' }}
-          </span>
+          </span> -->
         </span>
       </div>
     </div>
@@ -168,11 +170,11 @@ function fiatLabelFor(index: number, address: string): string {
 
 <style scoped>
 .card-header {
-  @apply p-4 w-full flex items-center justify-between;
-  @apply border-b dark:border-gray-700;
+  @apply p-4 pb-0 w-full flex items-center justify-between;
+  /* @apply border-b dark:border-gray-700; */
 }
 
 .asset-row {
-  @apply py-3 flex justify-between items-center text-lg;
+  @apply py-1.5 flex justify-between items-center text-lg;
 }
 </style>

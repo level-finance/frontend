@@ -386,7 +386,7 @@
     },
     "pool": "Pool",
     "poolBalance": "Pool balance",
-    "poolComposition": "Pool composition",
+    "poolComposition": "POOL COMPOSITION",
     "poolCreated": "Pool created!",
     "poolName": "Pool name",
     "poolPercent": "Pool %",
@@ -394,7 +394,7 @@
     "poolSymbol": "Pool symbol",
     "poolTokenName": "Pool token name",
     "poolTransactions": {
-        "title": "Pool transactions",
+        "title": "POOL TRANSACTION",
         "tabs": {
             "allTransactions": "Transactions",
             "myTransactions": "My transactions",

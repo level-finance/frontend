@@ -11,7 +11,7 @@
             <div
               v-for="([address, tokenMeta], i) in titleTokens"
               :key="i"
-              class="mt-2 mr-6 flex items-center py-2 pr-7 pl-5 h-10 bg-gray-50 border-3 border-orange dark:bg-gray-850 rounded-full text-xl font-bold"
+              class="mt-2 mr-6 flex items-center py-2 pr-7 pl-5 h-10 bg-white border-2 border-orange dark:bg-gray-850 rounded-full text-xl font-bold"
             >
               <BalAsset :address="address" />
               <span class="ml-3.5 mr-1.5">
@@ -127,7 +127,7 @@
           </div>
 
           <div class="mb-4">
-            <h4 v-text="$t('poolComposition')" class="px-4 lg:px-0 mb-4" />
+            <h4 v-text="$t('poolComposition')" class="px-4 lg:px-0 mb-4 " />
             <PoolBalancesCard :pool="pool" :loading="loadingPool" />
           </div>
 

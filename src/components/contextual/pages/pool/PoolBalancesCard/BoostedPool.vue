@@ -100,13 +100,17 @@ function getTokenShare(address: string) {
             noStyle
             class="flex items-center"
           >
-            <BalAsset :address="address" class="mr-2" />
-            {{ pool.onchain.tokens[address].symbol }}
-            <BalIcon
-              name="arrow-up-right"
-              size="sm"
-              class="ml-2 text-gray-500 hover:text-blue-500 transition-colors"
-            />
+            <div
+              class="flex items-center py-2 pr-5 pl-5 h-10 bg-white border-2 border-orange rounded-full text-xl font-bold"
+            >
+              <BalAsset :address="address" class="mr-2" />
+              {{ pool.onchain.tokens[address].symbol }}
+              <!-- <BalIcon
+                name="arrow-up-right"
+                size="sm"
+                class="ml-2 text-gray-500 hover:text-blue-500 transition-colors"
+              /> -->
+            </div>
           </BalLink>
           <template #item="{ item: asset }">
             <AssetRow
