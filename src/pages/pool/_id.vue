@@ -27,7 +27,7 @@
                 }}
               </span>
             </div>
-            <BalChip
+            <!-- <BalChip
               v-if="pool.dynamic.isNewPool"
               color="red"
               size="sm"
@@ -35,7 +35,7 @@
               :outline="false"
             >
               {{ $t('new') }}
-            </BalChip>
+            </BalChip> -->
             <LiquidityAPRTooltip :pool="pool" class="-ml-1 mt-1" />
           </div>
           <div class="flex items-center mt-7">
