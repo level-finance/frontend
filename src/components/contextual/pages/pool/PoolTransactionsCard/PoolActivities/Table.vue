@@ -213,17 +213,18 @@ function getJoinExitDetails(amounts: PoolActivity['amounts']) {
       </template>
 
       <template v-slot:detailsCell="action">
-        <div class="px-6 py-4 flex -mt-1 flex-wrap">
+        <div class="px-6 py-4 flex -mt-1 flex-wrap justify-center">
           <template v-for="(tokenAmount, i) in action.tokenAmounts" :key="i">
             <div
-              class="m-1 flex items-center p-1 px-2 bg-gray-50 dark:bg-gray-700 rounded-lg"
+              class="flex items-center py-2 pr-5 pl-5 h-10 bg-white border-2 border-green mx-1.5 rounded-full text-xl font-bold"
               v-if="tokenAmount.amount !== '0'"
             >
-              <BalAsset
+              <!-- <BalAsset
                 :address="tokenAmount.address"
                 class="mr-2 flex-shrink-0"
-              />
-              <span class="font-numeric">{{ tokenAmount.amount }}</span>
+              /> -->
+              <span>{{ tokenAmount.symbol }}</span>
+              <!-- <span class="font-numeric">{{ tokenAmount.amount }}</span> -->
             </div>
           </template>
         </div>
@@ -241,17 +242,17 @@ function getJoinExitDetails(amounts: PoolActivity['amounts']) {
             class="flex items-center justify-end wrap whitespace-nowrap text-right"
           >
             {{ action.formattedDate }}
-            <BalLink
+            <!-- <BalLink
               :href="explorerLinks.txLink(action.tx)"
               external
               class="ml-2 flex items-center"
-            >
-              <BalIcon
-                name="arrow-up-right"
-                size="sm"
-                class="text-gray-500 hover:text-blue-500 transition-colors"
-              />
-            </BalLink>
+            > -->
+            <!-- <BalIcon
+              name="arrow-up-right"
+              size="sm"
+              class="text-gray-500 hover:text-blue-500 transition-colors"
+            /> -->
+            <!-- </BalLink> -->
           </div>
         </div>
       </template>
