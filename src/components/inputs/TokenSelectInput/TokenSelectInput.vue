@@ -124,7 +124,8 @@ function tokenFor(option: string): TokenInfo {
           <span class="text-lg font-medium">
             {{ token?.symbol }}
           </span>
-          <span v-if="Number(weight) > 0"
+          <span
+            v-if="Number(weight) > 0"
             class="text-white ml-2 text-lg"
             :class="{ 'text-black': outlined }"
           >
@@ -144,7 +145,7 @@ function tokenFor(option: string): TokenInfo {
           class="flex items-center justify-between"
         >
           <div class="flex items-center">
-            <BalAsset :address="optionToken?.address"  />
+            <BalAsset :address="optionToken?.address" />
             <span class="ml-2 font-bold text-lg">
               {{ optionToken?.symbol }}
             </span>
