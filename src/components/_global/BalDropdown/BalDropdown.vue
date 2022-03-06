@@ -70,8 +70,9 @@ function handleRowClick(option: any): void {
 <style scoped>
 .bal-dropdown {
   @apply absolute shadow rounded-lg z-10;
-  @apply bg-white dark:bg-gray-800;
-  @apply border dark:border-gray-900 divide-y dark:divide-gray-900;
+  @apply bg-green-400;
+  @apply border-2 border-green divide-y divide-green;
+  @apply w-full mt-1.5;
 }
 
 .bal-dropdown-row {

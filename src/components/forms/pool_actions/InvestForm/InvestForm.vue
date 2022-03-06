@@ -212,7 +212,6 @@ watch(useNativeAsset, shouldUseNativeAsset => {
       "
       class="mb-4"
     />
-
     <TokenInput
       v-for="(n, i) in tokenAddresses.length"
       :key="i"

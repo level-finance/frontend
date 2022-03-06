@@ -85,10 +85,14 @@ function tokenFor(option: string): TokenInfo {
       <div class="w-6 leading-none mr-3">
         <BalAsset :address="token?.address" />
       </div>
-      <span class="text-base font-medium">
+      <span class="text-lg font-medium">
         {{ token?.symbol }}
       </span>
-      <span v-if="Number(weight) > 0" class="text-black ml-2">
+      <span
+        v-if="Number(weight) > 0"
+        class="text-white ml-2 text-lg"
+        :class="{ 'text-black': outlined }"
+      >
         {{
           fNum2(weight, {
             style: 'unit',
@@ -117,10 +121,13 @@ function tokenFor(option: string): TokenInfo {
           <div class="w-6 leading-none mr-3">
             <BalAsset :address="token?.address" />
           </div>
-          <span class="text-base font-medium">
+          <span class="text-lg font-medium">
             {{ token?.symbol }}
           </span>
-          <span v-if="Number(weight) > 0" class="text-black ml-2">
+          <span v-if="Number(weight) > 0"
+            class="text-white ml-2 text-lg"
+            :class="{ 'text-black': outlined }"
+          >
             {{
               fNum2(weight, {
                 style: 'unit',
@@ -137,8 +144,8 @@ function tokenFor(option: string): TokenInfo {
           class="flex items-center justify-between"
         >
           <div class="flex items-center">
-            <BalAsset :address="optionToken?.address" class="shadow" />
-            <span class="ml-1 font-medium">
+            <BalAsset :address="optionToken?.address"  />
+            <span class="ml-2 font-bold text-lg">
               {{ optionToken?.symbol }}
             </span>
           </div>
