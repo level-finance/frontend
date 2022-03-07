@@ -43,7 +43,11 @@ const { classes: iconClasses, iconSize } = useCloseIconClasses(props);
       </span>
       <slot v-else />
       <div v-if="closeable" @click="emit('closed')">
-        <BalIcon name="x" :size="iconSize" :class="['close', iconClasses]" />
+        <img
+          src="@/assets/images/icons/cross.svg"
+          alt="Cross Icon"
+          :class="['close', iconClasses]"
+        />
       </div>
     </div>
   </div>

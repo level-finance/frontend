@@ -9,12 +9,11 @@
           <BalIcon name="search" size="sm" class="mr-2" />
           {{ $t('filterByToken') }}
         </BalBtn>
-        <BalIcon
+        <img
           v-if="modelValue?.length > 0"
-          name="x"
-          size="sm"
-          color="green"
-          class="mr-5 text-green"
+          src="@/assets/images/icons/cross.svg"
+          alt="Cross Icon"
+          class="mr-5"
         />
         <BalChip
           v-for="token in modelValue"
