@@ -4,7 +4,7 @@
       <div class="flex justify-between items-center mb-4">
         <h5 v-text="$t('account')" class="leading-none" />
         <div v-if="!hideDisconnect">
-          <BalBtn outline color="gray" size="xs" @click="disconnectWallet">
+          <BalBtn size="xs" @click="disconnectWallet">
             Disconnect
           </BalBtn>
         </div>
@@ -26,14 +26,7 @@
               <div class="ml-3 flex">
                 <BalTooltip width="auto">
                   <template v-slot:activator>
-                    <BalBtn
-                      circle
-                      color="gray"
-                      size="xs"
-                      flat
-                      @click="copyAddress"
-                      class="mr-2"
-                    >
+                    <BalBtn circle size="xs" @click="copyAddress" class="mr-2">
                       <BalIcon v-if="copiedAddress" name="check" size="xs" />
                       <BalIcon v-else name="clipboard" size="xs" />
                     </BalBtn>
@@ -45,8 +38,6 @@
                 </BalTooltip>
                 <BalBtn
                   circle
-                  flat
-                  color="gray"
                   size="xs"
                   tag="a"
                   :href="explorer.addressLink(account)"

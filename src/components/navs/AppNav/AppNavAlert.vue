@@ -6,7 +6,7 @@
       <span>{{ alert.label }}</span>
       <BalBtn
         v-if="alert.action && alert.actionLabel"
-        class="ml-4 cursor-pointer"
+        class="ml-4"
         color="white"
         size="xs"
         :label="alert.actionLabel"
@@ -24,7 +24,7 @@ import useAlerts, { Alert, AlertType } from '@/composables/useAlerts';
 import { computed, defineComponent, PropType } from 'vue';
 
 export default defineComponent({
-  name: 'NavAlert',
+  name: 'AppNavAlert',
 
   props: {
     alert: { type: Object as PropType<Alert>, required: true }

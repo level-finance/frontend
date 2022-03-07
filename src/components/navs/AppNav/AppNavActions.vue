@@ -5,23 +5,14 @@
       <AppNavClaimBtn v-if="liquidityMiningSupported" />
       <AppNavAccountBtn />
     </div>
-    <!-- <BalBtn
+    <BalBtn
       v-else
-      color="white"
-      :size="upToLargeBreakpoint ? 'md' : 'sm'"
-      @click="toggleWalletSelectModal"
-    >
-      <WalletIcon class="mr-2" />
-      <span class="hidden lg:inline-block" v-text="$t('connectWallet')" />
-      <span class="lg:hidden" v-text="$t('connect')" />
-    </BalBtn> -->
-    <button
-      v-else
-      class="py-2 px-8 text-2xl text-green border-green font-secondary rounded-3xl border-2"
+      class="py-2 px-8 text-lg lowercase"
+      :font-family="'secondary'"
       @click="toggleWalletSelectModal"
     >
       Connect a wallet
-    </button>
+    </BalBtn>
   </div>
 </template>
 

@@ -56,7 +56,6 @@
         v-else
         :label="$t('preview')"
         :disabled="tradeDisabled"
-        color="green"
         block
         @click.prevent="handlePreviewButton"
       />

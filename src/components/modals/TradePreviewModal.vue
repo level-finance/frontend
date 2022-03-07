@@ -78,9 +78,7 @@
         :label="$t('approveLidoRelayer')"
         :loading="approvingLidoRelayer"
         :loading-label="`${$t('approvingLidoRelayer')}…`"
-        color="green"
         block
-        flat
         @click.prevent="approveLidoRelayer"
       />
       <BalBtn
@@ -89,7 +87,6 @@
         :label="`${$t('approve')} ${symbolIn}`"
         :loading="approvingToken"
         :loading-label="`${$t('approving')} ${symbolIn}…`"
-        color="green"
         block
         @click.prevent="approveToken"
       />
@@ -99,7 +96,6 @@
         :label="$t('confirmTrade')"
         :loading="trading"
         :loading-label="$t('confirming')"
-        color="green"
         block
         @click.prevent="trade"
       />

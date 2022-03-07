@@ -159,8 +159,8 @@ function cancel() {
         result in your new pool being less profitable.
       </BalAlert>
       <BalStack horizontal expandChildren>
-        <BalBtn @click="cancel" block outline>Cancel</BalBtn>
-        <BalBtn @click="proceed" v-if="!existingPool" block color="gradient"
+        <BalBtn @click="cancel" block>Cancel</BalBtn>
+        <BalBtn @click="proceed" v-if="!existingPool" block
           >Continue anyway</BalBtn
         >
       </BalStack>

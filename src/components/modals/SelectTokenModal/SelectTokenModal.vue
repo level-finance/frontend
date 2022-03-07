@@ -5,10 +5,8 @@
         <div class="flex items-center">
           <BalBtn
             v-if="selectTokenList"
-            color="gray"
             size="xs"
             class="mr-2"
-            flat
             circle
             @click="onListExit"
           >

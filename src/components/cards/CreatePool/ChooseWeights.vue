@@ -347,8 +347,7 @@ function onAlertMountChange() {
                 <BalBtn
                   :disabled="maxTokenAmountReached"
                   @click="addTokenToPool"
-                  :reset-styles="true"
-                  class="level-btn border-orange"
+                  class="border-orange"
                   >{{ $t('addToken') }}
                 </BalBtn>
               </div>
@@ -436,8 +435,7 @@ function onAlertMountChange() {
         <BalBtn
           :disabled="isProceedDisabled"
           @click="handleProceed"
-          :reset-styles="true"
-          class="level-btn level-btn_filled"
+          type="filled"
           >{{ walletLabel }}</BalBtn
         >
       </BalStack>

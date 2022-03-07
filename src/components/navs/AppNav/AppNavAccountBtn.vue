@@ -3,7 +3,6 @@
     <template v-slot:activator>
       <BalBtn
         class="p-2 text-xl"
-        resetStyles
         :class="{ btn: upToLargeBreakpoint }"
         :loading="isLoadingProfile"
         :loading-label="upToLargeBreakpoint ? '' : $t('connecting')"

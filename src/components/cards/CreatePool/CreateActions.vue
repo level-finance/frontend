@@ -165,8 +165,6 @@ function handleSuccess(details: any): void {
       <BalBtn
         tag="router-link"
         :to="{ name: 'pool', params: { id: poolId } }"
-        color="gray"
-        outline
         block
         class="mt-2"
       >

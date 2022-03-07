@@ -19,12 +19,11 @@
           target="_blank"
           rel="noreferrer"
           flat
-          color="gray"
         >
           <span v-text="$t('receipt')" />
           <BalIcon name="arrow-up-right" size="sm" class="ml-1" />
         </BalBtn>
-        <BalBtn :label="closeLabel" color="gray" flat @click="$emit('close')" />
+        <BalBtn :label="closeLabel" @click="$emit('close')" />
       </div>
     </div>
   </div>

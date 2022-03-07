@@ -353,7 +353,7 @@ function saveAndProceed() {
             :disabled="isExceedingWalletBalance || hasZeroAmount"
             @click="saveAndProceed"
             block
-            color="gradient"
+            type="filled"
             >{{ t('preview') }}</BalBtn
           >
         </BalStack>

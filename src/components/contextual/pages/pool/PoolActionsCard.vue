@@ -78,16 +78,14 @@ const fiatTotal = computed(() => {
       :label="$t('connectWallet')"
       block
       @click="toggleWalletSelectModal"
-      :reset-styles="true"
-      class="level-btn_filled"
+      type="filled"
     />
     <div v-else class="grid gap-2 grid-cols-2">
       <BalBtn
         tag="router-link"
         :to="{ name: 'invest' }"
         :label="$t('invest')"
-        :reset-styles="true"
-        class="level-btn_filled"
+        type="filled"
         block
       />
       <BalBtn
@@ -95,8 +93,7 @@ const fiatTotal = computed(() => {
         :to="{ name: 'withdraw' }"
         :label="$t('withdraw.label')"
         :disabled="!hasBpt"
-        class="level-btn_filled"
-        :reset-styles="true"
+        type="filled"
         block
       />
     </div>

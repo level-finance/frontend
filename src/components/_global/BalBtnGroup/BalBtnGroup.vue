@@ -4,13 +4,9 @@
       v-for="option in options"
       :key="option.value"
       @click="onSelect(option)"
-      outline
       size="sm"
       class="capitalize mr-2 w-18 border-orange px-3 py-1.75 text-black"
-      :class="{
-        'level-btn_filled': modelValue === option.value
-      }"
-      :reset-styles="true"
+      :type="modelValue === option.value ? 'filled' : 'outline'"
       v-bind="attrs_"
     >
       {{ 'best' === option.label ? $t(option.label) : option.label }}

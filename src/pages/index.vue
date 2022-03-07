@@ -6,10 +6,12 @@
           <h3 class="lowercase">{{ $t('myInvestments') }}</h3>
           <BalBtn
             @click="navigateToCreatePool"
-            color="green"
             size="2xl"
-            class="font-secondary"
-            :class="{ 'mt-4': upToMediumBreakpoint }"
+            type="filled"
+            :class="{
+              'mt-4': upToMediumBreakpoint
+            }"
+            :font-family="'secondary'"
             :block="upToMediumBreakpoint"
           >
             {{ $t('createAPool.title') }}
@@ -34,10 +36,12 @@
         <h3 class="mb-3 lowercase">{{ $t('investmentPools') }}</h3>
         <BalBtn
           @click="navigateToCreatePool"
-          color="green"
           size="2xl"
-          class="font-secondary"
-          :class="{ 'mt-4': upToMediumBreakpoint }"
+          type="filled"
+          :class="{
+            'mt-4': upToMediumBreakpoint
+          }"
+          :font-family="'secondary'"
           :block="upToMediumBreakpoint"
         >
           {{ $t('createAPool.title') }}

@@ -4,52 +4,35 @@
 
 @layer components {
     .level-btn {
-        @apply flex justify-center items-center cursor-pointer rounded-20px text-xl text-green font-bold border-2 border-green py-1.5 px-7;
+        @apply flex justify-center items-center rounded-20px text-xl font-bold py-1.5;
     }
     .level-btn:hover {
-        @apply bg-green text-white shadow;
+        @apply shadow;
     }
     .level-btn:active {
-        @apply bg-green-600 text-white border-green-600;
+        @apply transform translate-y-px;
     }
     .level-btn:disabled {
-        @apply bg-gray border-gray text-white cursor-not-allowed;
+        @apply bg-gray shadow-none !important;
     }
-    .level-btn:disabled:hover {
-        @apply bg-gray shadow-none;
+
+    .level-btn_outlined {
+        @apply border-2;
+    }
+    .level-btn_outlined:disabled {
+        @apply bg-transparent text-gray border-gray !important;
     }
 
 
     .level-btn_half-filled {
-        @apply bg-green bg-opacity-25 text-green;
-    }
-    .level-btn_half-filled:hover {
-        @apply bg-green bg-opacity-25 text-green;
-    }
-    .level-btn_half-filled:active {
-        @apply bg-green-600 bg-opacity-25 text-green-600;
+        @apply border-2;
+        @apply bg-opacity-25;
     }
     .level-btn_half-filled:disabled {
-        @apply bg-gray bg-opacity-25 text-gray cursor-not-allowed;
-    }
-    .level-btn_half-filled:disabled:hover {
-        @apply bg-gray bg-opacity-25 text-gray;
+        @apply text-gray !important;
     }
 
-
-    .level-btn_filled {
-        @apply bg-green text-white;
-    }
-    .level-btn_filled:hover {
-        @apply bg-green;
-    }
-    .level-btn_filled:active {
-        @apply bg-green-600;
-    }
     .level-btn_filled:disabled {
-        @apply bg-gray cursor-not-allowed;
-    }
-    .level-btn_filled:disabled:hover {
-        @apply bg-gray;
+        @apply text-white !important;
     }
 }

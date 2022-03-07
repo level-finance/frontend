@@ -300,11 +300,9 @@ async function onChangeFeeController(val: string) {
           </BalStack>
         </BalStack>
         <BalBtn
-          class="level-btn_filled"
           :disabled="isProceedDisabled || isLoadingSimilarPools"
           type="submit"
           block
-          :reset-styles="true"
           @click="proceed"
           >{{ $t('next') }}</BalBtn
         >

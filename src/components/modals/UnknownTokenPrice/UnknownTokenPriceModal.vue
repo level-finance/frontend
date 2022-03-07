@@ -117,8 +117,7 @@ function injectUnknownPrices() {
         />
       </BalStack>
       <BalBtn
-        class="level-btn_filled"
-        :reset-styles="true"
+        type="filled"
         @click="injectUnknownPrices"
         :disabled="isSubmitDisabled"
         >{{ $t('submit') }}</BalBtn

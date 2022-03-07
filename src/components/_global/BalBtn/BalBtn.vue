@@ -1,11 +1,16 @@
 <template>
   <component
     :is="tag"
-    :class="['bal-btn level-btn', btnClasses]"
+    :class="[
+      'bal-btn',
+      btnClasses,
+      'level-btn',
+      `level-btn${type ? (type === 'submit' ? '_filled' : `_${type}`) : ''}`
+    ]"
     :disabled="disabled || loading"
   >
     <div v-if="loading" class="flex items-center justify-center">
-      <BalLoadingIcon :size="size" :color="iconColor" />
+      <BalLoadingIcon :size="size" />
       <span v-if="loadingLabel" class="ml-2">
         {{ loadingLabel }}
       </span>
@@ -43,32 +48,25 @@ export default defineComponent({
       validator: (val: string): boolean =>
         ['xs', 'sm', 'md', 'lg'].includes(val)
     },
+    type: {
+      type: String,
+      default: 'outlined',
+      validator: (val: string): boolean =>
+        ['outlined', 'half-filled', 'filled', 'submit'].includes(val)
+    },
     color: {
       type: String,
-      default: '',
-      validator: (val: string): boolean =>
-        [
-          'primary',
-          'gradient',
-          'gradient-reverse',
-          'gradient-pink-yellow',
-          'gray',
-          'red',
-          'white',
-          'red',
-          'green'
-        ].includes(val)
+      default: 'green'
     },
+    textColor: { type: String, default: '' },
+    fontFamily: { type: String, default: '' },
+    noPadding: { type: Boolean, default: false },
     label: { type: String, default: '' },
     block: { type: Boolean, default: false },
     circle: { type: Boolean, default: false },
-    outline: { type: Boolean, default: false },
-    flat: { type: Boolean, default: false },
-    rounded: { type: Boolean, default: false },
     loading: { type: Boolean, default: false },
     loadingLabel: { type: String, default: 'loading...' },
-    disabled: { type: Boolean, default: false },
-    resetStyles: { type: Boolean, default: false }
+    disabled: { type: Boolean, default: false }
   },
 
   setup(props) {
@@ -83,7 +81,7 @@ export default defineComponent({
         case '2xl':
           return 'px-6 h-12 text-lg md:text-2xl';
         default:
-          return 'px-4 h-12 text-xl';
+          return 'px-7 h-12 text-xl';
       }
     });
 
@@ -102,60 +100,10 @@ export default defineComponent({
       }
     });
 
-    const bgFlatClasses = computed(() => {
-      return `
-        bg-${props.color}-50 hover:bg-${props.color}-100
-        dark:bg-${props.color}-800 dark:hover:bg-${props.color}-700
-      `;
-    });
-
-    const bgColorClasses = computed(() => {
-      if (props.color) {
-        if (props.outline) return 'bg-transparent';
-        else if (props.flat) return bgFlatClasses.value;
-        else if (props.color === 'white') {
-          return 'bg-gray-50 dark:bg-gray-800';
-        } else {
-          if (props.disabled) {
-            return `bg-gray-300 dark:bg-gray-700 text-white dark:text-gray-500`;
-          }
-          if (props.loading) {
-            return `bg-${props.color}-400 dark:bg-${props.color}-dark-400`;
-          }
-
-          return `
-            bg-${props.color}-400 hover:bg-${props.color}-500
-            dark:bg-${props.color}-dark-500 dark:hover:bg-${props.color}-dark-600
-          `;
-        }
-      } else return '';
-    });
-
-    const borderClasses = computed(() => {
-      if (props.outline)
-        return `border border-${props.color}-200 dark:border-${props.color}-700`;
-      return 'border-none';
-    });
-
-    const textColorClasses = computed(() => {
-      if (props.color === 'white') {
-        if (props.outline) return 'text-white';
-        else return 'text-gray-800 dark:text-gray-100';
-      }
-      if (props.outline || props.flat)
-        return `text-${props.color}-500 dark:text-${props.color}-400`;
-      return 'text-white';
-    });
-
     const displayClasses = computed(() => {
       if (props.circle) return 'flex justify-center items-center';
       if (props.block) return 'block w-full';
       return 'inline-block';
-    });
-
-    const shapeClasses = computed(() => {
-      if (props.circle || props.rounded) return 'rounded-full';
-      return 'rounded-3xl';
     });
 
     const cursorClasses = computed(() => {
@@ -163,35 +111,70 @@ export default defineComponent({
       return 'cursor-pointer';
     });
 
-    const shadowClasses = computed(() => {
-      return '';
+    const borderClasses = computed(() => {
+      if (props.type !== 'filled' && props.type !== 'submit')
+        return `border-${props.color} active:border-${props.color}-600`;
+      return 'border-none';
+    });
+
+    const bgColorClasses = computed(() => {
+      if (props.type !== 'outlined') {
+        return `bg-${props.color} active:bg-${props.color}-600`;
+      } else {
+        return 'bg-transparent';
+      }
+    });
+
+    const textColorClasses = computed(() => {
+      if (props.textColor) {
+        return `text-${props.textColor}`;
+      }
+      switch (props.type) {
+        case 'outlined':
+          return `text-${props.color} hover:text-${props.color} active:text-${props.color}`;
+        case 'half-filled':
+          return `text-${props.color} active:text-${props.color}-600`;
+        case 'filled':
+          return 'text-white';
+        case 'submit':
+          return 'text-white';
+        default:
+          return 'text-black';
+      }
+    });
+
+    const textWeightClasses = computed(() => {
+      if (props.fontFamily === 'secondary') {
+        return 'font-secondary font-normal';
+      } else {
+        return 'font-bold';
+      }
+    });
+
+    const paddingClasses = computed(() => {
+      if (props.noPadding) {
+        return 'p-0';
+      } else {
+        return 'py-1.5 px-7';
+      }
     });
 
     const btnClasses = computed(() => {
-      if (props.resetStyles) return {};
       return {
         [sizeClasses.value]: !props.circle,
         [circleSizeClasses.value]: props.circle,
-        [bgColorClasses.value]: true,
-        [textColorClasses.value]: true,
         [borderClasses.value]: true,
+        [textColorClasses.value]: true,
+        [bgColorClasses.value]: true,
         [displayClasses.value]: true,
-        [shapeClasses.value]: true,
-        [shadowClasses.value]: true,
-        [cursorClasses.value]: true
+        [cursorClasses.value]: true,
+        [textWeightClasses.value]: true,
+        [paddingClasses.value]: true
       };
     });
 
-    const iconColor = computed(() => {
-      if (props.resetStyles) return {};
-      if (props.outline) return props.color;
-      if (props.color === 'white') return 'gray';
-      return 'white';
-    });
-
     return {
-      btnClasses,
-      iconColor
+      btnClasses
     };
   }
 });

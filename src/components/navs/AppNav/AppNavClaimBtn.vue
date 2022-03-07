@@ -312,7 +312,6 @@ async function claimAvailableRewards() {
           </template>
         </BalCard>
         <BalBtn
-          color="gradient"
           size="md"
           block
           class="mb-6"
