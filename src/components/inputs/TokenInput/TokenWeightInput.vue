@@ -156,14 +156,13 @@ watchEffect(() => {
     <template v-slot:append>
       <BalStack class="h-full" align="center" horizontal spacing="none">
         <BalIcon name="percent" size="sm" class="text-gray-600" />
-        <button
+        <BalBtn
           @click="lockWeight(false)"
-          :class="[
-            'level-btn level-btn_filled ml-2 flex items-center rounded-full justify-center p-1',
-            {
-              'bg-green-600 border-green-600': isLocked
-            }
-          ]"
+          circle
+          size="xs+"
+          class="ml-2"
+          :type="isLocked ? 'outlined' : 'filled'"
+          :no-padding="true"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -181,15 +180,17 @@ watchEffect(() => {
             <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
             <path ref="lockPath" d="M7 11V7a5 4 0 0 1 10 -2v-1"></path>
           </svg>
-        </button>
-        <button
+        </BalBtn>
+        <BalBtn
           @click="emit('delete')"
-          :class="[
-            'level-btn level-btn_filled ml-2 flex items-center rounded-full justify-center p-1'
-          ]"
+          circle
+          size="xs+"
+          class="ml-2"
+          type="filled"
+          :no-padding="true"
         >
           <BalIcon name="trash-2" size="sm" />
-        </button>
+        </BalBtn>
       </BalStack>
     </template>
   </BalTextInput>

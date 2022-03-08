@@ -89,6 +89,8 @@ export default defineComponent({
       switch (props.size) {
         case 'xs':
           return 'w-6 h-6 text-sm';
+        case 'xs+':
+          return 'w-7 h-7 text-sm';
         case 'sm':
           return 'w-9 h-9 text-lg';
         case 'md':

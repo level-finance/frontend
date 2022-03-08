@@ -8,7 +8,6 @@
         @click="onActivatorClick"
         color="white"
         :no-padding="true"
-        block
       >
         <img :src="require('@/assets/images/icons/settings.svg')" alt="" />
       </BalBtn>
