@@ -263,7 +263,7 @@ watch(useNativeAsset, shouldUseNativeAsset => {
         v-else
         :label="$t('preview')"
         :disabled="
-            !hasAmounts ||
+          !hasAmounts ||
             !hasValidInputs ||
             isMismatchedNetwork ||
             batchSwapLoading

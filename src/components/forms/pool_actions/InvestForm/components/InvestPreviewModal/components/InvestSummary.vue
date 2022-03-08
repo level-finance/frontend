@@ -137,12 +137,7 @@ function weeklyYieldForAPR(apr: string): string {
                 v-if="props.pool.hasLiquidityMiningRewards || hasThirdPartyAPR"
                 class="h-4 text-yellow-300"
               />
-              <BalIcon
-                v-else
-                name="info"
-                size="sm"
-                class="text-green ml-2"
-              />
+              <BalIcon v-else name="info" size="sm" class="text-green ml-2" />
             </template>
             <div
               class="p-2 bg-gray-50 dark:bg-gray-700 rounded-t-lg border-b dark:border-gray-700"

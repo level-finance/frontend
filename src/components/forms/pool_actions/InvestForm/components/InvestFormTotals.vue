@@ -44,7 +44,8 @@ const {
  */
 const priceImpactClasses = computed(() => ({
   'dark:bg-gray-800': !highPriceImpact.value,
-  'bg-red-500 dark:bg-red-500 text-white divide-red-400 rounded-xl red-total-row': highPriceImpact.value
+  'bg-red-500 dark:bg-red-500 text-white divide-red-400 rounded-xl red-total-row':
+    highPriceImpact.value
 }));
 
 const optimizeBtnClasses = computed(() => ({

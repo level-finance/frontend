@@ -62,10 +62,7 @@ function stateClasses(state: StepState): string {
 <template>
   <div class="flex items-center">
     <div v-for="(step, i) in steps" :key="i" class="flex items-center">
-      <div
-        v-if="i !== 0"
-        :class="['connector', `w-${spacerWidth}`]"
-      />
+      <div v-if="i !== 0" :class="['connector', `w-${spacerWidth}`]" />
       <BalTooltip :text="step.tooltip" width="44" textCenter>
         <template v-slot:activator>
           <div :class="['step', stateClasses(step.state)]">
