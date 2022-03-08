@@ -42,19 +42,22 @@ const fiatLabel = computed(() => {
 <template>
   <div class="flex justify-between">
     <div class="flex flex-col">
-      <span>
+      <span class="text-xl font-bold">
         {{ token.symbol }}
       </span>
-      <span v-if="token.name !== token.symbol" class="text-sm text-gray-500">
+      <span
+        v-if="token.name !== token.symbol"
+        class="text-base text-black font-normal"
+      >
         {{ token.name }}
       </span>
     </div>
 
     <div class="flex flex-col text-right">
-      <span>
+      <span class="text-xl font-bold">
         {{ balanceLabel }}
       </span>
-      <span class="text-sm text-gray-500">
+      <span class="text-base text-black font-normal">
         {{ fiatLabel }}
       </span>
     </div>

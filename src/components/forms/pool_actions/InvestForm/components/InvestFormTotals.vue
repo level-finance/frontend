@@ -44,7 +44,8 @@ const {
  */
 const priceImpactClasses = computed(() => ({
   'dark:bg-gray-800': !highPriceImpact.value,
-  'bg-red-500 dark:bg-red-500 text-white divide-red-400': highPriceImpact.value
+  'bg-red-500 dark:bg-red-500 text-white divide-red-400 rounded-xl red-total-row':
+    highPriceImpact.value
 }));
 
 const optimizeBtnClasses = computed(() => ({
@@ -56,10 +57,10 @@ const optimizeBtnClasses = computed(() => ({
 <template>
   <div class="data-table">
     <div class="data-table-row total-row">
-      <div class="p-2">{{ $t('total') }}</div>
+      <div class="">{{ $t('total') }}</div>
       <div class="data-table-number-col">
         {{ fNum2(fiatTotal, FNumFormats.fiat) }}
-        <div v-if="isWalletReady && !hasNoBalances" class="text-sm">
+        <!-- <div v-if="isWalletReady && !hasNoBalances" class="text-sm">
           <span v-if="maximized" class="text-gray-400 dark:text-gray-600">
             {{ $t('maxed') }}
           </span>
@@ -70,11 +71,11 @@ const optimizeBtnClasses = computed(() => ({
           >
             {{ $t('max') }}
           </span>
-        </div>
+        </div> -->
       </div>
     </div>
     <div :class="['data-table-row price-impact-row', priceImpactClasses]">
-      <div class="p-2">{{ $t('priceImpact') }}</div>
+      <div class="">{{ $t('priceImpact') }}</div>
       <div class="data-table-number-col">
         <div class="flex">
           <span v-if="!batchSwapLoading">
@@ -94,7 +95,7 @@ const optimizeBtnClasses = computed(() => ({
                 v-else
                 name="info"
                 size="xs"
-                class="text-gray-400 -mb-px ml-1"
+                class="text-green -mb-px ml-1"
               />
             </template>
           </BalTooltip>
@@ -124,23 +125,31 @@ const optimizeBtnClasses = computed(() => ({
 
 <style scoped>
 .data-table {
-  @apply border dark:border-gray-900 rounded-lg divide-y dark:divide-gray-900;
+  /* @apply border dark:border-gray-900 rounded-lg divide-y dark:divide-gray-900; */
 }
 
 .data-table-row {
-  @apply grid grid-cols-4 items-center;
-  @apply divide-x dark:divide-gray-900;
+  @apply flex justify-between items-center;
 }
 
 .data-table-number-col {
-  @apply col-span-3 p-2 flex items-center justify-between;
+  @apply flex items-center justify-between;
+  @apply text-lg font-bold rounded-t-lg;
 }
 
 .total-row {
-  @apply text-lg font-bold rounded-t-lg dark:bg-gray-800;
+  @apply text-lg font-bold rounded-t-lg;
 }
 
 .price-impact-row {
-  @apply text-sm rounded-b-lg;
+  @apply text-lg font-bold rounded-t-lg;
+}
+
+.red-total-row {
+  padding-left: 6px;
+  padding-right: 6px;
+  margin-left: -6px;
+  width: calc(100% + 12px);
+  border-radius: 6px;
 }
 </style>

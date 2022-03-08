@@ -115,7 +115,7 @@ function handleClose(): void {
 <template>
   <BalModal show :fireworks="investmentConfirmed" @close="handleClose">
     <template v-slot:header>
-      <div class="flex items-center">
+      <div class="flex items-center justify-center w-full">
         <BalCircle
           v-if="investmentConfirmed"
           size="8"
@@ -124,7 +124,7 @@ function handleClose(): void {
         >
           <BalIcon name="check" />
         </BalCircle>
-        <h4>
+        <h4 class="font-secondary text-lg leading-8">
           {{ title }}
         </h4>
       </div>

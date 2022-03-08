@@ -230,6 +230,7 @@ watch(useNativeAsset, shouldUseNativeAsset => {
     />
 
     <InvestFormTotals
+      class="mt-6"
       :math="investMath"
       @maximize="maximizeAmounts"
       @optimize="optimizeAmounts"
@@ -237,7 +238,7 @@ watch(useNativeAsset, shouldUseNativeAsset => {
 
     <div
       v-if="highPriceImpact"
-      class="border dark:border-gray-700 rounded-lg p-2 pb-2 mt-4"
+      class="border-2 border-green dark:border-gray-700 rounded-lg p-2 pb-2 mt-4"
     >
       <BalCheckbox
         v-model="highPriceImpactAccepted"
@@ -257,6 +258,7 @@ watch(useNativeAsset, shouldUseNativeAsset => {
         block
         @click="toggleWalletSelectModal"
       />
+      <!-- DONT FORGET TO REMOVE 'false &&' -->
       <BalBtn
         v-else
         :label="$t('preview')"
