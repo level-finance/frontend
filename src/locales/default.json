@@ -258,8 +258,8 @@
                 "investment": "Confirm investment in wallet"
             },
             "titles": {
-                "confirmed": "Investment confirmed",
-                "default": "Investment preview"
+                "confirmed": "investment confirmed",
+                "default": "investment preview"
             },
             "tooltips": {
                 "approval": "You must approve {0} to invest this token on Level. Approvals are required once per token, per wallet."

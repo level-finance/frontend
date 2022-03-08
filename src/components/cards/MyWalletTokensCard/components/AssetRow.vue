@@ -58,7 +58,7 @@ const fiatLabel = computed(() => {
     </div>
 
     <div class="flex flex-col text-right">
-       <span class="text-xl font-bold">
+      <span class="text-xl font-bold">
         {{ balanceLabel }}
       </span>
       <span :class="['text-base', selected ? 'text-black' : 'text-gray-400']">

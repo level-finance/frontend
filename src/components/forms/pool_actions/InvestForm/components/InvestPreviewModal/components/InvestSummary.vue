@@ -96,7 +96,7 @@ function weeklyYieldForAPR(apr: string): string {
 
 <template>
   <div class="summary-table">
-    <h6 class="p-2">
+    <h6 class="p-2 px-3.5">
       {{ $t('summary') }}
     </h6>
     <div class="flex flex-col py-2">
@@ -141,7 +141,7 @@ function weeklyYieldForAPR(apr: string): string {
                 v-else
                 name="info"
                 size="sm"
-                class="text-gray-300 ml-2"
+                class="text-green ml-2"
               />
             </template>
             <div
@@ -209,18 +209,20 @@ function weeklyYieldForAPR(apr: string): string {
 
 <style scoped>
 .summary-table {
-  @apply border dark:border-gray-700 divide-y dark:divide-gray-700 rounded-lg mt-4;
+  @apply border-3 border-green divide-y-3 divide-green rounded-xl mt-4;
 }
 
 .summary-table-row {
-  @apply grid grid-cols-2 px-2 py-1;
+  @apply grid grid-cols-4 px-2 py-1 text-lg font-bold;
 }
 
 .summary-table-label {
   @apply flex items-center;
+  @apply col-span-3;
 }
 
 .summary-table-number {
   @apply flex items-center justify-end;
+  @apply col-span-1;
 }
 </style>

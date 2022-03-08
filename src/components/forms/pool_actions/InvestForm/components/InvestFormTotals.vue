@@ -44,7 +44,7 @@ const {
  */
 const priceImpactClasses = computed(() => ({
   'dark:bg-gray-800': !highPriceImpact.value,
-  'bg-red-500 dark:bg-red-500 text-white divide-red-400': highPriceImpact.value
+  'bg-red-500 dark:bg-red-500 text-white divide-red-400 rounded-xl red-total-row': highPriceImpact.value
 }));
 
 const optimizeBtnClasses = computed(() => ({
@@ -94,7 +94,7 @@ const optimizeBtnClasses = computed(() => ({
                 v-else
                 name="info"
                 size="xs"
-                class="text-gray-400 -mb-px ml-1"
+                class="text-green -mb-px ml-1"
               />
             </template>
           </BalTooltip>
@@ -142,5 +142,13 @@ const optimizeBtnClasses = computed(() => ({
 
 .price-impact-row {
   @apply text-lg font-bold rounded-t-lg;
+}
+
+.red-total-row {
+  padding-left: 6px;
+  padding-right: 6px;
+  margin-left: -6px;
+  width: calc(100% + 12px);
+  border-radius: 6px;
 }
 </style>

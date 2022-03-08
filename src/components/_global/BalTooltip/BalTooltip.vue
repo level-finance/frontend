@@ -7,7 +7,7 @@
     v-bind="$attrs"
   >
     <slot name="activator">
-      <BalIcon name="info" :size="iconSize" class="text-gray-300" />
+      <BalIcon name="info" :size="iconSize" class="text-green" />
     </slot>
   </button>
   <div

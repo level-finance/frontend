@@ -46,15 +46,15 @@ const walletLogo = computed((): string =>
 function stateClasses(state: StepState): string {
   switch (state) {
     case StepState.Success:
-      return 'border-green-500 dark:border-green-500 text-green-500';
+      return 'border-green dark:border-green-500 text-green';
     case StepState.Pending:
       return 'border-none dark:border-none text-yellow-500';
     case StepState.Active:
-      return 'border-purple-500 dark:border-purple-500 text-gradient';
+      return 'border-green dark:border-purple-500 text-green';
     case StepState.WalletOpen:
-      return 'border-purple-500 dark:border-purple-500 text-gradient';
+      return 'border-green dark:border-purple-500 text-green';
     default:
-      return 'dark:border-gray-700';
+      return 'border-gray-300 text-gray-300';
   }
 }
 </script>
@@ -64,7 +64,7 @@ function stateClasses(state: StepState): string {
     <div v-for="(step, i) in steps" :key="i" class="flex items-center">
       <div
         v-if="i !== 0"
-        :class="['h-px bg-gray-100 dark:bg-gray-700', `w-${spacerWidth}`]"
+        :class="['connector', `w-${spacerWidth}`]"
       />
       <BalTooltip :text="step.tooltip" width="44" textCenter>
         <template v-slot:activator>
@@ -95,7 +95,12 @@ function stateClasses(state: StepState): string {
 
 <style scoped>
 .step {
-  @apply w-8 h-8 rounded-full border shadow font-medium;
+  @apply w-8 h-8 rounded-full border-3 font-bold;
   @apply flex items-center justify-center relative;
+}
+
+.connector {
+  @apply bg-gray-300;
+  height: 3px;
 }
 </style>
