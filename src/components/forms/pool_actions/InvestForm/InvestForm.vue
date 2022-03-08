@@ -230,6 +230,7 @@ watch(useNativeAsset, shouldUseNativeAsset => {
     />
 
     <InvestFormTotals
+      class="mt-6"
       :math="investMath"
       @maximize="maximizeAmounts"
       @optimize="optimizeAmounts"

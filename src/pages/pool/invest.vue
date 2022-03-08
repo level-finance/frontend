@@ -47,16 +47,16 @@ onBeforeMount(async () => {
           <div class="text-base text-black leading-none">
             {{ network.chainName }}
           </div>
-          <div class="flex items-center justify-between -mt-2">
+          <div class="flex items-center justify-between mt-1">
             <h4 class="font-secondary text-lg font-normal">
               {{ $t('investInPool') }}
             </h4>
-            <TradeSettingsPopover :context="TradeSettingsContext.invest" />
+            <!-- <TradeSettingsPopover :context="TradeSettingsContext.invest" /> -->
           </div>
         </div>
       </template>
 
-      <InvestForm class="-mt-3" :pool="pool" />
+      <InvestForm class="" :pool="pool" />
     </BalCard>
   </div>
 </template>
