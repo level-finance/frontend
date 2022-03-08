@@ -258,10 +258,11 @@ watch(useNativeAsset, shouldUseNativeAsset => {
         block
         @click="toggleWalletSelectModal"
       />
+      <!-- DONT FORGET TO REMOVE 'false &&' -->
       <BalBtn
         v-else
         :label="$t('preview')"
-        :disabled="
+        :disabled="false &&
           !hasAmounts ||
             !hasValidInputs ||
             isMismatchedNetwork ||

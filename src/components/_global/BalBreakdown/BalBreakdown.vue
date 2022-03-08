@@ -41,7 +41,7 @@ const initVertBarSizes = computed(() => {
 const vertBarSizes = computed(() => {
   switch (props.size) {
     case 'lg':
-      return 'h-16 -mt-16';
+      return 'h-20 -mt-20';
     default:
       return 'h-8 -mt-8';
   }
@@ -96,14 +96,14 @@ const offsetClass = computed(() => {
 
 <style scoped>
 .horiz-bar {
-  @apply h-px w-3 bg-gray-200 dark:bg-gray-700 mr-2;
+  @apply h-0.5 w-3 bg-green mr-2;
 }
 
 .init-vert-bar {
-  @apply w-px bg-gray-200 dark:bg-gray-700 -mr-px;
+  @apply w-0.5 bg-green -mr-px;
 }
 
 .vert-bar {
-  @apply w-px bg-gray-200 dark:bg-gray-700 -mr-px;
+  @apply w-0.5 bg-green -mr-px;
 }
 </style>

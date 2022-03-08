@@ -104,7 +104,7 @@ function isSelectedNativeAsset(address: string): boolean {
 <template>
   <BalCard shadow="none" noPad>
     <template v-if="!hideHeader" #header>
-      <div class="p-4 w-full border-b dark:border-gray-900">
+      <div class="p-4 w-full border-b-3 border-green">
         <h6>
           {{ $t('poolTransfer.myWalletTokensCard.title') }}
         </h6>
@@ -120,7 +120,7 @@ function isSelectedNativeAsset(address: string): boolean {
               class="w-full"
               size="lg"
             >
-              <div class="flex justify-between">
+              <div class="flex justify-between text-xl font-bold">
                 <span>
                   {{ nativeAsset.name }}
                   <span class="lowercase">{{ $t('tokens') }}</span>
@@ -154,7 +154,7 @@ function isSelectedNativeAsset(address: string): boolean {
 
         <AssetRow v-else :address="address" :selected="true" />
       </div>
-      <div class="pt-4 flex justify-between font-medium">
+      <div class="pt-4 flex justify-between font-bold text-xl">
         <span>
           {{ $t('total') }}
         </span>
