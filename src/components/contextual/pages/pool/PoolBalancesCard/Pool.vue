@@ -17,7 +17,7 @@
       }"
     >
       <template v-slot:tokenColumnCell="token">
-        <div class="px-6 py-3 flex flex-row w-full justify-center">
+        <div class="px-6 py-1 flex flex-row w-full justify-center">
           <BalLink
             :href="explorer.addressLink(token.address)"
             external
