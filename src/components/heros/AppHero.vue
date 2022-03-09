@@ -1,17 +1,17 @@
 <template>
-  <div :class="['app-hero']">
+  <div :class="['app-hero']" :style="computedStyles">
     <div class="w-full">
       <template v-if="isWalletReady">
         <h1
           v-text="$t('myInvestments')"
-          class="text-4xl font-secondary font-body mt-16 mb-8"
+          class="text-4xl font-secondary font-body mt-16 mb-8 text-white"
         />
         <BalLoadingBlock
           v-if="isLoadingUserPools"
           class="h-10 w-40 mx-auto"
           darker
         />
-        <span v-else class="text-4xl font-secondary">
+        <span v-else class="text-4xl font-secondary text-white">
           {{
             fNum2(totalInvestedAmount || '', {
               style: 'currency',
@@ -71,10 +71,22 @@ export default defineComponent({
     const { totalInvestedAmount, isLoadingUserPools } = usePools();
     const { darkMode } = useDarkMode();
 
+    const heroBackgroundImage = `/images/backgrounds/hero/${Math.round(
+      Math.random() * 3 + 1
+    )}.jpeg`;
+
     const classes = computed(() => ({
       ['h-72']: !isWalletReady.value,
       ['h-40']: isWalletReady.value
     }));
+
+    const computedStyles = computed(() => {
+      if (!isWalletReady.value) return;
+      return {
+        backgroundImage: `url('${heroBackgroundImage}')`,
+        maxWidth: '100%'
+      };
+    });
 
     function onClickConnect() {
       toggleWalletSelectModal(true);
@@ -91,6 +103,7 @@ export default defineComponent({
       isWalletReady,
       classes,
       darkMode,
+      computedStyles,
 
       // methods
       toggleWalletSelectModal,
