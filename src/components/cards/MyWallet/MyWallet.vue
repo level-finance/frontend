@@ -53,10 +53,7 @@ const tokensWithBalance = computed(() => {
         >
           {{ $t('myWallet2') }}
         </h6>
-        <div
-          class="font-bold text-base ml-1 lg:ml-0"
-          v-if="!isLoadingBalances"
-        >
+        <div class="font-bold text-base ml-1 lg:ml-0" v-if="!isLoadingBalances">
           {{ etherBalance }} {{ nativeCurrency }}
         </div>
         <BalLoadingBlock v-else class="h-8 w-12" />
