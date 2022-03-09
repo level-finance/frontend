@@ -16,6 +16,7 @@
 
       <div
         v-if="!upToLargeBreakpoint"
+        style="margin-left: -65px"
         class="mt-auto flex-1 md:w-1/3 flex justify-center items-end"
       >
         <AppNavToggle />

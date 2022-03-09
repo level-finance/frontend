@@ -32,19 +32,23 @@
             v-if="darkMode"
             :src="require('@/assets/images/icons/tokens_white.svg')"
           /> -->
-          <img :src="require('@/assets/images/icons/tokens.svg')" />
+          <img class="w-12" :src="require('@/assets/images/icons/tokens.svg')" />
         </div>
       </template>
       <template v-slot:iconColumnCell="pool">
-        <div v-if="!isLoading" class="px-6 py-4">
+        <div v-if="!isLoading" class="px-3 py-2 flex justify-center">
           <BalAssetSet
             :addresses="orderedTokenAddressesFor(pool)"
             :width="100"
+            :size="32"
+            wrap
+            overflow
+            customClasses="flex justify-center"
           />
         </div>
       </template>
       <template v-slot:poolNameCell="pool">
-        <div v-if="!isLoading" class="px-6 py-4 flex items-center">
+        <div v-if="!isLoading" class="px-3 py-2 flex items-center justify-center">
           <TokenPills
             :tokens="orderedPoolTokens(pool)"
             :isStablePool="isStableLike(pool.poolType)"
@@ -62,7 +66,7 @@
         </div>
       </template>
       <template v-slot:aprCell="pool">
-        <div class="px-6 py-4 -mt-1 flex justify-end font-numeric">
+        <div class="px-3 py-2 -mt-1 flex justify-center font-numeric ">
           {{
             Number(pool.dynamic.apr.pool) > 10000
               ? '-'

@@ -5,6 +5,7 @@
   >
     <div
       class="addresses-row"
+      :class="customClasses"
       :style="{
         width: `${width}px`,
         height: `${size}px`
@@ -19,7 +20,7 @@
         :class="['token-icon', { absolute: !wrap, relative: wrap }]"
         :style="{
           left: `${leftOffsetFor(i)}px`,
-          zIndex: `${20 - i}`,
+          zIndex: `${zIndexFor(i)}`,
           width: `${size}px`,
           height: `${size}px`
         }"
@@ -58,6 +59,12 @@ export default defineComponent({
     },
     wrap: {
       type: Boolean
+    },
+    customClasses: {
+      type: String
+    },
+    overflow: {
+      type: Boolean
     }
   },
 
@@ -81,12 +88,18 @@ export default defineComponent({
      * METHODS
      */
     function leftOffsetFor(i: number) {
+      if (props.overflow) return  ( - radius.value / 2) * i
       if (props.wrap) return 0;
       return (
         ((props.width - radius.value * 2 + spacer.value) /
           (props.maxAssetsPerLine - 1)) *
         i
-      );
+      ) - radius.value;
+    }
+
+    function zIndexFor(i: number) {
+      if(props.overflow) return i + 1
+      else return 20 -1
     }
 
     return {
@@ -94,7 +107,8 @@ export default defineComponent({
       addressesChunks,
 
       // methods
-      leftOffsetFor
+      leftOffsetFor,
+      zIndexFor
     };
   }
 });

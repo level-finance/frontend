@@ -23,7 +23,7 @@
             v-for="(column, columnIndex) in filteredColumns"
             :key="`header-${column.id}`"
             :class="[
-              'p-5 bg-white dark:bg-gray-850 headingShadow border-b-4 border-green dark:border-gray-900',
+              'p-3 bg-white dark:bg-gray-850 headingShadow border-b-4 border-green dark:border-gray-900',
               column.className,
               getHorizontalStickyClass(columnIndex),
               isColumnStuck ? 'isSticky' : '',
@@ -42,7 +42,7 @@
                 :name="column.Header"
               ></slot>
               <div v-else>
-                <h5 class="text-2xl">
+                <h5 class="text-xl">
                   {{ column.name }}
                 </h5>
               </div>
@@ -74,7 +74,7 @@
       />
       <div
         v-if="!isLoading && !tableData.length"
-        class="max-w-full bg-white dark:bg-gray-850 row-bg h-40 flex items-center justify-center text-2xl"
+        class="max-w-full bg-white dark:bg-gray-850 row-bg h-40 flex items-center justify-center text-lg"
       >
         {{ noResultsLabel || $t('noResults') }}
       </div>
@@ -102,7 +102,7 @@
         <!-- end measurement row -->
         <tbody
           v-if="!isLoading && tableData.length"
-          class="text-2xl text-gray-dark font-bold"
+          class="text-lg text-gray-dark font-bold"
         >
           <tr
             v-for="(dataItem, index) in tableData"
@@ -187,7 +187,7 @@
               :class="[
                 getHorizontalStickyClass(0),
                 isColumnStuck ? 'isSticky' : '',
-                'text-left p-6 bg-white dark:bg-gray-850 border dark:border-gray-900 align-top'
+                'text-left p-3 bg-white dark:bg-gray-850 border dark:border-gray-900 align-top'
               ]"
             >
               <span class="font-semibold text-left">
@@ -201,7 +201,7 @@
                 getColumnAlignment(column),
                 getHorizontalStickyClass(columnIndex + 1),
                 isColumnStuck ? 'isSticky' : '',
-                'p-6 bg-white dark:bg-gray-850 border dark:border-gray-900'
+                'p-3 bg-white dark:bg-gray-850 border dark:border-gray-900'
               ]"
             >
               <slot v-if="column.totalsCell" :name="column.totalsCell"> </slot>
