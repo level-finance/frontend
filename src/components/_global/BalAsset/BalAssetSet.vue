@@ -88,18 +88,19 @@ export default defineComponent({
      * METHODS
      */
     function leftOffsetFor(i: number) {
-      if (props.overflow) return  ( - radius.value / 2) * i
+      if (props.overflow) return (-radius.value / 2) * i;
       if (props.wrap) return 0;
       return (
         ((props.width - radius.value * 2 + spacer.value) /
           (props.maxAssetsPerLine - 1)) *
-        i
-      ) - radius.value;
+          i -
+        radius.value
+      );
     }
 
     function zIndexFor(i: number) {
-      if(props.overflow) return i + 1
-      else return 20 -1
+      if (props.overflow) return i + 1;
+      else return 20 - 1;
     }
 
     return {

@@ -32,7 +32,10 @@
             v-if="darkMode"
             :src="require('@/assets/images/icons/tokens_white.svg')"
           /> -->
-          <img class="w-12" :src="require('@/assets/images/icons/tokens.svg')" />
+          <img
+            class="w-12"
+            :src="require('@/assets/images/icons/tokens.svg')"
+          />
         </div>
       </template>
       <template v-slot:iconColumnCell="pool">
@@ -48,7 +51,10 @@
         </div>
       </template>
       <template v-slot:poolNameCell="pool">
-        <div v-if="!isLoading" class="px-3 py-2 flex items-center justify-center">
+        <div
+          v-if="!isLoading"
+          class="px-3 py-2 flex items-center justify-center"
+        >
           <TokenPills
             :tokens="orderedPoolTokens(pool)"
             :isStablePool="isStableLike(pool.poolType)"
