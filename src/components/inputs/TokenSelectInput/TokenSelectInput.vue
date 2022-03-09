@@ -77,7 +77,7 @@ function tokenFor(option: string): TokenInfo {
         {
           selectable: !fixed,
           'level-btn_filled': !outlined,
-          'level-btn_outlined border-zimablue hover:bg-zimablue px-3 text-black': outlined
+          'level-btn_outlined border-orange hover:bg-orange px-3 text-black hover:text-white': outlined
         }
       ]"
       @click="toggleModal"
@@ -105,7 +105,8 @@ function tokenFor(option: string): TokenInfo {
         v-if="outlined"
         name="chevron-down"
         size="lg"
-        class="text-green group-hover:white ml-2"
+        class="text-green group-hover:text-white ml-2"
+        :class="{ 'text-orange': outlined }"
       />
     </div>
     <BalDropdown

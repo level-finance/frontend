@@ -152,7 +152,8 @@ module.exports = {
       margin: ['first'],
       borderRadius: ['first', 'last'],
       zIndex: ['hover'],
-      borderWidth: ['dark', 'last']
+      borderWidth: ['dark', 'last'],
+      textColor: ['group-hover', 'hover']
     }
   },
   plugins: []

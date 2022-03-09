@@ -339,7 +339,7 @@
     "myShare": "My share",
     "myInvestments": "my investments",
     "myWallet": "My Ethereum wallet",
-    "myWallet2": "My wallet",
+    "myWallet2": "my wallet",
     "name": "Name",
     "namePlaceholder": "Name, symbol or contract address",
     "nativeTokens": "Native tokens",
@@ -719,7 +719,7 @@
     "yieldEarnings": "Yield earnings",
     "youDidIt": "You did it!",
     "yourTransactions": "Your transactions in this pool",
-    "trendingPairs": "Trending pairs",
+    "trendingPairs": "trending pairs",
     "chooseAPair": "Please select a valid pair",
     "youCanInvest": "You can invest"
 }

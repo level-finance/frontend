@@ -45,11 +45,16 @@ const tokensWithBalance = computed(() => {
   >
     <div class="flex flex-col w-full h-full bg-transparent">
       <div
-        class="flex lg:justify-between p-3 pb-0 lg:pb-3 lg:border-b-3 border-green"
+        class="flex items-center lg:justify-between p-3 pb-0 lg:pb-3 lg:border-b-3 border-green"
       >
-        <h6 v-if="!upToLargeBreakpoint">{{ $t('myWallet2') }}</h6>
+        <h6
+          class="font-secondary font-normal text-base -mt-0.5"
+          v-if="!upToLargeBreakpoint"
+        >
+          {{ $t('myWallet2') }}
+        </h6>
         <div
-          class="font-semibold lg:font-normal ml-1 lg:ml-0"
+          class="font-bold text-base ml-1 lg:ml-0"
           v-if="!isLoadingBalances"
         >
           {{ etherBalance }} {{ nativeCurrency }}
