@@ -76,8 +76,10 @@ export default defineComponent({
           return 'px-2 h-6 text-xs';
         case 'sm':
           return 'px-3 h-9 text-base';
+        case 'sm+':
+          return 'px-3 h-10 text-xl';
         case 'xl':
-          return 'px-6 h-12 text-base md:text-xl';
+          return 'px-6 h-12 text-xl';
         case '2xl':
           return 'px-6 h-12 text-lg md:text-2xl';
         default:
@@ -105,7 +107,7 @@ export default defineComponent({
     const displayClasses = computed(() => {
       if (props.circle) return 'flex justify-center items-center';
       if (props.block) return 'block w-full';
-      return 'inline-block';
+      return '';
     });
 
     const cursorClasses = computed(() => {

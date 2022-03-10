@@ -157,6 +157,16 @@ watchEffect(() => {
       <BalStack class="h-full" align="center" horizontal spacing="none">
         <BalIcon name="percent" size="sm" class="text-gray-600" />
         <BalBtn
+          @click="emit('delete')"
+          circle
+          size="xs+"
+          class="ml-2"
+          type="filled"
+          :no-padding="true"
+        >
+          <BalIcon name="trash-2" size="sm" />
+        </BalBtn>
+        <BalBtn
           @click="lockWeight(false)"
           circle
           size="xs+"
@@ -180,16 +190,6 @@ watchEffect(() => {
             <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
             <path ref="lockPath" d="M7 11V7a5 4 0 0 1 10 -2v-1"></path>
           </svg>
-        </BalBtn>
-        <BalBtn
-          @click="emit('delete')"
-          circle
-          size="xs+"
-          class="ml-2"
-          type="filled"
-          :no-padding="true"
-        >
-          <BalIcon name="trash-2" size="sm" />
         </BalBtn>
       </BalStack>
     </template>

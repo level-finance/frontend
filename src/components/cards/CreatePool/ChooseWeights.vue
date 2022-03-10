@@ -19,6 +19,7 @@ import AnimatePresence from '@/components/animate/AnimatePresence.vue';
 import useWeb3 from '@/services/web3/useWeb3';
 import { useI18n } from 'vue-i18n';
 import useDarkMode from '@/composables/useDarkMode';
+import BalBtn from '@/components/_global/BalBtn/BalBtn.vue';
 
 const emit = defineEmits(['update:height', 'trigger:alert']);
 
@@ -348,7 +349,8 @@ function onAlertMountChange() {
                   :disabled="maxTokenAmountReached"
                   @click="addTokenToPool"
                   class="border-orange"
-                  >{{ $t('addToken') }}
+                  :size="'sm+'"
+                  >{{ $t('selectToken') }}
                 </BalBtn>
               </div>
               <div ref="totalsRowElement" class="w-full p-2 px-4">

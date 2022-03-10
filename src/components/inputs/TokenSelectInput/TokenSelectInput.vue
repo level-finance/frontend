@@ -4,6 +4,7 @@ import SelectTokenModal from '@/components/modals/SelectTokenModal/SelectTokenMo
 import useTokens from '@/composables/useTokens';
 import useNumbers from '@/composables/useNumbers';
 import { TokenInfo } from '@/types/TokenList';
+import BalBtn from '@/components/_global/BalBtn/BalBtn.vue';
 
 /**
  * TYPES
@@ -70,17 +71,17 @@ function tokenFor(option: string): TokenInfo {
 
 <template>
   <div>
-    <div
+    <BalBtn
       v-if="hasToken && options.length === 0"
       :class="[
-        'token-select-input level-btn group',
+        'token-select-input group',
         {
-          selectable: !fixed,
-          'level-btn_filled': !outlined,
-          'level-btn_outlined border-orange hover:bg-orange px-3 text-black hover:text-white': outlined
+          'border-zimablue hover:bg-zimablue px-3 text-black': outlined
         }
       ]"
+      :type="outlined ? 'outlined' : 'filled'"
       @click="toggleModal"
+      size="sm+"
     >
       <div class="w-6 leading-none mr-3">
         <BalAsset :address="token?.address" />
@@ -108,60 +109,64 @@ function tokenFor(option: string): TokenInfo {
         class="text-green group-hover:text-white ml-2"
         :class="{ 'text-orange': outlined }"
       />
-    </div>
-    <BalDropdown
-      v-else-if="hasToken && fixed && options.length > 0"
-      :options="options"
-      minWidth="40"
-      @selected="emit('update:modelValue', $event)"
-    >
-      <template #activator>
-        <div
-          class="token-select-input level-btn level-btn_filled group selectable"
-        >
-          <div class="w-6 leading-none mr-3">
-            <BalAsset :address="token?.address" />
-          </div>
-          <span class="text-lg font-medium">
-            {{ token?.symbol }}
-          </span>
-          <span
-            v-if="Number(weight) > 0"
-            class="text-white ml-2 text-lg"
-            :class="{ 'text-black': outlined }"
+    </BalBtn>
+
+    <BalBtn v-else-if="hasToken && fixed && options.length > 0" size="sm+">
+      <BalDropdown
+        :options="options"
+        minWidth="40"
+        @selected="emit('update:modelValue', $event)"
+      >
+        <template #activator>
+          <div
+            class="token-select-input level-btn level-btn_filled group selectable"
           >
-            {{
-              fNum2(weight, {
-                style: 'unit',
-                unit: 'percent',
-                maximumFractionDigits: 0
-              })
-            }}
-          </span>
-        </div>
-      </template>
-      <template #option="{ option: address }">
-        <div
-          :set="(optionToken = tokenFor(address) || {})"
-          class="flex items-center justify-between"
-        >
-          <div class="flex items-center">
-            <BalAsset :address="optionToken?.address" />
-            <span class="ml-2 font-bold text-lg">
-              {{ optionToken?.symbol }}
+            <div class="w-6 leading-none mr-3">
+              <BalAsset :address="token?.address" />
+            </div>
+            <span class="text-lg font-medium">
+              {{ token?.symbol }}
+            </span>
+            <span
+              v-if="Number(weight) > 0"
+              class="text-white ml-2 text-lg"
+              :class="{ 'text-black': outlined }"
+            >
+              {{
+                fNum2(weight, {
+                  style: 'unit',
+                  unit: 'percent',
+                  maximumFractionDigits: 0
+                })
+              }}
             </span>
           </div>
-        </div>
-      </template>
-    </BalDropdown>
+        </template>
+        <template #option="{ option: address }">
+          <div
+            :set="(optionToken = tokenFor(address) || {})"
+            class="flex items-center justify-between"
+          >
+            <div class="flex items-center">
+              <BalAsset :address="optionToken?.address" />
+              <span class="ml-2 font-bold text-lg">
+                {{ optionToken?.symbol }}
+              </span>
+            </div>
+          </div>
+        </template>
+      </BalDropdown>
+    </BalBtn>
 
-    <div
+    <BalBtn
       v-else
-      class="token-select-input level-btn level-btn_filled selectable"
+      class="token-select-input"
+      type="filled"
       @click="toggleModal"
+      size="sm+"
     >
       {{ $t('selectToken') }}
-    </div>
+    </BalBtn>
 
     <teleport to="#modal">
       <SelectTokenModal
