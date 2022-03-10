@@ -10,7 +10,7 @@
           <div class="px-6 py-2.5 pl-8 relative">
             <div class="flex items-center justify-between">
               <div
-                class="flex items-center py-2 px-4 rounded-full border-2 border-zimablue"
+                class="flex items-center py-2 px-4 rounded-full border-2 border-orange"
               >
                 <div class="mr-3">
                   <BalAsset
@@ -43,7 +43,7 @@
           <div class="px-6 py-2.5 pl-8 relative">
             <div class="flex items-center justify-between">
               <div
-                class="flex items-center py-2 px-4 rounded-full border-2 border-zimablue"
+                class="flex items-center py-2 px-4 rounded-full border-2 border-orange"
               >
                 <div class="mr-3">
                   <BalAsset

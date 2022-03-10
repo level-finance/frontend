@@ -94,7 +94,8 @@ module.exports = {
           DEFAULT: '#00FFFF'
         },
         orange: {
-          DEFAULT: '#FE9900'
+          DEFAULT: '#FE9900',
+          600: '#FE9900'
         },
         primary: {
           50: '#53555e',
