@@ -4,27 +4,36 @@
     <router-link :to="{ name: 'home' }">
       <AppLogo class="mb-6" />
     </router-link>
-    <div class="h-full flex items-start justify-between">
-      <div class="w-2/3 lg:w-1/3 flex items-start">
+    <div class="w-full flex items-center justify-between">
+       <router-link
+          :to="{ name: 'home' }"
+          @click="trackGoal(Goals.ClickNavLogo)"
+        >
+          <AppIcon />
+        </router-link>
+         <AppNavActions />
+    </div>
+    <div class="h-full flex items-start justify-center">
+      <!-- <div class="w-2/3 lg:w-1/3 flex items-start">
         <router-link
           :to="{ name: 'home' }"
           @click="trackGoal(Goals.ClickNavLogo)"
         >
           <AppIcon />
         </router-link>
-      </div>
+      </div> -->
 
       <div
         v-if="!upToLargeBreakpoint"
-        style="margin-left: -65px"
-        class="mt-auto flex-1 md:w-1/3 flex justify-center items-end"
+        style="margin-left: -65px; margin-top: -4px;"
+        class="mt-auto flex justify-center items-end"
       >
         <AppNavToggle />
       </div>
 
-      <div class="w-1/3 flex justify-end mt-2 mb-5">
+      <!-- <div class="w-1/3 flex justify-end mt-2 mb-5">
         <AppNavActions />
-      </div>
+      </div> -->
     </div>
   </nav>
 </template>
