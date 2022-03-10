@@ -153,6 +153,9 @@ watchEffect(() => {
       @update:address="handleInputTokenChange"
       :disabled="tradeLoading"
       :outlined="true"
+      :color="'zimablue'"
+      :dropdownIcon="true"
+      :textColor="'black'"
     />
 
     <div class="flex items-center justify-center my-2">
@@ -177,6 +180,9 @@ watchEffect(() => {
       noMax
       :disabled="tradeLoading"
       :outlined="true"
+      :color="'zimablue'"
+      :dropdownIcon="true"
+      :textColor="'black'"
     />
   </div>
 </template>

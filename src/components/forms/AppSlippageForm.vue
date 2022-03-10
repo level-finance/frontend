@@ -42,9 +42,8 @@ const isFixedSlippage = computed(() => {
 });
 
 const customInputClasses = computed(() => ({
-  'border border-orange text-black':
-    !isFixedSlippage.value || state.isCustomInput,
-  'border dark:border-gray-900': isFixedSlippage.value && !state.isCustomInput
+  'bg-green': !isFixedSlippage.value || state.isCustomInput,
+  'bg-transparent': isFixedSlippage.value && !state.isCustomInput
 }));
 
 /**
@@ -91,25 +90,31 @@ watch(
       v-model="state.fixedSlippage"
       @update:modelValue="onFixedInput"
     />
-    <div :class="['custom-input', customInputClasses]">
+    <BalBtn
+      :class="['custom-input', customInputClasses]"
+      size="group"
+      :textColor="'black'"
+      @click="$refs.asf_input.focus()"
+    >
       <input
-        class="w-12 text-right bg-transparent"
+        class="w-12 text-right bg-transparent font-bold h-5"
         v-model="state.customSlippage"
         placeholder="0.1"
         type="number"
         step="any"
         min="0"
         @update:modelValue="onCustomInput"
+        ref="asf_input"
       />
-      <div class="px-2">
+      <div class="px-2 leading-5">
         %
       </div>
-    </div>
+    </BalBtn>
   </div>
 </template>
 
 <style scoped>
 .custom-input {
-  @apply flex items-center px-1 rounded-lg shadow-inner;
+  @apply px-1;
 }
 </style>

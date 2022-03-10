@@ -17,6 +17,9 @@ type Props = {
   options?: string[];
   disableInjection?: boolean;
   outlined?: boolean;
+  color?: string;
+  dropdownIcon?: boolean;
+  textColor?: string;
 };
 
 /**
@@ -29,7 +32,10 @@ const props = withDefaults(defineProps<Props>(), {
   excludedTokens: () => [],
   options: () => [],
   disableInjection: false,
-  outlined: false
+  outlined: false,
+  color: 'green',
+  dropdownIcon: false,
+  textColor: ''
 });
 
 const emit = defineEmits<{
@@ -76,12 +82,14 @@ function tokenFor(option: string): TokenInfo {
       :class="[
         'token-select-input group',
         {
-          'border-zimablue hover:bg-zimablue px-3 text-black': outlined
+          'px-3 text-black': outlined
         }
       ]"
       :type="outlined ? 'outlined' : 'filled'"
       @click="toggleModal"
       size="sm+"
+      :color="props.color"
+      :text-color="props.textColor ? props.textColor : ''"
     >
       <div class="w-6 leading-none mr-3">
         <BalAsset :address="token?.address" />
@@ -91,7 +99,7 @@ function tokenFor(option: string): TokenInfo {
       </span>
       <span
         v-if="Number(weight) > 0"
-        class="text-white ml-2 text-lg"
+        class="ml-2 text-lg"
         :class="{ 'text-black': outlined }"
       >
         {{
@@ -103,60 +111,61 @@ function tokenFor(option: string): TokenInfo {
         }}
       </span>
       <BalIcon
-        v-if="outlined"
+        v-if="props.dropdownIcon"
         name="chevron-down"
         size="lg"
-        class="text-green group-hover:text-white ml-2"
-        :class="{ 'text-orange': outlined }"
+        class="ml-2 text-green"
       />
     </BalBtn>
 
-    <BalBtn v-else-if="hasToken && fixed && options.length > 0" size="sm+">
-      <BalDropdown
-        :options="options"
-        minWidth="40"
-        @selected="emit('update:modelValue', $event)"
-      >
-        <template #activator>
-          <div
-            class="token-select-input level-btn level-btn_filled group selectable"
+    <BalDropdown
+      v-else-if="hasToken && fixed && options.length > 0"
+      :options="options"
+      minWidth="40"
+      @selected="emit('update:modelValue', $event)"
+    >
+      <template #activator>
+        <BalBtn
+          size="sm+"
+          :color="props.color"
+          class="token-select-input group"
+          :text-color="props.textColor ? props.textColor : ''"
+        >
+          <div class="w-6 leading-none mr-3">
+            <BalAsset :address="token?.address" />
+          </div>
+          <span class="text-lg font-medium">
+            {{ token?.symbol }}
+          </span>
+          <span
+            v-if="Number(weight) > 0"
+            class="ml-2 text-lg"
+            :class="{ 'text-black': outlined }"
           >
-            <div class="w-6 leading-none mr-3">
-              <BalAsset :address="token?.address" />
-            </div>
-            <span class="text-lg font-medium">
-              {{ token?.symbol }}
-            </span>
-            <span
-              v-if="Number(weight) > 0"
-              class="text-white ml-2 text-lg"
-              :class="{ 'text-black': outlined }"
-            >
-              {{
-                fNum2(weight, {
-                  style: 'unit',
-                  unit: 'percent',
-                  maximumFractionDigits: 0
-                })
-              }}
+            {{
+              fNum2(weight, {
+                style: 'unit',
+                unit: 'percent',
+                maximumFractionDigits: 0
+              })
+            }}
+          </span>
+        </BalBtn>
+      </template>
+      <template #option="{ option: address }">
+        <div
+          :set="(optionToken = tokenFor(address) || {})"
+          class="flex items-center justify-between"
+        >
+          <div class="flex items-center">
+            <BalAsset :address="optionToken?.address" />
+            <span class="ml-2 font-bold text-lg">
+              {{ optionToken?.symbol }}
             </span>
           </div>
-        </template>
-        <template #option="{ option: address }">
-          <div
-            :set="(optionToken = tokenFor(address) || {})"
-            class="flex items-center justify-between"
-          >
-            <div class="flex items-center">
-              <BalAsset :address="optionToken?.address" />
-              <span class="ml-2 font-bold text-lg">
-                {{ optionToken?.symbol }}
-              </span>
-            </div>
-          </div>
-        </template>
-      </BalDropdown>
-    </BalBtn>
+        </div>
+      </template>
+    </BalDropdown>
 
     <BalBtn
       v-else
@@ -164,6 +173,8 @@ function tokenFor(option: string): TokenInfo {
       type="filled"
       @click="toggleModal"
       size="sm+"
+      :color="props.color"
+      :text-color="props.textColor ? props.textColor : ''"
     >
       {{ $t('selectToken') }}
     </BalBtn>
@@ -185,9 +196,5 @@ function tokenFor(option: string): TokenInfo {
 .token-select-input {
   @apply flex items-center whitespace-nowrap max-h-10;
   font-variation-settings: 'wght' 700;
-}
-
-.selectable {
-  @apply cursor-pointer;
 }
 </style>

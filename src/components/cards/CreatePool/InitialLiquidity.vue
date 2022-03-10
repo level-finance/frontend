@@ -231,7 +231,7 @@ function saveAndProceed() {
                 </span>
                 <button
                   @click="handleClearAll"
-                  class="text-sm font-medium text-gray-400 hover:text-blue-500"
+                  class="text-sm font-medium text-gray-400 hover:text-green-600"
                 >
                   Clear all
                 </button>
@@ -256,6 +256,9 @@ function saveAndProceed() {
               @update:address="handleAddressChange($event)"
               :rules="[isGreaterThan(0)]"
               :noBorder="true"
+              :outlined="true"
+              :color="'orange'"
+              :textColor="'black'"
             />
           </BalStack>
           <BalStack horizontal spacing="sm" align="center">
@@ -323,7 +326,7 @@ function saveAndProceed() {
                 >
                   <button
                     @click="optimiseLiquidity(true)"
-                    class="bg-clip-text text-sm text-transparent font-medium bg-gradient-to-tr from-blue-500 to-pink-500  hover:from-blue-800 hover:to-pink-800"
+                    class="text-xl text-green-600 font-bold"
                   >
                     {{ t('optimize') }}
                   </button>

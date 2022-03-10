@@ -66,7 +66,8 @@ export default defineComponent({
     circle: { type: Boolean, default: false },
     loading: { type: Boolean, default: false },
     loadingLabel: { type: String, default: 'loading...' },
-    disabled: { type: Boolean, default: false }
+    disabled: { type: Boolean, default: false },
+    noShadow: { type: Boolean, default: false }
   },
 
   setup(props) {
@@ -119,8 +120,8 @@ export default defineComponent({
 
     const borderClasses = computed(() => {
       if (props.type !== 'filled' && props.type !== 'submit')
-        return `border-${props.color} active:border-${props.color}-600`;
-      return 'border-none';
+        return `border-2 border-${props.color} active:border-${props.color}-600`;
+      return 'border-2 border-transparent';
     });
 
     const bgColorClasses = computed(() => {
@@ -165,6 +166,14 @@ export default defineComponent({
       }
     });
 
+    const shadowClasses = computed(() => {
+      if (props.noShadow) {
+        return 'shadow-none';
+      } else {
+        return 'hover:shadow';
+      }
+    });
+
     const btnClasses = computed(() => {
       return {
         [sizeClasses.value]: !props.circle,
@@ -175,6 +184,7 @@ export default defineComponent({
         [displayClasses.value]: true,
         [cursorClasses.value]: true,
         [textWeightClasses.value]: true,
+        [shadowClasses.value]: true,
         [paddingClasses.value]: true
       };
     });

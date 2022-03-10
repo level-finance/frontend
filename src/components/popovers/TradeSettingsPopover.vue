@@ -4,10 +4,11 @@
       <BalBtn
         circle
         size="sm"
-        class="icon-spin-anim shadow-none"
+        class="spin-settings"
         @click="onActivatorClick"
-        color="white"
-        :no-padding="true"
+        :color="'transparent'"
+        :noPadding="true"
+        :noShadow="true"
       >
         <img :src="require('@/assets/images/icons/settings.svg')" alt="" />
       </BalBtn>
@@ -206,12 +207,22 @@ export default defineComponent({
 });
 </script>
 
-<style>
-.trade-settings-option:hover {
-  @apply text-blue-500 border-blue-500;
+<style scoped>
+.spin-settings:hover {
+  animation: spin 2s linear infinite;
 }
 
-.trade-settings-option.active {
-  @apply text-blue-500 border-blue-500;
+.spin-settings:active {
+  animation: none;
+  transform: translateY(2px);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 </style>

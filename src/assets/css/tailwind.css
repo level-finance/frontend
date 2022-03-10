@@ -6,9 +6,6 @@
     .level-btn {
         @apply flex justify-center items-center rounded-20px text-xl font-bold py-1.5;
     }
-    .level-btn:hover {
-        @apply shadow;
-    }
     .level-btn:active {
         @apply transform translate-y-px;
     }
