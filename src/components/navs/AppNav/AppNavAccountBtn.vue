@@ -2,7 +2,8 @@
   <BalPopover no-pad>
     <template v-slot:activator>
       <BalBtn
-        class="p-2 text-xl"
+        class="p-2 text-lg"
+        size="sm+"
         :class="{ btn: upToLargeBreakpoint }"
         :loading="isLoadingProfile"
         :loading-label="upToLargeBreakpoint ? '' : $t('connecting')"
@@ -20,7 +21,7 @@
         <span
           v-else
           v-text="_shorten(account)"
-          class="pl-2 hidden lg:inline-block eth-address"
+          class="pl-2 hidden lg:inline-block eth-address text-lg"
         />
       </BalBtn>
     </template>
