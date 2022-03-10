@@ -118,9 +118,7 @@ const hasUnknownPrice = computed(() =>
               class="w-3/4"
             >
               <div class="w-full justify-end">
-                <div class="-mr-1">
-                  <span class="text-left">{{ $t('enterAPrice') }}</span>
-                </div>
+                <span class="text-left font-bold">{{ $t('enterAPrice') }}</span>
               </div>
               <BalIcon name="alert-circle" />
             </BalStack>
