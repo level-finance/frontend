@@ -67,6 +67,9 @@ module.exports = {
         '3': '3px'
       },
       colors: {
+        black: {
+          DEFAULT: '#323232'
+        },
         gray: {
           DEFAULT: '#868686',
           50: '#F8FAFC',
