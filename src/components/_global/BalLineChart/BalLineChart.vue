@@ -12,7 +12,7 @@
       <span
         class="text-lg font-bold"
         :class="{
-          'text-green-400': change >= 0,
+          'text-green-460': change >= 0,
           'text-red-400': change < 0,
           'font-medium': true
         }"
