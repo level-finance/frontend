@@ -306,7 +306,8 @@ export default defineComponent({
 
 <style scoped>
 .address {
-  @apply text-blue-500;
+  /* @apply text-blue-500; */
+  @apply text-orange;
   font-variant-ligatures: no-contextual;
 }
 

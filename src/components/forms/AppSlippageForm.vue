@@ -42,7 +42,7 @@ const isFixedSlippage = computed(() => {
 });
 
 const customInputClasses = computed(() => ({
-  'border border-blue-500 text-blue-500':
+  'border border-orange text-black':
     !isFixedSlippage.value || state.isCustomInput,
   'border dark:border-gray-900': isFixedSlippage.value && !state.isCustomInput
 }));
