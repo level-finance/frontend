@@ -153,7 +153,7 @@ watchEffect(() => {
       @update:address="handleInputTokenChange"
       :disabled="tradeLoading"
       :outlined="true"
-      :color="'zimablue'"
+      :color="'orange'"
       :dropdownIcon="true"
       :textColor="'black'"
     />
@@ -180,7 +180,7 @@ watchEffect(() => {
       noMax
       :disabled="tradeLoading"
       :outlined="true"
-      :color="'zimablue'"
+      :color="'orange'"
       :dropdownIcon="true"
       :textColor="'black'"
     />
