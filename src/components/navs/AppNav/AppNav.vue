@@ -5,13 +5,13 @@
       <AppLogo class="mb-6" />
     </router-link>
     <div class="w-full flex items-center justify-between">
-       <router-link
-          :to="{ name: 'home' }"
-          @click="trackGoal(Goals.ClickNavLogo)"
-        >
-          <AppIcon />
-        </router-link>
-         <AppNavActions />
+      <router-link
+        :to="{ name: 'home' }"
+        @click="trackGoal(Goals.ClickNavLogo)"
+      >
+        <AppIcon />
+      </router-link>
+      <AppNavActions />
     </div>
     <div class="h-full flex items-start justify-center">
       <!-- <div class="w-2/3 lg:w-1/3 flex items-start">
