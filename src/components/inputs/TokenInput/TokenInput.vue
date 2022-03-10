@@ -44,6 +44,7 @@ type Props = {
   ignoreWalletBalance?: boolean;
   outlined?: boolean;
   noBorder?: boolean;
+  color?: string;
 };
 
 /**
@@ -64,6 +65,7 @@ const props = withDefaults(defineProps<Props>(), {
   ignoreWalletBalance: false,
   outlined: false,
   noBorder: false,
+  color: '',
   options: () => [],
   rules: () => []
 });
@@ -257,6 +259,7 @@ watchEffect(() => {
           class="mr-2"
           @update:modelValue="emit('update:address', $event)"
           :excludedTokens="excludedTokens"
+          :color="color"
         />
       </slot>
     </template>

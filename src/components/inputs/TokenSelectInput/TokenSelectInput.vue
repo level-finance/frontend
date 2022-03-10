@@ -17,6 +17,7 @@ type Props = {
   options?: string[];
   disableInjection?: boolean;
   outlined?: boolean;
+  color?: string;
 };
 
 /**
@@ -29,7 +30,8 @@ const props = withDefaults(defineProps<Props>(), {
   excludedTokens: () => [],
   options: () => [],
   disableInjection: false,
-  outlined: false
+  outlined: false,
+  color: ''
 });
 
 const emit = defineEmits<{
@@ -76,12 +78,13 @@ function tokenFor(option: string): TokenInfo {
       :class="[
         'token-select-input group',
         {
-          'border-zimablue hover:bg-zimablue px-3 text-black': outlined
+          'px-3 text-black': outlined
         }
       ]"
       :type="outlined ? 'outlined' : 'filled'"
       @click="toggleModal"
       size="sm+"
+      :color="color"
     >
       <div class="w-6 leading-none mr-3">
         <BalAsset :address="token?.address" />
@@ -106,7 +109,7 @@ function tokenFor(option: string): TokenInfo {
         v-if="outlined"
         name="chevron-down"
         size="lg"
-        class="text-green group-hover:text-white ml-2"
+        class="text-green ml-2"
         :class="{ 'text-orange': outlined }"
       />
     </BalBtn>
