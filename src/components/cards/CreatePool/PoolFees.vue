@@ -87,17 +87,17 @@ function onFixedInput(val: string): void {
   initialFee.value = '0';
   initialFee.value = val;
   isCustomFee.value = false;
+  isInvalidFee.value = isFeeValid(val);
 }
 
 function onCustomInput(val: string): void {
   initialFee.value = (Number(val) / 100).toString();
   isCustomFee.value = true;
+  isInvalidFee.value = isFeeValid(val);
+}
 
-  if (Number(val) <= 0.0001 || Number(val) > 10) {
-    isInvalidFee.value = true;
-  } else {
-    isInvalidFee.value = false;
-  }
+function isFeeValid(val: string): boolean {
+  return Number(val) <= 0.0001 || Number(val) > 10;
 }
 
 async function onChangeFeeManagementType(val: boolean) {
