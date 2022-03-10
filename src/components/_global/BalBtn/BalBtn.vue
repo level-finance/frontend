@@ -82,6 +82,8 @@ export default defineComponent({
           return 'px-6 h-12 text-xl';
         case '2xl':
           return 'px-6 h-12 text-lg md:text-2xl';
+        case 'group':
+          return 'px-2.5 h-10 text-xl';
         default:
           return 'px-7 h-12 text-xl';
       }
@@ -159,7 +161,7 @@ export default defineComponent({
       if (props.noPadding) {
         return 'p-0';
       } else {
-        return 'py-1.5 px-7';
+        return 'py-1.5';
       }
     });
 

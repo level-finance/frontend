@@ -4,9 +4,10 @@
       v-for="option in options"
       :key="option.value"
       @click="onSelect(option)"
-      size="sm"
-      class="capitalize mr-2 w-18 border-orange px-3 py-1.75 text-black"
-      :type="modelValue === option.value ? 'filled' : 'outline'"
+      size="group"
+      class="capitalize mr-2 w-18 border-orange py-1.75"
+      :textColor="'black'"
+      :type="modelValue === option.value ? 'filled' : 'outlined'"
       v-bind="attrs_"
     >
       {{ 'best' === option.label ? $t(option.label) : option.label }}
@@ -32,7 +33,8 @@ export default defineComponent({
 
   props: {
     modelValue: { type: [String, Number], required: true },
-    options: { type: Array as PropType<Option[]>, required: true }
+    options: { type: Array as PropType<Option[]>, required: true },
+    type: { type: String, default: 'outlined' }
   },
 
   setup(props, { emit, attrs }) {

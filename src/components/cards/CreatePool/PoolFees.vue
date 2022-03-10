@@ -49,8 +49,8 @@ const { userNetworkConfig } = useWeb3();
  * COMPUTED
  */
 const customInputClasses = computed(() => ({
-  'bg-green text-white': isCustomFee.value,
-  'bg-white text-gray': !isCustomFee.value
+  'bg-green': isCustomFee.value,
+  'bg-transparent': !isCustomFee.value
 }));
 
 const isProceedDisabled = computed(() => {
@@ -169,14 +169,18 @@ async function onChangeFeeController(val: string) {
               @update:modelValue="onFixedInput"
             />
             <div>
-              <div :class="['level-btn custom-input', customInputClasses]">
+              <BalBtn
+                :class="['custom-input', customInputClasses]"
+                size="group"
+                :textColor="'black'"
+                @click="onCustomInput(fee)"
+              >
                 <input
-                  class="w-12 text-right bg-transparent h-full font-bold"
+                  class="w-12 text-right bg-transparent font-bold h-5"
                   v-model="fee"
                   placeholder="0.1"
                   type="number"
                   step="any"
-                  @click="onCustomInput(fee)"
                   @update:modelValue="onCustomInput"
                 />
                 <!-- <BalTextInput
@@ -191,10 +195,10 @@ async function onChangeFeeController(val: string) {
                 %
               </template>
             </BalTextInput> -->
-                <div class="px-1">
+                <div class="px-1 leading-5">
                   %
                 </div>
-              </div>
+              </BalBtn>
             </div>
           </BalStack>
           <BalAlert
