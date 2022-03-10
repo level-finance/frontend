@@ -7,10 +7,12 @@
         <ActivityCounter v-else :count="pendingTransactions.length" />
       </BalBtn>
     </template>
-    <BalCard class="w-72 bg-green-200" noPad noBorder>
+    <BalCard class="w-72" noPad noBorder>
       <template v-slot:header>
-        <div class="pt-5 px-6 w-full flex items-center justify-between">
-          <h5 class="text-lg text-green-dark font-bold">
+        <div
+          class="pt-5 px-6 pb-5 w-full flex items-center justify-center capitalize"
+        >
+          <h5 class="text-lg font-secondary">
             {{ $t('recentActivityTitle') }}
           </h5>
         </div>
@@ -23,6 +25,8 @@
       >
         <template v-if="transactions.length > 0">
           <ActivityRows
+            v-if="pendingTransactions.length > 0"
+            class="activity-row"
             :transactions="pendingTransactions"
             :get-explorer-link="getExplorerLink"
             :is-successful-transaction="isSuccessfulTransaction"
@@ -36,6 +40,8 @@
             class="bg-gray-100 dark:bg-gray-700 my-3 h-px"
           />
           <ActivityRows
+            v-if="finalizedTransactions.length > 0"
+            class="activity-row"
             :transactions="finalizedTransactions"
             :get-explorer-link="getExplorerLink"
             :is-successful-transaction="isSuccessfulTransaction"
@@ -47,7 +53,7 @@
       </div>
       <template v-if="transactions.length > 0" v-slot:footer>
         <div
-          class="w-full px-6 pb-5 rounded-b-lg bg-white dark:bg-gray-800 text-lg"
+          class="flex justify-center w-full px-6 pb-5 rounded-b-lg bg-white dark:bg-gray-800 text-lg"
         >
           <a @click="clearAllTransactions()" class="text-green-dark">
             {{ $t('clearTransactions') }}
@@ -154,3 +160,12 @@ export default defineComponent({
   }
 });
 </script>
+
+<style scoped>
+.activity-row {
+  @apply border-2 border-green rounded-20px px-5 py-2.5 w-full mb-3;
+}
+.activity-row:only-child {
+  margin-bottom: 0;
+}
+</style>
