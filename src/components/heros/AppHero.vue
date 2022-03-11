@@ -1,51 +1,61 @@
 <template>
-  <div :class="['app-hero']" :style="computedStyles">
-    <div class="w-full">
-      <template v-if="isWalletReady">
-        <h1
-          v-text="$t('myInvestments')"
-          class="text-4xl font-secondary font-body mt-16 mb-8 text-white"
-        />
-        <BalLoadingBlock
-          v-if="isLoadingUserPools"
-          class="h-10 w-40 mx-auto"
-          darker
-        />
-        <span v-else class="text-4xl font-secondary text-white">
-          {{
-            fNum2(totalInvestedAmount || '', {
-              style: 'currency',
-              fixedFormat: true
-            })
-          }}
-        </span>
-        <div class="hero-hr" />
-      </template>
-      <template v-else>
-        <div class="relative flex items-start justify-start">
-          <div class="ml-16 mt-28 relative" style="max-width: 940px">
-            <img
-              src="@/assets/images/bg/hero-lines.svg"
-              alt="Hero Lines"
-              class="absolute -left-16 -top-16"
+  <div class="app-hero-wrap w-full flex flex-col justify-center items-start">
+    <div :class="['app-hero']">
+      <div class="w-full">
+        <template v-if="isWalletReady">
+          <div
+            class="h-64 lg:my-9 flex flex-col items-center justify-center"
+            :style="computedStyles"
+          >
+            <h1
+              v-text="$t('myInvestments')"
+              class="text-4xl font-secondary font-body mb-8 text-white"
             />
-            <div class="flex items-center">
-              <img src="@/assets/images/logo-level-dark.svg" alt="Logo Dark" />
-              <h1 class="text-green text-5xl font-bold whitespace-pre-line">
-                <span class="text-gray-dark"> — </span>
-                <span>{{ $t('ammHeader') }}</span>
-                <span class="text-gray-dark">.</span>
-              </h1>
-            </div>
-            <h2
-              v-text="$t('ammPlatform')"
-              class="mt-6 ml-16 w-11/12 text-left text-lg font-bold md:text-xl pb-2"
+            <BalLoadingBlock
+              v-if="isLoadingUserPools"
+              class="h-10 w-40 mx-auto"
+              darker
             />
+            <span v-else class="text-4xl font-secondary text-white">
+              {{
+                fNum2(totalInvestedAmount || '', {
+                  style: 'currency',
+                  fixedFormat: true
+                })
+              }}
+            </span>
           </div>
-          <img src="@/assets/images/hero-curve.svg" alt="Curve" />
-        </div>
-      </template>
+        </template>
+        <template v-else>
+          <div class="relative flex items-start justify-start">
+            <div class="ml-16 mt-28 relative" style="max-width: 940px">
+              <img
+                src="@/assets/images/bg/hero-lines.svg"
+                alt="Hero Lines"
+                class="absolute -left-16 -top-16"
+              />
+              <div class="flex items-center">
+                <img
+                  src="@/assets/images/logo-level-dark.svg"
+                  alt="Logo Dark"
+                />
+                <h1 class="text-green text-5xl font-bold whitespace-pre-line">
+                  <span class="text-gray-dark"> — </span>
+                  <span>{{ $t('ammHeader') }}</span>
+                  <span class="text-gray-dark">.</span>
+                </h1>
+              </div>
+              <h2
+                v-text="$t('ammPlatform')"
+                class="mt-6 ml-16 w-11/12 text-left text-lg font-bold md:text-xl pb-2"
+              />
+            </div>
+            <img src="@/assets/images/hero-curve.svg" alt="Curve" />
+          </div>
+        </template>
+      </div>
     </div>
+    <div class="hero-hr" />
   </div>
 </template>
 
@@ -84,7 +94,7 @@ export default defineComponent({
       if (!isWalletReady.value) return;
       return {
         backgroundImage: `url('${heroBackgroundImage}')`,
-        maxWidth: '100%'
+        backgroundSize: 'contain'
       };
     });
 
@@ -126,8 +136,8 @@ export default defineComponent({
 
 .hero-hr {
   height: 4px;
-  width: 1440px;
-  @apply mt-16 max-w-full mx-auto;
+  width: 100%;
+  @apply max-w-full mx-auto;
   background: linear-gradient(
     270deg,
     rgba(96, 208, 154, 0.1) 0%,
