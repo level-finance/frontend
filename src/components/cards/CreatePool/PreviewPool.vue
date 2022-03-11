@@ -163,7 +163,7 @@ function getInitialWeightHighlightClass(tokenAddress: string) {
           <BalStack horizontal align="center" spacing="xs">
             <button
               @click="goBack"
-              class="text-blue-500 hover:text-blue-700 flex"
+              class="text-green hover:text-green-600 flex"
             >
               <BalIcon class="flex" name="chevron-left" />
             </button>
@@ -269,7 +269,7 @@ function getInitialWeightHighlightClass(tokenAddress: string) {
                 <span class="text-sm">{{
                   fNum2(initialFee, FNumFormats.percent)
                 }}</span>
-                <button class="hover:text-blue-500" @click="navigateToPoolFee">
+                <button class="hover:text-green-500" @click="navigateToPoolFee">
                   <BalIcon name="edit" size="xs" />
                 </button>
               </BalStack>
@@ -278,7 +278,7 @@ function getInitialWeightHighlightClass(tokenAddress: string) {
               <span class="text-sm">{{ $t('swapFeeManager') }}:</span>
               <BalStack horizontal spacing="sm">
                 <span class="text-sm">{{ getSwapFeeManager() }}</span>
-                <button class="hover:text-blue-500" @click="navigateToPoolFee">
+                <button class="hover:text-green-500" @click="navigateToPoolFee">
                   <BalIcon name="edit" size="xs" />
                 </button>
               </BalStack>
