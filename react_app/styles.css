@@ -1,0 +1,145 @@
+  .dashboard-page {
+    font-family: sans-serif;
+    text-align: center;
+    font-family: Courier;
+    background-color: #fff;
+    padding: 50px 50px 400px;
+  }
+
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 45px;
+    grid-auto-rows: minmax(100px, auto);
+    max-width: 1340px;
+    margin: auto;
+  }
+
+  .dashboard-page .recharts-responsive-container {
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-top: 30px;
+  }
+  
+  .dashboard-widget {
+    background: #ffffff;
+    border: 3px solid #60d09a;
+    padding: 30px;
+    border-radius: 20px;
+    page-break-inside: avoid;
+  }
+
+  .dashboard-widget.indicators {
+    grid-column: 1 / 9;
+    grid-row: 1;
+  }
+
+  .dashboard-widget.holders {
+    
+  }
+
+  .dashboard-widget.investments {
+    grid-column: 1 / 4;
+    grid-row: 2;
+  }
+
+  .dashboard-widget.price-chart {
+    grid-column: 4 / 9;
+    grid-row: 2;
+  }
+
+  .dashboard-widget.pending-rewards {
+    grid-column: 1 / 4;
+    grid-row: 3;
+  }
+
+  .dashboard-widget.volume {
+    grid-column: 1 / 4;
+    grid-row: 4;
+    margin-top: -20px;
+  }
+
+  .dashboard-widget.mcap-tvl-ratio {
+    grid-column: 4 / 9;
+    grid-row: 3 / 5;
+  }
+
+  .dashboard-widget.protovol {
+    grid-column: 4 / 9;
+    grid-row: 5;
+  }
+
+  .dashboard-widget.token-price {
+    grid-column: 4 / 9;
+    grid-row: 6;
+  }
+  
+  .dashboard-widget .pieLabel {
+    font-family: Courier;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    background-color: white;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    margin: 5px;
+  }
+  
+  .dashboard-widget .pieLegend {
+    font-family: Courier;
+    font-weight: 700;
+    width: 100%;
+  }
+
+  .dashboard-widget .pieLegend td:first-child {
+    text-align: left;
+  }
+
+  .dashboard-widget .pieLegend .circle {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    margin-right: 1em;
+  }
+
+  .dashboard-widget h2, h3 {
+    text-align: left;
+    color: #323232;
+  }
+
+  .dashboard-widget h2 {
+    font-family: "Bord Demo";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    text-transform: lowercase;
+  }
+
+  .dashboard-widget h3 {
+    font-family: "Courier";
+    font-size: 24px;
+    line-height: 27px;
+    font-weight: bold;
+  }
+  
+  .dashboard-widget h3 span {
+    padding: 3px 11px;
+    background: #60d09a;
+    border-radius: 5px;
+    font-family: Courier;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    /* identical to box height */
+  
+    display: inline-flex;
+    align-items: center;
+  
+    color: #ffffff;
+  }
+  
