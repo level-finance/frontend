@@ -2,8 +2,8 @@
   <BalCard
     shadow="lg"
     class="mt-4"
-    :square="upToLargeBreakpoint"
-    :noBorder="upToLargeBreakpoint"
+    :square="false"
+    :noBorder="false"
     noPad
   >
     <BalTable
