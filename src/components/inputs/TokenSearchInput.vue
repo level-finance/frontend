@@ -2,7 +2,7 @@
   <div>
     <div class="flex items-center flex-wrap">
       <div class="flex items-center flex-wrap">
-        <BalBtn @click="onClick" class="mr-5 b-2" color="orange" type="filled">
+        <BalBtn @click="onClick" class="mr-6 b-2" size="xl-" color="orange" type="filled">
           <BalIcon name="search" size="sm" class="mr-2" />
           {{ $t('filterByToken') }}
         </BalBtn>
@@ -42,9 +42,9 @@
       </div>
       <div
         v-else
-        class="text-xl text-gray font-bold flex flex-wrap items-center py-3"
+        class="text-lg text-black font-bold flex flex-wrap items-center py-3"
       >
-        <span class="mr-2">{{ $t('popularBases') }}</span>
+        <span class="mr-8">{{ $t('popularBases') }}</span>
         <span
           v-for="token in whiteListedTokens"
           :key="`popular-${token.symbol}`"

@@ -94,7 +94,8 @@ export default defineComponent({
       if (!isWalletReady.value) return;
       return {
         backgroundImage: `url('${heroBackgroundImage}')`,
-        backgroundSize: 'cover'
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
       };
     });
 

@@ -1,11 +1,5 @@
 <template>
-  <BalCard
-    shadow="lg"
-    class="mt-4"
-    :square="false"
-    :noBorder="false"
-    noPad
-  >
+  <BalCard shadow="lg" class="mt-4" :square="false" :noBorder="false" noPad>
     <BalTable
       :columns="columns"
       :data="data"
