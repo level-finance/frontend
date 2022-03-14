@@ -36,7 +36,7 @@ function getPoolLabel(pool: Pool) {
       horizontal
       class="p-2 px-3 border-b dark:border-gray-600 text-yellow-500"
     >
-      <BalIcon class="mt-1" name="alert-circle" size="md" />
+      <BalIcon name="alert-circle" size="md" />
       <h6>{{ $t('createAPool.similarPoolsExist') }}</h6>
     </BalStack>
     <BalStack vertical spacing="sm" class="p-4">
@@ -46,7 +46,9 @@ function getPoolLabel(pool: Pool) {
         v-for="pool in similarPools"
         :key="`similarpool-${pool.id}`"
       >
-        <span class="text-sm">{{ getPoolLabel(pool) }}</span>
+        <span class="text-lg font-bold text-black">{{
+          getPoolLabel(pool)
+        }}</span>
       </BalLink>
     </BalStack>
   </BalCard>
