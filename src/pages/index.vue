@@ -1,13 +1,14 @@
 <template>
-  <div class="lg:container lg:max-w-7xl lg:mx-auto pt-10 md:pt-12">
+  <div class="lg:container lg:mx-auto pt-10 md:pt-12">
     <template v-if="isWalletReady">
       <div class="px-4 lg:px-0">
         <BalStack horizontal justify="between" align="center">
           <h3 class="lowercase">{{ $t('myInvestments') }}</h3>
           <BalBtn
             @click="navigateToCreatePool"
-            size="2xl"
+            size="xl"
             type="filled"
+            class="text-lg"
             :class="{
               'mt-4': upToMediumBreakpoint
             }"

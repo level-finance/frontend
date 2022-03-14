@@ -42,7 +42,7 @@
                 :name="column.Header"
               ></slot>
               <div v-else>
-                <h5 class="text-xl">
+                <h5 class="text-lg leading-5">
                   {{ column.name }}
                 </h5>
               </div>
