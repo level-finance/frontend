@@ -93,7 +93,7 @@ function handleSelected(newToken: string): void {
         <BalIcon
           name="chevron-down"
           size="sm"
-          class="text-blue-500 group-hover:text-pink-500 ml-2"
+          class="text-green hover:text-green-600 ml-2"
         />
       </div>
     </template>
@@ -106,7 +106,7 @@ function handleSelected(newToken: string): void {
         <BalIcon
           v-if="selectedOption === option"
           name="check"
-          class="text-blue-500 ml-2"
+          class="text-green ml-2"
         />
       </div>
       <div v-else class="flex items-center justify-between">
@@ -117,7 +117,7 @@ function handleSelected(newToken: string): void {
         <BalIcon
           v-if="selectedOption === option"
           name="check"
-          class="text-blue-500 ml-2"
+          class="text-green ml-2"
         />
       </div>
     </template>

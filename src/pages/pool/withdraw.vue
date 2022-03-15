@@ -17,14 +17,14 @@ const { pool, loadingPool, transfersAllowed } = usePoolTransfers();
 <template>
   <div>
     <BalLoadingBlock v-if="loadingPool || !transfersAllowed" class="h-96" />
-    <BalCard v-else shadow="xl" exposeOverflow noBorder>
+    <BalCard v-else exposeOverflow noBorder>
       <template #header>
         <div class="w-full">
-          <div class="text-xs text-gray-500 leading-none">
+          <div class="text-base text-black leading-none">
             {{ network.chainName }}
           </div>
           <div class="flex items-center justify-between">
-            <h4>{{ $t('withdrawFromPool') }}</h4>
+            <h6>{{ $t('withdrawFromPool') }}</h6>
             <TradeSettingsPopover :context="TradeSettingsContext.invest" />
           </div>
         </div>
