@@ -3,6 +3,7 @@
     :is="tag"
     :class="[
       'bal-btn',
+      customClasses,
       btnClasses,
       'level-btn',
       `level-btn${type ? (type === 'submit' ? '_filled' : `_${type}`) : ''}`
@@ -67,7 +68,8 @@ export default defineComponent({
     loading: { type: Boolean, default: false },
     loadingLabel: { type: String, default: 'loading...' },
     disabled: { type: Boolean, default: false },
-    noShadow: { type: Boolean, default: false }
+    noShadow: { type: Boolean, default: false },
+    customClasses: { type: String, default: '' }
   },
 
   setup(props) {
@@ -79,6 +81,8 @@ export default defineComponent({
           return 'px-3 h-9 text-base';
         case 'sm+':
           return 'px-3 h-10 text-xl';
+        case 'xl-':
+          return 'px-6 h-11 text-lg';
         case 'xl':
           return 'px-6 h-12 text-xl';
         case '2xl':

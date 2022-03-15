@@ -25,7 +25,6 @@
     "@balancer-labs/balancer-js": "^1.0.1",
     "@balancer-labs/sdk": "^0.1.1",
     "@balancer-labs/sor": "^1.1.0",
-    "@level-finance/typechain": "^1.1.0",
     "@ensdomains/content-hash": "^2.5.3",
     "@ethersproject/abi": "~5.4.1",
     "@ethersproject/abstract-provider": "~5.4.1",
@@ -39,6 +38,7 @@
     "@gnosis.pm/gp-v2-contracts": "^1.0.2",
     "@gnosis.pm/safe-apps-provider": "^0.6.0",
     "@gnosis.pm/safe-apps-sdk": "4.0.0",
+    "@level-finance/typechain": "^1.1.0",
     "@metamask/detect-provider": "^1.2.0",
     "@popperjs/core": "^2.9.2",
     "@portis/web3": "^3.0.10",
@@ -120,6 +120,10 @@
   "dependencies": {
     "@balancer-labs/typechain": "^1.0.0",
     "@level-finance/sdk": "^1.0.1",
-    "@level-finance/sor": "^1.0.0"
+    "@level-finance/sor": "^1.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "recharts": "^2.1.9",
+    "veaury": "^1.0.5"
   }
 }
