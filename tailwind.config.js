@@ -46,7 +46,8 @@ module.exports = {
       lg: 'none',
       xl: 'none',
       inner: 'none',
-      none: 'none'
+      none: 'none',
+      black: '-2px 0px 4px rgba(0, 0, 0, 0.5);'
     },
     borderColor: theme => ({
       ...theme('colors'),
@@ -88,7 +89,8 @@ module.exports = {
         },
         green: {
           DEFAULT: '#60D09A',
-          400: '#bfecd7',
+          300: '#bfecd7',
+          400: '#6DFFCB',
           500: '#60D09A',
           600: '#00BF63',
           dark: '#2EB67D'

@@ -118,7 +118,7 @@ function handleClose(): void {
 <template>
   <BalModal show :fireworks="withdrawalConfirmed" @close="handleClose">
     <template v-slot:header>
-      <div class="flex items-center">
+      <div class="flex items-center py-2">
         <BalCircle
           v-if="withdrawalConfirmed"
           size="8"
@@ -127,8 +127,8 @@ function handleClose(): void {
         >
           <BalIcon name="check" />
         </BalCircle>
-        <h4>
-          {{ title }}
+        <h4 class="font-secondary font-normal">
+          {{ title.toLowerCase().replace('a', 'A') }}
         </h4>
       </div>
     </template>

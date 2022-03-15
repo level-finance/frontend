@@ -26,10 +26,10 @@ const { currency } = useUserSettings();
 
 <template>
   <div class="summary-table">
-    <h6 class="p-2">
+    <h6 class="p-3">
       {{ $t('summary') }}
     </h6>
-    <div class="flex flex-col py-2">
+    <div class="flex flex-col p-3">
       <div class="summary-table-row">
         <div class="summary-table-label">
           {{ $t('total') }}
@@ -39,7 +39,7 @@ const { currency } = useUserSettings();
           <BalTooltip
             :text="$t('tooltips.withdraw.total', [currency.toUpperCase()])"
             icon-size="sm"
-            class="ml-2"
+            class="ml-2 flex items-center"
           />
         </div>
       </div>
@@ -53,7 +53,7 @@ const { currency } = useUserSettings();
             :text="$t('tooltips.withdraw.priceImpact')"
             icon-size="sm"
             width="72"
-            class="ml-2"
+            class="ml-2 flex items-center"
           />
         </div>
       </div>
@@ -63,18 +63,20 @@ const { currency } = useUserSettings();
 
 <style scoped>
 .summary-table {
-  @apply border dark:border-gray-700 divide-y dark:divide-gray-700 rounded-lg mt-4;
+  @apply rounded-20px border-3 border-green divide-y-3 divide-green mt-4;
 }
 
 .summary-table-row {
-  @apply grid grid-cols-2 px-2 py-1;
+  @apply grid grid-cols-2;
 }
 
 .summary-table-label {
   @apply flex items-center;
+  @apply text-xl font-bold;
 }
 
 .summary-table-number {
   @apply flex items-center justify-end;
+  @apply text-xl font-bold;
 }
 </style>

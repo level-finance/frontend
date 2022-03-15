@@ -322,7 +322,7 @@ const chartGrid = computed(() => {
                   {
                     'text-white': activeTimespan.value === timespan.value,
                     'text-green': activeTimespan.value !== timespan.value,
-                    'bg-green-400':
+                    'bg-green-300':
                       !isNegativeTrend &&
                       activeTimespan.value === timespan.value,
                     'bg-red-400':

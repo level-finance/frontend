@@ -45,13 +45,13 @@ function amountShare(address: string): string {
       <div class="token-amount-table-content">
         <BalAsset :address="address" :size="36" />
         <div class="flex flex-col ml-3">
-          <div class="font-medium text-lg">
+          <div class="font-bold text-xl">
             <span class="font-numeric">
               {{ fNum2(amount, FNumFormats.token) }}
             </span>
             {{ tokenMap[address].symbol }}
           </div>
-          <div class="text-sm text-gray-500 font-numeric">
+          <div class="text-lg">
             {{ fNum2(fiatAmountMap[address], FNumFormats.fiat) }}
             ({{ fNum2(amountShare(address), FNumFormats.percent) }})
           </div>
@@ -63,7 +63,7 @@ function amountShare(address: string): string {
 
 <style scoped>
 .token-amount-table {
-  @apply shadow-lg border dark:border-gray-700 divide-y dark:divide-gray-700 rounded-lg;
+  @apply rounded-20px border-3 border-green divide-y-3 divide-green;
 }
 
 .token-amount-table-content {

@@ -57,7 +57,7 @@ export default function useInputStyles(props, isInvalid: Ref<boolean>, attrs) {
 
   const parentClasses = computed(() => ({
     [attrs.class]: true,
-    'shadow-lg rounded-lg': !props.noShadow
+    'shadow-lg': !props.noShadow
   }));
 
   const inputContainerClasses = computed(() => ({
@@ -96,7 +96,7 @@ export default function useInputStyles(props, isInvalid: Ref<boolean>, attrs) {
   }));
 
   const borderRadiusClasses = computed(() => ({
-    'rounded-lg': !props.noRadius
+    'rounded-20px': !props.noRadius
   }));
 
   return {

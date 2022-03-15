@@ -119,9 +119,9 @@ onBeforeMount(() => {
   <div>
     <div class="proportional-input">
       <div class="proportional-input-container">
-        <div class="flex">
+        <div class="flex text-xl font-bold">
           <WithdrawalTokenSelect :pool="pool" />
-          <div class="flex-grow text-right text-xl font-numeric">
+          <div class="flex-grow text-right">
             <BalLoadingBlock
               v-if="loadingAmountsOut"
               class="w-20 h-8 float-right"
@@ -129,7 +129,7 @@ onBeforeMount(() => {
             <span v-else>{{ missingPrices ? '-' : fiatTotalLabel }}</span>
           </div>
         </div>
-        <div class="flex mt-2 text-sm text-gray-500">
+        <div class="flex mt-2 text-lg text-black">
           <span>
             {{ $t('proportionalWithdrawal') }}
           </span>
@@ -156,9 +156,9 @@ onBeforeMount(() => {
       >
         <div class="flex items-center justify-between">
           <div class="flex items-center">
-            <BalAsset :address="address" class="mr-2" />
+            <BalAsset :size="40" :address="address" class="mr-2" />
             <div class="flex flex-col leading-none">
-              <span class="text-lg font-medium">
+              <span class="text-xl font-bold">
                 {{ token.symbol }}
                 <span v-if="!isStableLikePool">
                   {{
@@ -177,10 +177,10 @@ onBeforeMount(() => {
           >
             <BalLoadingBlock v-if="loadingAmountsOut" class="w-20 h-12" />
             <template v-else>
-              <span class="break-words text-xl">
+              <span class="break-words text-xl font-bold">
                 {{ fNum2(proportionalAmounts[i], FNumFormats.token) }}
               </span>
-              <span class="text-sm text-gray-400">
+              <span class="text-sm font-bold">
                 {{ fNum2(fiatAmounts[i], FNumFormats.fiat) }}
               </span>
             </template>
@@ -197,13 +197,16 @@ onBeforeMount(() => {
 }
 
 .proportional-input-container {
-  @apply shadow-inner p-3 pb-1 rounded-lg;
-  @apply border border-gray-100 dark:border-gray-800;
+  @apply p-3 rounded-20px;
+  @apply border-3 border-green;
 }
 
 .token-amounts {
-  @apply rounded-lg;
-  @apply bg-gray-50 dark:bg-gray-800;
-  @apply border dark:border-gray-900 divide-y dark:divide-gray-900;
+  @apply rounded-20px;
+  @apply border-3 border-green;
+}
+
+.token-amounts > div:not(:first-child) {
+  @apply border-t-3 rounded-none border-green;
 }
 </style>

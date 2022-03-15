@@ -118,7 +118,7 @@
           </div>
           <div class="summary-item-row" v-if="trading.isGnosisTrade.value">
             <div>{{ $t('tradeSummary.gasCosts') }}</div>
-            <div class="text-green-400">-{{ zeroFee }}</div>
+            <div class="text-green-300">-{{ zeroFee }}</div>
           </div>
           <div class="summary-item-row">
             <div>{{ labels.tradeSummary.tradeFees }}</div>

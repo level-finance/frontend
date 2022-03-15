@@ -61,10 +61,10 @@ export default defineComponent({
   @apply block overflow-hidden h-6 rounded-full bg-gray bg-none cursor-pointer;
 }
 .bal-toggle-checkbox:checked {
-  @apply right-0 border-green-400;
+  @apply right-0 border-green-300;
 }
 .bal-toggle-checkbox:checked + .bal-toggle-track {
-  @apply bg-green-400;
+  @apply bg-green-300;
 }
 .bal-toggle-checkbox[disabled] {
   @apply border-gray-300 dark:border-gray-700 cursor-not-allowed;

@@ -31,53 +31,22 @@ const priceImpactClasses = computed(() => ({
 </script>
 
 <template>
-  <div class="data-table">
-    <div :class="['data-table-row', priceImpactClasses]">
-      <div class="p-2">{{ $t('priceImpact') }}</div>
-      <div class="data-table-number-col">
-        <div class="flex items-center">
-          <BalLoadingBlock v-if="loadingAmountsOut" class="w-10 h-6" />
-          <span v-else>{{ fNum2(priceImpact, FNumFormats.percent) }}</span>
+  <div :class="['flex text-xl font-bold', priceImpactClasses]">
+    <div class="flex flex-grow items-center justify-between">
+      {{ $t('priceImpact') }}
+      <div class="flex items-center">
+        <BalLoadingBlock v-if="loadingAmountsOut" class="w-10 h-6" />
+        <span v-else>{{ fNum2(priceImpact, FNumFormats.percent) }}</span>
 
-          <BalTooltip :text="$t('withdraw.tooltips.priceImpact')">
-            <template v-slot:activator>
-              <BalIcon
-                v-if="highPriceImpact"
-                name="alert-triangle"
-                size="xs"
-                class="-mb-px ml-1"
-              />
-              <BalIcon
-                v-else
-                name="info"
-                size="xs"
-                class="text-gray-400 -mb-px ml-1"
-              />
-            </template>
-          </BalTooltip>
-        </div>
+        <BalTooltip :text="$t('withdraw.tooltips.priceImpact')">
+          <template v-slot:activator>
+            <div class="flex items-center px-1">
+              <BalIcon v-if="highPriceImpact" name="alert-triangle" size="sm" />
+              <BalIcon v-else name="info" size="sm" class="text-gray-400" />
+            </div>
+          </template>
+        </BalTooltip>
       </div>
     </div>
   </div>
 </template>
-
-<style scoped>
-.data-table {
-  @apply rounded-lg divide-y dark:divide-gray-700;
-}
-
-.data-table-row {
-  @apply flex;
-  @apply rounded-lg;
-  @apply divide-x dark:divide-gray-900 border dark:border-gray-900;
-  @apply dark:bg-gray-800;
-}
-
-.data-table-number-col {
-  @apply p-2 flex flex-grow items-center justify-between;
-}
-
-.total-row {
-  @apply text-lg font-bold;
-}
-</style>

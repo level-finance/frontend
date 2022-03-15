@@ -82,10 +82,11 @@ function tokenFor(option: string): TokenInfo {
       :class="[
         'token-select-input group',
         {
-          'px-3 text-black': outlined
+          'px-3 text-black': props.outlined
         }
       ]"
-      :type="outlined ? 'outlined' : 'filled'"
+      :type="props.outlined ? 'outlined' : 'filled'"
+      :disabled="props.fixed"
       @click="toggleModal"
       size="sm+"
       :color="props.color"
@@ -150,6 +151,7 @@ function tokenFor(option: string): TokenInfo {
               })
             }}
           </span>
+          <BalIcon name="chevron-down" size="lg" class="ml-2 text-green" />
         </BalBtn>
       </template>
       <template #option="{ option: address }">
@@ -171,6 +173,7 @@ function tokenFor(option: string): TokenInfo {
       v-else
       class="token-select-input"
       type="filled"
+      :disabled="props.fixed"
       @click="toggleModal"
       size="sm+"
       :color="props.color"

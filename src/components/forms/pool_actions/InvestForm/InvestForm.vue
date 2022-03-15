@@ -212,22 +212,26 @@ watch(useNativeAsset, shouldUseNativeAsset => {
       "
       class="mb-4"
     />
-    <TokenInput
-      v-for="(n, i) in tokenAddresses.length"
-      :key="i"
-      :name="tokenAddresses[i]"
-      v-model:address="tokenAddresses[i]"
-      v-model:amount="amounts[i]"
-      v-model:isValid="validInputs[i]"
-      :weight="tokenWeight(tokenAddresses[i])"
-      :hintAmount="propAmountFor(i)"
-      :hint="hint(i)"
-      class="mb-4"
-      fixedToken
-      :options="tokenOptions(i)"
-      @update:amount="handleAmountChange($event, i)"
-      @update:address="handleAddressChange($event)"
-    />
+    <div class="border-3 border-green divide-y-3 divide-green rounded-20px">
+      <TokenInput
+        v-for="(n, i) in tokenAddresses.length"
+        :key="i"
+        :name="tokenAddresses[i]"
+        v-model:address="tokenAddresses[i]"
+        v-model:amount="amounts[i]"
+        v-model:isValid="validInputs[i]"
+        :weight="tokenWeight(tokenAddresses[i])"
+        :hintAmount="propAmountFor(i)"
+        :hint="hint(i)"
+        class="mb-4 first:mt-4"
+        fixedToken
+        :options="tokenOptions(i)"
+        @update:amount="handleAmountChange($event, i)"
+        @update:address="handleAddressChange($event)"
+        noBorder
+        noRadius
+      />
+    </div>
 
     <InvestFormTotals
       class="mt-6"

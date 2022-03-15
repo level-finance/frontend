@@ -71,36 +71,30 @@ function handleSelected(newToken: string): void {
 </script>
 
 <template>
-  <BalDropdown :options="options" minWidth="44" @selected="handleSelected">
+  <BalDropdown :options="options" minWidth="4" @selected="handleSelected">
     <template #activator>
-      <div class="token-select-input selected group selectable">
+      <BalBtn size="sm+" :color="'orange'" :textColor="'black'">
         <div>
           <BalAssetSet
             v-if="isProportional"
             :addresses="tokenAddresses"
             :width="50"
           />
-          <BalAsset
-            v-else
-            :address="selectedToken.address"
-            class="shadow mr-2"
-          />
+          <BalAsset v-else :address="selectedToken.address" class="mr-2" />
         </div>
-        <span class="text-base font-medium">
+        <span class="text-xl font-bold">
           <span v-if="isProportional">All tokens</span>
           <span v-else>{{ selectedToken.symbol }}</span>
         </span>
-        <BalIcon
-          name="chevron-down"
-          size="sm"
-          class="text-green hover:text-green-600 ml-2"
-        />
-      </div>
+        <BalIcon name="chevron-down" size="md" class="text-green ml-2" />
+      </BalBtn>
     </template>
     <template #option="{ option }">
       <div v-if="option === 'all'" class="flex items-center justify-between">
         <div class="flex items-center">
-          <BalAssetSet :addresses="tokenAddresses" :width="assetSetWidth" />
+          <div>
+            <BalAssetSet :addresses="tokenAddresses" :width="assetSetWidth" />
+          </div>
           {{ $t('allTokens') }}
         </div>
         <BalIcon
@@ -126,16 +120,6 @@ function handleSelected(newToken: string): void {
 
 <style scoped>
 .token-select-input {
-  @apply shadow rounded-lg flex items-center h-10 px-2 whitespace-nowrap;
-  @apply text-sm;
-  font-variation-settings: 'wght' 700;
-}
-
-.selectable {
-  @apply cursor-pointer hover:shadow-none transition-shadow;
-}
-
-.selected {
-  @apply bg-gray-50 dark:bg-gray-700 text-black dark:text-white;
+  @apply rounded-20px flex items-center h-10 px-2 whitespace-nowrap;
 }
 </style>

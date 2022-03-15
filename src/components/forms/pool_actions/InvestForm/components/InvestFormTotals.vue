@@ -49,8 +49,8 @@ const priceImpactClasses = computed(() => ({
 }));
 
 const optimizeBtnClasses = computed(() => ({
-  'text-gradient': !highPriceImpact.value,
-  'text-red-500 px-2 py-1 bg-white rounded-lg': highPriceImpact.value
+  'text-green': !highPriceImpact.value,
+  'text-red-500 px-2 py-1 bg-white rounded-20px': highPriceImpact.value
 }));
 </script>
 
@@ -133,7 +133,7 @@ const optimizeBtnClasses = computed(() => ({
 }
 
 .data-table-number-col {
-  @apply flex items-center justify-between;
+  @apply flex-col items-center justify-between;
   @apply text-lg font-bold rounded-t-lg;
 }
 

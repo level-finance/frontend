@@ -33,7 +33,7 @@
         </div>
       </template>
       <template v-slot:iconColumnCell="pool">
-        <div v-if="!isLoading" class="px-3 py-2 flex justify-center">
+        <div v-if="!isLoading" class="px-3 py-2 pl-5 flex justify-center">
           <BalAssetSet
             :addresses="orderedTokenAddressesFor(pool)"
             :width="100"

@@ -197,6 +197,7 @@ async function handleTransaction(
         :loading-label="isLoading ? loadingLabel : currentAction.loadingLabel"
         block
         @click="currentAction.promise()"
+        type="filled"
       >
         {{ currentAction.label }}
       </BalBtn>

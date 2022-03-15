@@ -257,7 +257,7 @@ function getMainTokenEquivalentAmount(address: string, amount: string) {
                 v-if="action.type === 'invest'"
                 name="plus"
                 size="sm"
-                class="text-green-500 dark:text-green-400"
+                class="text-green-500 dark:text-green-300"
               />
               <BalIcon
                 v-else-if="action.type === 'withdraw'"
@@ -269,7 +269,7 @@ function getMainTokenEquivalentAmount(address: string, amount: string) {
                 v-else
                 name="repeat"
                 size="sm"
-                class="text-green-500 dark:text-green-400"
+                class="text-green-500 dark:text-green-300"
               />
             </div>
             <div>{{ action.label }}</div>

@@ -18,8 +18,8 @@
       @change="onChange"
       @drag-end="onDragEnd"
       :dot-style="dotStyle"
-      :rail-style="railSyle"
-      :process-style="proccessStyle"
+      :rail-style="railStyle"
+      :process-style="processStyle"
     />
   </div>
 </template>
@@ -66,19 +66,19 @@ export default defineComponent({
         backgroundColor: colors.red['500'],
         borderColor: colors.red['500'],
         borderWidth: 0,
-        backgroundImage: `linear-gradient(to top right, ${colors.blue['500']}, ${colors.pink['500']})`
+        backgroundImage: `linear-gradient(to top right, ${colors.green['400']}, ${colors.green['500']})`
       };
     });
 
-    const railSyle = computed(() => {
+    const railStyle = computed(() => {
       return {
         background: darkMode.value ? colors.gray['900'] : colors.gray['100']
       };
     });
 
-    const proccessStyle = computed(() => {
+    const processStyle = computed(() => {
       return {
-        backgroundImage: `linear-gradient(to top right, ${colors.blue['500']}, ${colors.pink['500']})`
+        backgroundImage: `linear-gradient(to top right, ${colors.green['400']}, ${colors.green['500']})`
       };
     });
 
@@ -95,15 +95,9 @@ export default defineComponent({
       onChange,
       onDragEnd,
       dotStyle,
-      railSyle,
-      proccessStyle
+      railStyle: railStyle,
+      processStyle
     };
   }
 });
 </script>
-
-<style>
-.vue-slider-dot-handle-focus {
-  box-shadow: 0 0 0 5px rgb(0, 0, 0, 0.2);
-}
-</style>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 
 /**
  * TYPES
@@ -12,9 +12,7 @@ type Props = {
 /**
  * PROPS & EMITS
  */
-const props = withDefaults(defineProps<Props>(), {
-  minWidth: 'auto'
-});
+const props = withDefaults(defineProps<Props>(), {});
 
 const emit = defineEmits<{
   (e: 'selected', value: any): void;
@@ -24,13 +22,6 @@ const emit = defineEmits<{
  * STATE
  */
 const showDropdown = ref(false);
-
-/**
- * COMPUTED
- */
-const dropdownClasses = computed(() => ({
-  [`min-w-${props.minWidth}`]: true
-}));
 
 /**
  * METHODS
@@ -54,9 +45,9 @@ function handleRowClick(option: any): void {
     <div class="activator" @click="toggleDropdown">
       <slot name="activator" />
     </div>
-    <div :class="['bal-dropdown', dropdownClasses]" v-if="showDropdown">
+    <div class="bal-dropdown min-w-max" v-if="showDropdown">
       <div
-        v-for="(option, i) in options"
+        v-for="(option, i) in props.options"
         :key="i"
         class="bal-dropdown-row"
         @click="handleRowClick(option)"
@@ -69,14 +60,14 @@ function handleRowClick(option: any): void {
 
 <style scoped>
 .bal-dropdown {
-  @apply absolute shadow rounded-lg z-10;
-  @apply bg-green-400;
-  @apply border-2 border-green divide-y divide-green;
+  @apply absolute rounded-20px z-10;
+  @apply bg-white;
+  @apply border-3 border-green divide-y-2 divide-green;
   @apply w-full mt-1.5;
 }
 
 .bal-dropdown-row {
-  @apply p-3 whitespace-nowrap hover:bg-gray-50 dark:hover:bg-gray-850 cursor-pointer;
-  @apply first:rounded-t-lg last:rounded-b-lg;
+  @apply p-3 whitespace-nowrap hover:bg-green-400 cursor-pointer;
+  @apply first:rounded-t-20px last:rounded-b-20px;
 }
 </style>

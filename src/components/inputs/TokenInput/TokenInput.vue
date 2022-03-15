@@ -44,6 +44,7 @@ type Props = {
   ignoreWalletBalance?: boolean;
   outlined?: boolean;
   noBorder?: boolean;
+  noRadius?: boolean;
   color?: string;
   dropdownIcon?: boolean;
   textColor?: string;
@@ -67,6 +68,7 @@ const props = withDefaults(defineProps<Props>(), {
   ignoreWalletBalance: false,
   outlined: false,
   noBorder: false,
+  noRadius: false,
   options: () => [],
   rules: () => [],
   color: 'green',
@@ -251,6 +253,7 @@ watchEffect(() => {
     @update:isValid="emit('update:isValid', $event)"
     @keydown="emit('keydown', $event)"
     :noBorder="props.noBorder"
+    :noRadius="props.noRadius"
   >
     <template #prepend>
       <slot name="tokenSelect">

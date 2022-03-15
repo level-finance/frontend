@@ -12,7 +12,7 @@
   </button>
   <div
     ref="content"
-    class="tooltip text-xs text-black bg-green-400 font-medium shadow rounded-md border-2 border-green z-50"
+    class="tooltip text-xs text-black bg-green-300 font-medium shadow rounded-md border-2 border-green z-50"
     :class="tooltipClasses"
     v-bind="$attrs"
   >
