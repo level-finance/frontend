@@ -47,7 +47,7 @@ export default defineComponent({
       type: String,
       default: 'md',
       validator: (val: string): boolean =>
-        ['xs', 'sm', 'md', 'lg'].includes(val)
+        ['xs', 'sm', 'md', 'lg', 'xl-', 'group'].includes(val)
     },
     type: {
       type: String,
