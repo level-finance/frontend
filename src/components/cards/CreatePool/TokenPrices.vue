@@ -94,8 +94,8 @@ const hasUnknownPrice = computed(() =>
           <BalStack horizontal isDynamic justify="between">
             <span
               :class="[
-                'w-1/2 text-left',
-                { 'font-medium': injectedPrices[token] === undefined }
+                'text-left',
+                { 'font-bold': injectedPrices[token] === undefined }
               ]"
               >{{ tokens[token]?.symbol }}</span
             >
@@ -103,20 +103,14 @@ const hasUnknownPrice = computed(() =>
               v-if="injectedPrices[token] !== undefined"
               horizontal
               align="center"
-              class="w-1/2 text-right"
+              class="text-right"
             >
-              <span class="w-4/5 break-words">{{
+              <span class="break-words">{{
                 fNum2(injectedPrices[token], FNumFormats.fiat)
               }}</span>
               <BalIcon size="sm" name="edit" class="mr-px" />
             </BalStack>
-            <BalStack
-              v-else
-              spacing="none"
-              horizontal
-              align="center"
-              class="w-3/4"
-            >
+            <BalStack v-else spacing="base" horizontal align="center">
               <div class="w-full justify-end">
                 <span class="text-left font-bold">{{ $t('enterAPrice') }}</span>
               </div>

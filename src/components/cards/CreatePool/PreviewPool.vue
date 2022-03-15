@@ -143,8 +143,8 @@ function getInitialWeightHighlightClass(tokenAddress: string) {
 </script>
 
 <template>
-  <BalStack vertical spacing="xs" class="mb-24">
-    <BalCard shadow="xl" noBorder>
+  <BalStack vertical spacing="xs" class="mb-24 font-bold">
+    <BalCard>
       <BalStack vertical spacing="xs">
         <span class="text-xs text-gray-700 dark:text-gray-500">{{
           userNetworkConfig?.name
@@ -171,13 +171,17 @@ function getInitialWeightHighlightClass(tokenAddress: string) {
             <h5 class="font-bold dark:text-gray-300">{{ title }}</h5>
           </BalStack>
         </div>
-        <BalCard shadow="none" noPad>
-          <div class="bg-gray-50 dark:bg-gray-700 p-2">
-            <h6 class="text-sm">
+        <BalCard
+          square
+          class="border-t-3 border-b-3 border-l-0 border-r-0 -mx-4 px-4"
+          noPad
+        >
+          <div class="p-2">
+            <h6 class="text-lg font-bold">
               {{ $t('createAPool.tokensAndSeedLiquidity') }}
             </h6>
           </div>
-          <BalStack vertical spacing="none" withBorder>
+          <BalStack vertical spacing="none">
             <div
               v-for="token in seedTokens"
               :key="`tokenpreview-${token.tokenAddress}`"
@@ -187,13 +191,13 @@ function getInitialWeightHighlightClass(tokenAddress: string) {
                 <BalStack horizontal align="center">
                   <BalAsset :address="token.tokenAddress" :size="36" />
                   <BalStack vertical spacing="none">
-                    <span class="font-semibold">
+                    <span class="font-bold">
                       {{ fNum2(token.weight / 100, FNumFormats.percent) }}
                       {{ tokens[token.tokenAddress]?.symbol }}
                     </span>
                     <span
                       :class="[
-                        'text-sm',
+                        'text-lg',
                         getInitialWeightHighlightClass(token.tokenAddress)
                       ]"
                     >
@@ -208,10 +212,10 @@ function getInitialWeightHighlightClass(tokenAddress: string) {
                   </BalStack>
                 </BalStack>
                 <BalStack vertical spacing="none" align="end">
-                  <span class="font-semibold">
+                  <span class="font-bold">
                     {{ fNum2(token.amount, FNumFormats.token) }}
                   </span>
-                  <span class="text-sm text-gray-500">
+                  <span class="text-lg text-gray-500">
                     {{
                       fNum2(
                         bnum(token.amount)
@@ -225,24 +229,20 @@ function getInitialWeightHighlightClass(tokenAddress: string) {
               </BalStack>
             </div>
           </BalStack>
-          <BalStack
-            horizontal
-            justify="between"
-            class="p-4 border-t dark:border-gray-600"
-          >
+          <BalStack horizontal justify="between" class="p-4">
             <h6>{{ $t('total') }}</h6>
             <h6>
               {{ fNum2(poolLiquidity.toString(), FNumFormats.fiat) }}
             </h6>
           </BalStack>
         </BalCard>
-        <BalCard shadow="none" noPad>
-          <div class="bg-gray-50 dark:bg-gray-700 p-2">
-            <h6 class="text-sm">{{ $t('summary') }}</h6>
+        <BalCard noBorder noPad>
+          <div class="px-2">
+            <h6 class="text-lg">{{ $t('summary') }}</h6>
           </div>
-          <BalStack vertical spacing="xs" class="p-3">
+          <BalStack vertical spacing="xs" class="px-2 text-gray">
             <BalStack horizontal justify="between">
-              <span class="text-sm">{{ $t('poolSymbol') }}:</span>
+              <span class="text-lg">{{ $t('poolSymbol') }}:</span>
               <BalInlineInput
                 size="xs"
                 v-model="poolName"
@@ -251,7 +251,7 @@ function getInitialWeightHighlightClass(tokenAddress: string) {
               />
             </BalStack>
             <BalStack horizontal justify="between">
-              <span class="text-sm">{{ $t('poolName') }}:</span>
+              <span class="text-lg">{{ $t('poolName') }}:</span>
               <BalInlineInput
                 size="xs"
                 v-model="poolSymbol"
@@ -260,13 +260,13 @@ function getInitialWeightHighlightClass(tokenAddress: string) {
               />
             </BalStack>
             <BalStack horizontal justify="between">
-              <span class="text-sm">{{ $t('poolType') }}:</span>
-              <span class="text-sm capitalize">{{ poolTypeString }}</span>
+              <span class="text-lg">{{ $t('poolType') }}:</span>
+              <span class="text-lg capitalize">{{ poolTypeString }}</span>
             </BalStack>
             <BalStack horizontal justify="between" class="mt-1">
-              <span class="text-sm">{{ $t('swapFee') }}:</span>
+              <span class="text-lg">{{ $t('swapFee') }}:</span>
               <BalStack horizontal spacing="sm">
-                <span class="text-sm">{{
+                <span class="text-lg">{{
                   fNum2(initialFee, FNumFormats.percent)
                 }}</span>
                 <button class="hover:text-green-500" @click="navigateToPoolFee">
@@ -275,9 +275,9 @@ function getInitialWeightHighlightClass(tokenAddress: string) {
               </BalStack>
             </BalStack>
             <BalStack horizontal justify="between">
-              <span class="text-sm">{{ $t('swapFeeManager') }}:</span>
+              <span class="text-lg">{{ $t('swapFeeManager') }}:</span>
               <BalStack horizontal spacing="sm">
-                <span class="text-sm">{{ getSwapFeeManager() }}</span>
+                <span class="text-lg">{{ getSwapFeeManager() }}</span>
                 <button class="hover:text-green-500" @click="navigateToPoolFee">
                   <BalIcon name="edit" size="xs" />
                 </button>
