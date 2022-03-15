@@ -34,7 +34,7 @@
       </div>
       <div
         v-if="account && !dynamicDataLoading && !hasNoBalances"
-        class="text-xl text-gray font-bold overflow-x-auto"
+        class="text-lg text-black font-bold overflow-x-auto"
       >
         <span class="mr-2">{{ $t('inYourWallet') }}:</span>
         <span
