@@ -59,10 +59,7 @@ function cancel() {
           >{{ userNetworkConfig?.name }}</span
         >
         <BalStack align="center" horizontal spacing="xs">
-          <button
-            @click="goBack"
-            class="text-blue-500 hover:text-blue-700 flex"
-          >
+          <button @click="goBack" class="text-green hover:text-green-600 flex">
             <BalIcon class="flex" name="chevron-left" />
           </button>
           <h5 class="font-bold dark:text-gray-300">{{ title }}</h5>
