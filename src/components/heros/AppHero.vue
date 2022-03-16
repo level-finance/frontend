@@ -130,8 +130,9 @@ export default defineComponent({
 
 <style>
 .app-hero {
-  @apply container mx-auto;
-  @apply bg-cover bg-center flex items-center justify-start text-center px-4;
+  /* @apply container mx-auto; */
+  @apply bg-cover bg-center flex items-center justify-start text-center; /*px-4 */
+  @apply w-full;
   transition: all 0.3s ease-in-out;
 }
 
