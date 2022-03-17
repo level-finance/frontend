@@ -18,7 +18,7 @@ const PieLabel = ({
     <foreignObject
       x={x - radius * 0.5}
       y={y - radius / 6}
-      width={radius}
+      width="90px"
       height="2em"
     >
       <div xmlns="http://www.w3.org/1999/xhtml" className="pieLabel">
@@ -42,7 +42,7 @@ const Investments = ({ data }) => {
               nameKey="name"
               cx="50%"
               cy="50%"
-              outerRadius={100}
+              outerRadius={128}
               fill="#8884d8"
               blendStroke
               labelLine={false}
@@ -57,7 +57,7 @@ const Investments = ({ data }) => {
                 <tr key={name}>
                   <td>
                     <span className="circle" style={{ backgroundColor: fill }} />
-                    <span>{name}/LVL</span>
+                    <span>{name}<span style={{ color: '#2EB67D' }}>/</span>LVL</span>
                   </td>  
                   <td>${value.toFixed(3)}</td>
                   <td style={{ color: '#2EB67D' }}>({(value/sum*100).toLocaleString('en-US', { maximumFractionDigits: 1 })}%)</td>

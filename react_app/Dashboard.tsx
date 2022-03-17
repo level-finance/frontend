@@ -14,8 +14,10 @@ import Volume from './Volume';
 import Investments from './Investments';
 import MCapTVLRatio from './MCapTVLRatio';
 import PriceChart from './PriceChart';
+import TotalSupply from './TotalSupply';
+import ProgressBar from './ProgressBar';
 
-const data = [
+const holdersData = [
   {
     key: "Mon",
     value: 5
@@ -102,6 +104,14 @@ const protovolData = [
   }
 ];
 
+const priceData = new Array(30).fill().map((o, i) => ({
+  value: [Math.random(), Math.random()].sort(),
+  name: i,
+  rise: Math.random() > 0.5,
+  redFlag: Math.random() > 0.9,
+  greenFlag: Math.random() > 0.9
+}));
+
 export default function Dashboard() {
   return (
     <div className="dashboard-page">
@@ -110,7 +120,21 @@ export default function Dashboard() {
           <h2>
             indicators level
           </h2>
-          <div style={{ display: 'flex', marginTop: '20px' }}>
+          <div style={{ display: 'flex', marginTop: '20px', gap: '20px 30px', flexWrap: 'wrap' }}>
+            <div className="dashboard-widget fdv">
+              <h3>
+                FDV
+              </h3>
+              <h3>
+                1,20 AUD
+              </h3>
+              <h3 style={{ color: '#60D09A' }}>
+                +0,035
+              </h3>
+              <h3>
+                <span style={{ fontSize: '24px' }}>(2,85%)</span> <b style={{ color: '#60D09A' }}>▲</b>
+              </h3>
+            </div>
             <div className="dashboard-widget holders">
               <h3>
                 Holders <span>+1254</span>
@@ -119,7 +143,7 @@ export default function Dashboard() {
                 <AreaChart
                   width={600}
                   height={160}
-                  data={data}
+                  data={holdersData}
                   margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
                 >
                   <XAxis axisLine={false} tickLine={false} dataKey="key" />
@@ -135,10 +159,28 @@ export default function Dashboard() {
                 </AreaChart>
               </ResponsiveContainer>
             </div>
+            <div className="contract">
+              <h3>Contract</h3>
+              <div className="dashboard-widget">
+                <ProgressBar value={12.13} style={{ height: '20px', borderRadius: '20px' }} />
+                <h3 style={{ marginTop: '1em' }}>
+                  12.13% out of 10m
+                </h3>
+              </div>
+            </div>
+            <div className="monthly-plan">
+              <h3>LVL Monthly Plan</h3>
+              <div className="dashboard-widget">
+                <div>100/day</div>
+                <div>700/week</div>
+                <div>05.05.2022</div>
+                <div style={{ marginLeft: '-3px' }}>80/day</div>
+              </div>
+            </div>
           </div>
         </div>
         <Investments data={pieData} />
-        <PriceChart />
+        <PriceChart data={priceData} ticker="LVL" tickers={['LVL', 'ANC', 'MIR']}/>
         <div className="dashboard-widget pending-rewards">
           <h2>Pending rewards</h2>
           <h3 style={{ marginTop: '20px' }}>$345.618</h3>
@@ -147,7 +189,35 @@ export default function Dashboard() {
           data={new Array(30).fill(null).map((o, i) => ({ value: Math.random(), name: i }))}
         />
         <MCapTVLRatio />
-        <Protovol data={pieData} />
+        <Protovol data={protovolData} />
+        <TotalSupply />
+        <div className="dashboard-widget market-screener">
+          <h2>Market screener</h2>
+          <div className="screeners">
+            <img src={require('@/assets/images/screeners/turtle.svg')} />
+            <img src={require('@/assets/images/screeners/shark.svg')} />
+            <img src={require('@/assets/images/screeners/whale.svg')} />
+            {
+              [0.6, 0.9, -0.9].map(value => (
+                <div className="screener">
+                  <div
+                    className="screener-bar"
+                    style={{ width: `${Math.abs(value) * 50}%`, ...(value > 0 ? { borderRadius: '0 10px 10px 0', left: '50%' } : { borderRadius: '10px 0 0 10px', right: '50%' }) }}
+                  />
+                </div>
+              ))
+            }
+          </div>
+        </div>
+        <div className="dashboard-widget token-price">
+          <h2>LVL Token Price</h2>
+        </div>
+        <div className="dashboard-widget leaderboard">
+          <h2>Leaderboard</h2>
+        </div>
+        <div className="dashboard-widget trading-fees">
+          <h2>Trading fees changes</h2>
+        </div>
       </div>
     </div>
   );

@@ -24,9 +24,13 @@
   .dashboard-widget {
     background: #ffffff;
     border: 3px solid #60d09a;
-    padding: 30px;
+    padding: 20px 30px 30px;
     border-radius: 20px;
     page-break-inside: avoid;
+  }
+
+  .dashboard-widget p {
+      margin-top: 24px;
   }
 
   .dashboard-widget.indicators {
@@ -34,8 +38,37 @@
     grid-row: 1;
   }
 
-  .dashboard-widget.holders {
-    
+  .dashboard-widget.indicators > div > div {
+    flex-grow: 1;
+  }
+
+  .dashboard-widget.fdv {
+    margin-right: 25px;
+  }
+
+  .contract .dashboard-widget {
+    padding-top: 25px;
+  }
+
+  .contract .dashboard-widget,
+  .monthly-plan .dashboard-widget {
+    height: 120px;
+    margin-top: 10px;
+  }
+
+  .monthly-plan .dashboard-widget {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 3px;
+    padding: 0;
+    overflow: hidden;
+    background-color: #60D09A;
+    font-weight: 700;
+  }
+
+  .monthly-plan .dashboard-widget div {
+    padding: 16px 0 17px;
+    background-color: #fff;
   }
 
   .dashboard-widget.investments {
@@ -69,9 +102,54 @@
     grid-row: 5;
   }
 
+  .dashboard-widget.total-supply {
+    grid-column: 1 / 4;
+    grid-row: 5 / 7;
+  }
+
+  .dashboard-widget.market-screener {
+    grid-column: 1 / 4;
+    grid-row: 7;
+    padding-bottom: 45px;
+  }
+
   .dashboard-widget.token-price {
     grid-column: 4 / 9;
-    grid-row: 6;
+    grid-row: 6 / 8;
+  }
+
+  .dashboard-widget.leaderboard {
+    grid-column: 1 / 9;
+    grid-row: 8;
+  }
+
+  .dashboard-widget.trading-fees {
+    grid-column: 1 / 9;
+    grid-row: 9;
+  }
+
+  .dashboard-widget.market-screener .screeners {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-gap: 0 32px;
+    grid-template-rows: 132px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .dashboard-widget.market-screener .screener {
+    background: linear-gradient(90deg, rgb(255, 92, 92) 50%, rgb(96, 208, 154) 50%);
+    position: relative;
+    overflow: hidden;
+    height: 20px;
+    width: 100%;
+    border-radius: 20px;
+  }
+
+  .dashboard-widget.market-screener .screener-bar {
+    position: absolute;
+    height: 100%;
+    outline: 100px solid rgba(255,255,255,0.7)!important;
   }
   
   .dashboard-widget .pieLabel {
@@ -88,16 +166,21 @@
   }
   
   .dashboard-widget .pieLegend {
+    margin-top: 30px;
     font-family: Courier;
     font-weight: 700;
     width: 100%;
+  }
+
+  .dashboard-widget .pieLegend tt {
+    height: 38px;
   }
 
   .dashboard-widget .pieLegend td:first-child {
     text-align: left;
   }
 
-  .dashboard-widget .pieLegend .circle {
+  .dashboard-widget .circle {
     display: inline-block;
     width: 10px;
     height: 10px;

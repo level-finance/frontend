@@ -7,6 +7,7 @@ const MCapTVLRatio = () => {
   return (    
     <div className="dashboard-widget mcap-tvl-ratio">
       <h2>mcap/tvl ratio</h2>
+      <p><div className="circle" style={{ backgroundColor: '#60D09A' }} />SUM of MCap/TVL Ratio <span className="circle" style={{ backgroundColor: '#FE9900' }} />SUM of MCap/TVL Ratio (Fully Diluted)</p>
       <ResponsiveContainer width="100%" height={300}>
         <LineChart
           width={500}
