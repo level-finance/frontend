@@ -16,6 +16,7 @@ import MCapTVLRatio from './MCapTVLRatio';
 import PriceChart from './PriceChart';
 import TotalSupply from './TotalSupply';
 import ProgressBar from './ProgressBar';
+import Leaderboard from './Leaderboard';
 
 const holdersData = [
   {
@@ -122,13 +123,13 @@ export default function Dashboard() {
           </h2>
           <div style={{ display: 'flex', marginTop: '20px', gap: '20px 30px', flexWrap: 'wrap' }}>
             <div className="dashboard-widget fdv">
-              <h3>
+              <h3 style={{ marginBottom: '15px' }}>
                 FDV
               </h3>
-              <h3>
+              <h3 style={{ marginBottom: '22px' }}>
                 1,20 AUD
               </h3>
-              <h3 style={{ color: '#60D09A' }}>
+              <h3 style={{ marginBottom: '2px', color: '#60D09A' }}>
                 +0,035
               </h3>
               <h3>
@@ -212,9 +213,7 @@ export default function Dashboard() {
         <div className="dashboard-widget token-price">
           <h2>LVL Token Price</h2>
         </div>
-        <div className="dashboard-widget leaderboard">
-          <h2>Leaderboard</h2>
-        </div>
+        <Leaderboard />
         <div className="dashboard-widget trading-fees">
           <h2>Trading fees changes</h2>
         </div>
